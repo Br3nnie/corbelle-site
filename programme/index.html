@@ -485,24 +485,16 @@
   var dqCount = 0;
   var affordFlag = false;
 
-  var questionTexts = [
-    "Name & Job Title",
-    "What best describes your current role?",
-    "Where does the gap feel most real for you?",
-    "What's your honest relationship with feedback about yourself?",
-    "What does the next 90 days look like for you?",
-    "Is the financial investment something you can commit to in the next 14 days?"
-  ];
-
   function checkTextInputs() {
-    var name = document.getElementById("inputName").value.trim();
-    var role = document.getElementById("inputRole").value.trim();
-    if(name && role) {
-      answers[0] = "text";
-      answerLabels[0] = name + " — " + role;
+    var nameEl = document.getElementById("inputName");
+    var roleEl = document.getElementById("inputRole");
+    if (nameEl && roleEl && nameEl.value.trim() && roleEl.value.trim()) {
+      answers[0] = "qualify";
+      answerLabels[0] = nameEl.value.trim() + " — " + roleEl.value.trim();
       document.getElementById("quizNext").disabled = false;
     } else {
       answers[0] = undefined;
+      answerLabels[0] = undefined;
       document.getElementById("quizNext").disabled = true;
     }
   }
@@ -569,7 +561,6 @@
         document.getElementById("quizNext").textContent = "See result →";
       }
     } else {
-      // Submit to Formspree
       submitToFormspree();
     }
   }
@@ -602,7 +593,6 @@
       mode: "no-cors"
     }).catch(function(err){ console.log("Sheet error:", err); });
 
-    // Show result screen
     document.getElementById("quizBody").style.display = "none";
     if(affordFlag) {
       document.getElementById("resultAfford").classList.add("active");
