@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Performance Ceiling™ — Corbelle</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0E5A64;
+    --teal-light: #e6f2f4;
+    --teal-mid: #c5dee1;
+    --navy: #163A5F;
+    --exec-blue: #1F4E79;
+    --charcoal: #1C1F24;
+    --sand: #D9CDBF;
+    --sand-light: #f5f2ee;
+    --warm-white: #FFF7F7;
+    --white: #ffffff;
+    --text-secondary: #4a4e54;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--charcoal);
+    background: var(--warm-white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--charcoal);
+    padding: 0 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 52px;
+    border-bottom: 2px solid var(--teal);
+  }
+  .nav-logo {
+    font-family: 'Sora', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    color: #F2F2F2; letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--teal); }
+  .nav-meta { font-size: 0.75rem; color: var(--sand); letter-spacing: 0.05em; }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--charcoal);
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal);
+  }
+  .cover-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+  .cover-series {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.7rem; font-weight: 600;
+    color: var(--teal); letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .cover-title {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 700; line-height: 1.08;
+    color: #F2F2F2;
+    margin-bottom: 1.5rem;
+  }
+  .cover-title span { color: var(--teal); }
+  .cover-subtitle {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.15rem; font-weight: 400;
+    color: var(--sand);
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+  }
+  .cover-byline {
+    display: flex; align-items: center; gap: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(217,205,191,0.25);
+  }
+  .byline-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.9rem; font-weight: 700; color: white;
+    flex-shrink: 0;
+  }
+  .byline-name { font-family: 'Sora', sans-serif; font-size: 0.95rem; font-weight: 600; color: #F2F2F2; }
+  .byline-role { font-size: 0.8rem; color: var(--sand); margin-top: 2px; }
+  .cover-thesis {
+    margin-top: 3rem;
+    padding: 1.5rem 1.75rem;
+    background: rgba(14,90,100,0.15);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 4px 4px 0;
+  }
+  .cover-thesis-label {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.65rem; font-weight: 600;
+    color: var(--teal); letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .cover-thesis p { font-size: 0.95rem; color: #e0e0e0; line-height: 1.7; }
+
+  /* ── TOC ── */
+  .toc-section {
+    background: var(--sand-light);
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--sand);
+  }
+  .toc-inner {
+    max-width: 800px; margin: 0 auto; padding: 0 2.5rem;
+  }
+  .toc-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.7rem; font-weight: 600;
+    color: var(--teal); letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .toc-list { list-style: none; column-count: 2; column-gap: 3rem; }
+  @media (max-width: 600px) { .toc-list { column-count: 1; } }
+  .toc-list li {
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(217,205,191,0.6);
+    break-inside: avoid;
+  }
+  .toc-list a {
+    text-decoration: none;
+    font-size: 0.88rem; color: var(--charcoal);
+    display: flex; gap: 0.75rem; align-items: baseline;
+    transition: color 0.15s;
+  }
+  .toc-list a:hover { color: var(--teal); }
+  .toc-num { color: var(--teal); font-weight: 600; font-size: 0.8rem; min-width: 1.5rem; }
+
+  /* ── LAYOUT ── */
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 5rem 0 3rem;
+    border-bottom: 1px solid rgba(217,205,191,0.5);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-eyebrow {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.65rem; font-weight: 600;
+    color: var(--teal); letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700; line-height: 1.2;
+    color: var(--charcoal);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--teal);
+  }
+  .subsection-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.15rem; font-weight: 600;
+    color: var(--exec-blue);
+    margin: 2.5rem 0 1rem;
+  }
+  .sub2-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.95rem; font-weight: 600;
+    color: var(--navy);
+    margin: 2rem 0 0.75rem;
+  }
+  p { margin-bottom: 1.25rem; font-size: 0.97rem; color: var(--charcoal); }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.1rem; font-weight: 600; font-style: italic;
+    color: var(--teal);
+    padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--teal);
+    margin: 2rem 0;
+    line-height: 1.6;
+  }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: var(--teal-light);
+    border-top: 3px solid var(--teal);
+    border-radius: 0 0 4px 4px;
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+  }
+  .callout-label {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.65rem; font-weight: 600;
+    color: var(--teal); letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .callout p { font-size: 0.95rem; color: var(--charcoal); margin-bottom: 0; }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  thead tr { background: var(--navy); }
+  thead th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600; font-size: 0.82rem;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  tbody tr:nth-child(odd) { background: var(--warm-white); }
+  tbody tr:nth-child(even) { background: white; }
+  tbody td {
+    padding: 0.75rem 1rem;
+    border: 1px solid #e0dbd4;
+    vertical-align: top;
+    line-height: 1.55;
+    color: var(--charcoal);
+  }
+  tbody td:first-child { font-weight: 500; color: var(--navy); }
+
+  /* ── STAGE CARDS ── */
+  .stage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .stage-card {
+    background: white;
+    border: 1px solid #e0dbd4;
+    border-radius: 6px;
+    padding: 1.25rem;
+    position: relative;
+  }
+  .stage-card.active {
+    border-color: var(--teal);
+    border-width: 2px;
+    background: var(--teal-light);
+  }
+  .stage-num {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--sand); line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stage-card.active .stage-num { color: var(--teal); }
+  .stage-name {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 0.5rem;
+  }
+  .stage-card.active .stage-name { color: var(--teal); }
+  .stage-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+
+  /* ── QUOTES ── */
+  .quote-block {
+    margin: 1.5rem 0;
+    padding: 0.5rem 0;
+  }
+  .quote-block blockquote {
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--exec-blue);
+    padding: 0.5rem 1rem;
+    border-left: none;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── INDEX GRID ── */
+  .index-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .index-card {
+    background: white;
+    border: 1px solid #e0dbd4;
+    border-radius: 6px;
+    padding: 1rem 1.1rem;
+    border-top: 3px solid var(--teal);
+  }
+  .index-card-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 0.35rem;
+  }
+  .index-card-q { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; }
+
+  /* ── SCORE BANDS ── */
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 600px) { .score-grid { grid-template-columns: 1fr 1fr; } }
+  .score-band {
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+  }
+  .score-band.exposed { background: #fdecea; border-top: 3px solid #c0392b; }
+  .score-band.emerging { background: #fff8e6; border-top: 3px solid #e67e22; }
+  .score-band.progressing { background: #e8f4ea; border-top: 3px solid #27ae60; }
+  .score-band.adaptive { background: var(--teal-light); border-top: 3px solid var(--teal); }
+  .score-range {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.2rem; font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .score-band.exposed .score-range { color: #c0392b; }
+  .score-band.emerging .score-range { color: #e67e22; }
+  .score-band.progressing .score-range { color: #27ae60; }
+  .score-band.adaptive .score-range { color: var(--teal); }
+  .score-label { font-family: 'Sora', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.4rem; }
+  .score-desc { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; }
+
+  /* ── PLACEHOLDER ── */
+  .placeholder-box {
+    border: 2px dashed var(--sand);
+    border-radius: 6px;
+    padding: 2rem;
+    background: var(--sand-light);
+    text-align: center;
+    margin: 1.5rem 0;
+  }
+  .placeholder-box .placeholder-label {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.75rem; font-weight: 600;
+    color: var(--teal); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .placeholder-box p { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0; }
+
+  /* ── ACTIONS ── */
+  .action-list { list-style: none; margin: 1.5rem 0; }
+  .action-item {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e0dbd4;
+    align-items: start;
+  }
+  .action-item:last-child { border-bottom: none; }
+  .action-num {
+    font-family: 'Sora', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    color: var(--teal);
+    padding-top: 0.15rem;
+  }
+  .action-title { font-weight: 600; font-size: 0.95rem; color: var(--navy); margin-bottom: 0.25rem; }
+  .action-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 0; }
+
+  /* ── ABOUT ── */
+  .about-band {
+    background: var(--charcoal);
+    padding: 4rem 0;
+    margin-top: 2rem;
+  }
+  .about-inner { max-width: 800px; margin: 0 auto; padding: 0 2.5rem; }
+  .about-band .callout-label { color: var(--teal); }
+  .about-band p { color: #d0d0d0; font-size: 0.95rem; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #0e1114;
+    padding: 2rem 0;
+    text-align: center;
+  }
+  .footer-inner { max-width: 800px; margin: 0 auto; padding: 0 2.5rem; }
+  .footer-logo {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.9rem; font-weight: 700;
+    color: #F2F2F2; letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .footer-logo span { color: var(--teal); }
+  .footer-meta { font-size: 0.75rem; color: #666; }
+
+  /* ── SOURCE NOTES ── */
+  .source-list { list-style: none; }
+  .source-list li {
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    border-bottom: 1px solid #e0dbd4;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    position: relative;
+  }
+  .source-list li::before {
+    content: '•';
+    position: absolute; left: 0;
+    color: var(--teal);
+  }
+
+  /* ── WORKSHEET ── */
+  .worksheet-table tbody td:nth-child(2) {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--sand);
+    letter-spacing: 0.15em;
+    min-width: 120px;
+  }
+
+  @media print {
+    .nav { display: none; }
+    .cover { padding-top: 60px; }
+    body { background: white; }
+    .section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="#">COR<span>BE</span>LLE</a>
+  <span class="nav-meta">The Performance Ceiling™ &nbsp;|&nbsp; 2026</span>
+</nav>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-series">Corbelle Research Series &nbsp;|&nbsp; 2026</div>
+    <h1 class="cover-title">The Performance<br><span>Ceiling™</span></h1>
+    <p class="cover-subtitle">Why performance brands are about to repeat financial services' most expensive technology mistakes</p>
+    <div class="cover-byline">
+      <div class="byline-avatar">BE</div>
+      <div>
+        <div class="byline-name">Brendan Ellis</div>
+        <div class="byline-role">Founder, Corbelle &nbsp;·&nbsp; Former Head of Data &amp; Business Intelligence &nbsp;·&nbsp; Operator-Researcher</div>
+      </div>
+    </div>
+    <div class="cover-thesis">
+      <div class="cover-thesis-label">Core thesis</div>
+      <p>The next generation of performance brands will not be defined by who adopts AI first. It will be defined by who builds the decision capability to avoid expensive technology mistakes before complexity becomes a ceiling on growth.</p>
+    <div style="margin-top:1.5rem">
+      <a href="#appendix" onclick="document.getElementById('appendix').scrollIntoView({behavior:'smooth'});return false;" style="display:inline-flex;align-items:center;gap:0.6rem;background:#0E5A64;color:white;font-family:'Sora',sans-serif;font-size:0.88rem;font-weight:700;padding:0.8rem 1.75rem;border-radius:5px;text-decoration:none;transition:background 0.15s" onmouseover="this.style.background='#0f6872'" onmouseout="this.style.background='#0E5A64'">Take the Performance Ceiling Index™ <span style="font-size:1rem">↓</span></a>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc-section">
+  <div class="toc-inner">
+    <div class="toc-title">Contents</div>
+    <ol class="toc-list">
+      <li><a href="#s1"><span class="toc-num">1.</span> Executive summary</a></li>
+      <li><a href="#s2"><span class="toc-num">2.</span> Why this paper exists</a></li>
+      <li><a href="#s3"><span class="toc-num">3.</span> The hypothesis and the verdict</a></li>
+      <li><a href="#s4"><span class="toc-num">4.</span> What financial services learned</a></li>
+      <li><a href="#s5"><span class="toc-num">5.</span> The performance brand maturity gap</a></li>
+      <li><a href="#s6"><span class="toc-num">6.</span> The firms halfway up the mountain</a></li>
+      <li><a href="#s7"><span class="toc-num">7.</span> The Performance Ceiling™</a></li>
+      <li><a href="#s8"><span class="toc-num">8.</span> The Performance Ceiling Index™</a></li>
+      <li><a href="#s9"><span class="toc-num">9.</span> Mistakes to avoid</a></li>
+      <li><a href="#s10"><span class="toc-num">10.</span> Actions for founders and COOs</a></li>
+      <li><a href="#s11"><span class="toc-num">11.</span> Conclusion</a></li>
+      <li><a href="#sources"><span class="toc-num">—</span> Source notes</a></li>
+      <li><a href="#appendix"><span class="toc-num">—</span> Take the diagnostic</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main>
+
+<!-- 1. EXECUTIVE SUMMARY -->
+<div class="section" id="s1">
+<div class="page">
+  <div class="section-eyebrow">Section 1</div>
+  <h2 class="section-title">Executive summary</h2>
+  <p>Performance brands are entering a technology cycle that financial services has already lived through. The language is different. The vendors are different. The market context is different. The underlying pattern is familiar: growth creates complexity, complexity creates pressure, pressure creates technology spend, and technology spend without decision maturity creates more complexity.</p>
+  <p>This paper argues that many scaling performance brands are approaching what Corbelle calls the Performance Ceiling: the point at which organisational complexity begins growing faster than organisational capability. The ceiling is rarely visible at first. Revenue may still be growing. The brand may still be strong. Customers may still love the product. The warning signs appear behind the scenes: slower decisions, fragmented data, inconsistent reporting, rising system costs, increasing dependency on vendors, and growing uncertainty about AI.</p>
+  <p>The comparison with financial services is not used to claim that a 75-person endurance brand is the same as a global bank. It is used because financial services has already paid for a painful education in technology decision-making. Banks and fintechs learned that technology does not create strategy, data does not automatically create clarity, and AI does not compensate for weak operating discipline. Those lessons are now directly relevant to founders and COOs of performance brands.</p>
+  <p>This matters most for brands between roughly 25 and 500 people. Startups can still rely on founder intuition and lightweight systems. Large global brands can afford senior technology teams, data leaders, enterprise platforms and specialist integrators. The greatest risk sits in the middle: the scaling performance brand that is big enough for technology decisions to matter, but not yet mature enough to make those decisions consistently well.</p>
+  <div class="callout">
+    <div class="callout-label">The report in one sentence</div>
+    <p>Performance brands are not short of technology. They are short of technology decision maturity. Financial services already learned what happens when that gap is ignored.</p>
+  </div>
+  <h3 class="subsection-title">Key findings</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th style="width:35%">Finding</th><th>Implication for founders and COOs</th></tr></thead>
+      <tbody>
+        <tr><td>The maturity gap is real, but it is not only a spend gap.</td><td>Financial services spends materially more on technology, but the more important difference is operating discipline: governance, data ownership, decision frameworks and senior accountability.</td></tr>
+        <tr><td>AI is accelerating the ceiling.</td><td>AI increases the number of possible initiatives faster than most teams can evaluate them. This creates the illusion of opportunity while increasing decision fatigue.</td></tr>
+        <tr><td>Scaling brands are the highest-risk segment.</td><td>The most exposed firms are not Gymshark, WHOOP or Strava. They are the sub-500 employee brands entering their first serious phase of technology investment.</td></tr>
+        <tr><td>Vendor-led strategy is a major risk.</td><td>When internal decision capability is weak, vendor roadmaps become de facto strategy. This is one of the clearest parallels with financial services transformation programmes.</td></tr>
+        <tr><td>The next advantage is decision quality.</td><td>As technology becomes more accessible, advantage shifts from access to judgement: knowing what to do, what not to do, what to sequence and what to measure.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- 2. WHY THIS PAPER EXISTS -->
+<div class="section" id="s2">
+<div class="page">
+  <div class="section-eyebrow">Section 2</div>
+  <h2 class="section-title">Why this paper exists</h2>
+  <p>Performance brands are commercially led organisations whose product, service or experience helps people perform better physically. The category includes endurance events, sports nutrition, recovery technology, coaching platforms, performance apparel, fitness communities, clubs and sport-related operating businesses.</p>
+  <p>These organisations are often founder-led, brand-rich and community-driven. They understand their customer deeply. They move quickly. They build trust through product quality, lived experience and cultural relevance. For a long time, that was enough.</p>
+  <div class="pull-quote">It is no longer enough.</div>
+  <p>The sector is being pulled into a more complex operating environment. Customers expect personalisation. Boards and investors ask about AI. Marketing teams rely on increasingly fragmented data. Events businesses manage participant journeys across multiple systems. Nutrition brands operate across DTC, wholesale, subscriptions and retail. Coaching platforms blend human expertise with algorithmic recommendations.</p>
+  <p>The result is a new kind of pressure. Founders and COOs are being asked to make technology decisions they were not trained for, in a market moving faster than traditional playbooks can cover, with vendors offering confident answers to questions the leadership team may not yet have defined.</p>
+  <div class="pull-quote">That is exactly where mistakes begin.</div>
+  <h3 class="subsection-title">The founder and COO problem</h3>
+  <p>In a 50-person business, the founder can often hold the operating model in their head. They know the customer, the team, the systems, the bottlenecks and the priorities. Technology choices are tactical. If a tool fails, the blast radius is limited.</p>
+  <p>In a 250-person business, the operating model has changed. There are more teams, more systems, more handoffs, more territories, more channels and more stakeholders. The same decision habits that made the company fast now begin to make it fragile. The COO becomes the person expected to convert ambiguity into execution.</p>
+  <div class="callout">
+    <div class="callout-label">A working definition</div>
+    <p>The Performance Ceiling is the point at which organisational complexity begins growing faster than organisational capability. It appears first as operational friction, then as decision drag, and eventually as a constraint on growth.</p>
+  </div>
+</div>
+</div>
+
+<!-- 3. HYPOTHESIS -->
+<div class="section" id="s3">
+<div class="page">
+  <div class="section-eyebrow">Section 3</div>
+  <h2 class="section-title">The hypothesis and the verdict</h2>
+  <p>The original hypothesis tested in this paper is direct: performance brands are about to repeat the expensive technology mistakes financial services made over the last decade.</p>
+  <h3 class="subsection-title">Verdict</h3>
+  <p>The hypothesis is supported in direction and pattern, but the language should be sharpened. The evidence does not prove a precise ten-year lag. It does support a maturity gap in technology decision-making, data governance, AI operating models and executive confidence.</p>
+  <div class="pull-quote">Performance brands are entering the same technology maturity phase financial services entered over the last decade — but without the same budget, regulatory pressure or institutional capability to absorb mistakes.</div>
+  <h3 class="subsection-title">What is proven</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th style="width:30%">Evidence</th><th style="width:22%">Source</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td>Financial services has materially higher technology intensity.</td><td>McKinsey, 2024</td><td>Banks' IT spending reached 10.6% of revenues and 20.0% of expenses in 2022. Global banking technology spend reached approximately $650bn in 2023.</td></tr>
+        <tr><td>Sports and fitness sectors remain digitally immature.</td><td>Sport England, Digital Futures 2024</td><td>The UK sport and physical activity sector scored 51% for digital maturity — categorised as Digital Experimenter.</td></tr>
+        <tr><td>Sports organisations are still early on GenAI strategy.</td><td>PwC Global Sports Survey 2024</td><td>59% of sports organisations surveyed did not yet have a GenAI strategy.</td></tr>
+        <tr><td>The main barrier is organisational, not technical.</td><td>Data & AI Leadership Exchange / Wavestone, 2025</td><td>92% of respondents believed the primary barrier to establishing data and AI-driven cultures was people and organisation change, not technology.</td></tr>
+        <tr><td>Spend alone does not create advantage.</td><td>Bain & Company, 2023</td><td>Banks leading in technology deliver 5 percentage points higher total shareholder return through deft use, not simply higher spend.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout" style="margin-bottom:1.5rem">
+        <div class="callout-label">Validation from the field</div>
+        <p style="font-style:italic;margin-bottom:0.6rem">"I also think that the participation events and performance brands are about a decade behind where financial services firms were in terms of the investment and the exposure. It&#x27;s an exciting time ahead especially if you can catch the front of the wave."</p>
+        <p style="font-size:0.82rem;color:#4a4e54;margin-bottom:0"><strong>Sam Heward</strong> &nbsp;&middot;&nbsp; Co-Founder, Ultra X &nbsp;&middot;&nbsp; LinkedIn comment, 2026</p>
+      </div>
+      <h3 class="subsection-title">What is not proven</h3>
+  <p>There is no single public benchmark that directly compares performance brands against financial services across AI maturity, data maturity, governance maturity, technology spend and decision quality. Some performance brands are highly mature — WHOOP, Garmin, Strava, Oura and other technology-native businesses are better understood as technology companies operating in the performance ecosystem. The Corbelle opportunity is strongest among commercially led scaling brands that are not technology-native.</p>
+</div>
+</div>
+
+<!-- 4. FINANCIAL SERVICES LESSONS -->
+<div class="section" id="s4">
+<div class="page">
+  <div class="section-eyebrow">Section 4</div>
+  <h2 class="section-title">What financial services learned the expensive way</h2>
+  <p>Financial services is not presented here as a perfect model. The lesson is not that financial services got everything right. The lesson is that it has already experienced the consequences of getting technology decisions wrong at scale.</p>
+  <p>During the last fifteen years, banking and fintech underwent several overlapping waves of technology investment. The sector discovered that technology access is not enough. Without governance, architecture, operating discipline and clear ownership, technology investment can make an organisation slower, not faster.</p>
+
+  <h3 class="subsection-title">A real illustration: when data abundance meets decision immaturity</h3>
+  <div class="placeholder-box">
+    <div class="placeholder-label">Case study — to be inserted</div>
+    <p>This space is reserved for a concrete case study of a scaling business where technology investment ran ahead of decision maturity. The more specific the better: what they bought, what went wrong, what it cost them, and what the trigger to fix it was.</p>
+  </div>
+  <p>This pattern — platform first, strategy second — is not a failure of intelligence or ambition. It is a failure of sequencing. The technology forces every unresolved question into the open at once. Who owns the customer? Which metric matters? What will be decommissioned? A platform cannot answer those questions. It can only make the cost of not answering them unavoidable.</p>
+
+  <h3 class="subsection-title">Lesson 1: technology does not create strategy</h3>
+  <p>Many financial services programmes began with a platform decision. A bank bought a CRM. A wealth manager bought a data warehouse. An insurer bought an automation tool. In practice, the technology often exposed unresolved strategic questions rather than solving them. Performance brands are now at risk of making the same sequencing error: buying AI, CDPs, automation tools or analytics platforms before defining the business problem clearly enough to defend in a boardroom.</p>
+
+  <h3 class="subsection-title">Lesson 2: more data does not create clarity</h3>
+  <p>Financial services became data-rich long before it became insight-rich. Performance brands face the same pattern. A nutrition brand may have Shopify, Klaviyo, subscription records, retail sell-through and fulfilment data. An events business may have registration data, timing data, CRM, waiver data and volunteer data. The problem is not absence of data. It is the lack of an agreed operating view.</p>
+
+  <h3 class="subsection-title">Lesson 3: governance beats heroic effort</h3>
+  <p>In immature environments, good people compensate for weak systems. A data analyst reconciles the spreadsheet. A COO chases the number. A founder remembers why a campaign was launched. This works until scale makes heroics unsustainable. Performance brands do not have the regulatory forcing mechanism that compelled financial services to build governance — which makes voluntary governance even more important.</p>
+
+  <h3 class="subsection-title">Lesson 4: AI amplifies capability — it does not create it</h3>
+  <div class="pull-quote">The question is not "How should we use AI?" The better question is: where do we already have enough process clarity, data quality and accountability for AI to create value safely?</div>
+
+  <h3 class="subsection-title">Lesson 5: decision quality beats technology spend</h3>
+  <p>Financial services spends more on technology than almost any sector — yet McKinsey's analysis found that spend growing faster than revenue has not translated into productivity gains. For performance brands, this is liberating: they do not need banking-sized budgets. They need banking's hard-won discipline, adapted to their scale.</p>
+</div>
+</div>
+
+<!-- 5. MATURITY GAP -->
+<div class="section" id="s5">
+<div class="page">
+  <div class="section-eyebrow">Section 5</div>
+  <h2 class="section-title">The performance brand maturity gap</h2>
+  <p>The maturity gap is clearest when looking beyond headline technology adoption. Many performance brands already use modern tools. The issue is not whether they have software. It is whether they have the leadership capability to turn software into repeatable advantage.</p>
+  <p>The most dangerous version of the maturity gap is not visible from the outside. A brand can look sophisticated because its website, campaigns, app or athlete ambassadors are strong. Behind the scenes, the operating model may still be stitched together through spreadsheets, agency reporting, founder intuition and manual reconciliation.</p>
+  <h3 class="subsection-title">The five places the gap appears</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th style="width:32%">Gap dimension</th><th>What it looks like in practice</th></tr></thead>
+      <tbody>
+        <tr><td>1. Strategic alignment</td><td>The leadership team does not share a single view of the most important technology question.</td></tr>
+        <tr><td>2. Technology confidence</td><td>Executives are unsure whether they are making the right decisions or simply reacting to pressure.</td></tr>
+        <tr><td>3. Infrastructure readiness</td><td>Back-office systems cannot support the pace, channel mix or operational complexity of front-office growth.</td></tr>
+        <tr><td>4. AI clarity</td><td>The organisation feels pressure to adopt AI but lacks a clear view of what is worth doing, what is risky, and what should be ignored.</td></tr>
+        <tr><td>5. Decision framework</td><td>Technology choices are made case by case, often influenced by vendors, urgency or internal politics rather than a repeatable method.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3 class="subsection-title">Why the middle market is most exposed</h3>
+  <p>The highest-risk segment is not the smallest startup or the largest global brand. It is the scaling business in the middle. A 20-person company can still improvise. A 2,000-person company can hire a CDO, CTO and architecture team. A 75-to-300-person performance brand often has neither the simplicity of a startup nor the institutional capability of an enterprise.</p>
+  <div class="callout">
+    <div class="callout-label">The scaling trap</div>
+    <p>The first serious technology spend is often where the biggest mistakes happen. The brand is large enough for the decision to matter, but not yet mature enough to make the decision with confidence.</p>
+  </div>
+</div>
+</div>
+
+<!-- 6. FIRMS HALFWAY UP -->
+<div class="section" id="s6">
+<div class="page">
+  <div class="section-eyebrow">Section 6</div>
+  <h2 class="section-title">The firms halfway up the mountain</h2>
+  <p>This report intentionally does not focus only on very large performance companies. Gymshark, HOKA, WHOOP, Strava, Garmin and Ironman are useful indicators of where the market is heading, but they are not the centre of the Corbelle opportunity. The more commercially useful group is the set of scaling brands about to encounter the Performance Ceiling.</p>
+  <h3 class="subsection-title">A three-tier evidence structure</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tier</th><th>Examples</th><th>Role in the argument</th></tr></thead>
+      <tbody>
+        <tr><td>Tier 1: Market direction signals</td><td>Gymshark, HOKA, WHOOP, Strava, Ironman, Garmin</td><td>Show where technology, data and AI expectations are heading.</td></tr>
+        <tr><td>Tier 2: Scaling brand heartland</td><td>Precision Fuel & Hydration, Veloforte, Innermost, fourfive, Runna, TrainingPeaks, Threshold Sports, Human Race, Let's Do This</td><td>Show the real buyer context: founder involvement, COO pressure, partial data capability and rising complexity.</td></tr>
+        <tr><td>Tier 3: Financial services proof base</td><td>Capital One, JPMorgan, Monzo, Starling, Revolut</td><td>Show the historical pattern: high spend without discipline creates debt; disciplined operating models turn technology into advantage.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3 class="subsection-title">Examples and implications</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th style="width:28%">Company / segment</th><th>What it illustrates</th></tr></thead>
+      <tbody>
+        <tr><td>Precision Fuel & Hydration</td><td>PF&H combines products, sweat testing, an algorithm-based questionnaire and personalised hydration strategy. That is a strong data and personalisation foundation. The next challenge is not whether they have data — it is how that data informs retention, product, education, fulfilment, retail and customer experience decisions. That requires a single operating view, not more dashboards.</td></tr>
+        <tr><td>Science in Sport</td><td>SiS had abundant data but infrastructure that fell short of capitalising on it. Their Adobe Commerce and Adobe Experience Platform implementation is a direct example of the gap between data ambition and operating capability — and of what it takes to close it.</td></tr>
+        <tr><td>Huel</td><td>A useful example of a scaling nutrition brand moving from commerce success toward operating discipline: Snowflake on AWS for a single source of truth, Shopify Plus across global stores, and an AI and automation team with champions embedded across the business.</td></tr>
+        <tr><td>Runna / Strava (April 2025)</td><td>The acquisition demonstrates the strategic value of training intelligence, coaching, data and community. It also shows how quickly integration, platform strategy and product-roadmap questions emerge once scale arrives. The day after acquisition is when technology decision maturity starts to matter most.</td></tr>
+        <tr><td>Endurance events operators</td><td>Participation businesses manage registration, CRM, participant communications, timing data, customer support, merchandise, volunteers and event operations. Most are not technology-native. They are exactly the organisations at greatest risk of hitting the ceiling without recognising what has changed.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A founder should not read this section and think: we are not Gymshark. They should think: we are approaching the point where Gymshark, Huel, SiS, Strava and others had to professionalise their technology decision-making.</p>
+</div>
+</div>
+
+<!-- 7. THE CEILING -->
+<div class="section" id="s7">
+<div class="page">
+  <div class="section-eyebrow">Section 7</div>
+  <h2 class="section-title">The Performance Ceiling™</h2>
+  <p>The Performance Ceiling is the core concept in this report. It names a problem founders and COOs often feel before they can explain it. The business is still growing, but decisions feel heavier. The team has more dashboards, but less confidence. Tools have multiplied, but clarity has not.</p>
+  <div class="pull-quote">This is the ceiling. It is not a revenue ceiling. It is not a product ceiling. It is a capability ceiling.</div>
+
+  <h3 class="subsection-title">What Stage 3 sounds like in practice</h3>
+  <p>Decision drag — the third stage — is the moment founders and COOs most often recognise themselves. It rarely announces itself cleanly. It sounds like this:</p>
+  <div class="quote-block">
+    <blockquote>"Every board deck takes three days to reconcile. We've got four dashboards and they all say something different."</blockquote>
+    <blockquote>"We know we should be doing more with AI, but nobody can agree on where to start or who owns it."</blockquote>
+    <blockquote>"The vendor demo was compelling. We bought the platform. Six months in and we're still arguing about what a customer actually means in our business."</blockquote>
+    <blockquote>"I'm still the person who knows where everything lives. That's not a compliment anymore."</blockquote>
+  </div>
+  <p>These are not symptoms of bad leadership. They are symptoms of an operating model that has not kept pace with the complexity it has created.</p>
+
+  <h3 class="subsection-title">The five stages</h3>
+  <div class="stage-grid">
+    <div class="stage-card">
+      <div class="stage-num">01</div>
+      <div class="stage-name">Founder-led speed</div>
+      <div class="stage-desc">Systems are light. Decisions are fast. Context lives in people, not process.</div>
+    </div>
+    <div class="stage-card">
+      <div class="stage-num">02</div>
+      <div class="stage-name">System expansion</div>
+      <div class="stage-desc">Tools are added. Each solves a local problem. Fragmentation begins.</div>
+    </div>
+    <div class="stage-card active">
+      <div class="stage-num">03</div>
+      <div class="stage-name">Decision drag</div>
+      <div class="stage-desc">Teams disagree on numbers. Vendor proposals multiply. AI pressure increases. Leaders decide with less confidence.</div>
+    </div>
+    <div class="stage-card active">
+      <div class="stage-num">04</div>
+      <div class="stage-name">The ceiling</div>
+      <div class="stage-desc">Complexity grows faster than capability. Spend rises but value is unclear.</div>
+    </div>
+    <div class="stage-card">
+      <div class="stage-num">05</div>
+      <div class="stage-name">Adaptive advantage</div>
+      <div class="stage-desc">Governance, decision frameworks and data ownership are built. Technology becomes strategic capability.</div>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">The symptoms</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th style="width:22%">Area</th><th>What it looks like</th></tr></thead>
+      <tbody>
+        <tr><td>Commercial</td><td>Customer acquisition becomes more expensive, retention logic is unclear, personalisation is blunt, channel performance is hard to compare.</td></tr>
+        <tr><td>Operational</td><td>Manual reconciliation increases, teams build parallel trackers, processes rely on specific individuals.</td></tr>
+        <tr><td>Leadership</td><td>Board decks take longer to prepare, executives challenge the numbers, founders feel less confident in technology decisions, COOs absorb ambiguity.</td></tr>
+        <tr><td>Technology</td><td>Tool sprawl increases, integrations become fragile, data definitions vary, vendor dependency rises, decommissioning rarely happens.</td></tr>
+        <tr><td>AI</td><td>Teams experiment with tools, but use cases are not prioritised, governance is unclear, ROI is hard to evidence.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- 8. THE INDEX -->
+<div class="section" id="s8">
+<div class="page">
+  <div class="section-eyebrow">Section 8</div>
+  <h2 class="section-title">The Performance Ceiling Index™</h2>
+  <p>The index scores eight dimensions from 1 to 5. A score of 1 means the capability is informal, reactive or absent. A score of 5 means the capability is embedded, owned and repeatable. The diagnostic produces a practical conversation, not a theoretical maturity score.</p>
+
+  <h3 class="subsection-title">What the scores actually look like</h3>
+  <p>Here is what a 2 and a 4 look like for the three dimensions where founders and COOs feel the most acute pain.</p>
+
+  <h4 class="sub2-title">AI clarity</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th style="width:25%">Score</th><th>What it looks like</th></tr></thead>
+      <tbody>
+        <tr><td>Score 2 — Exposed</td><td>The leadership team has seen vendor demos. There are a few ChatGPT experiments in marketing. Someone has put "AI strategy" on the board agenda. But there is no agreed list of use cases, no defined success metrics, no governance over what data AI can access, and no clear owner. When the board asks what the company is doing with AI, the answer is a list of experiments, not a decision.</td></tr>
+        <tr><td>Score 4 — Progressing</td><td>The organisation has a prioritised shortlist of AI use cases linked to specific business outcomes. Each use case has a defined owner, a data requirement that has been assessed, and a 90-day trial scope. The leadership team can say no to AI proposals that do not meet the threshold — as clearly as it can say yes to those that do.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4 class="sub2-title">Data ownership</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th style="width:25%">Score</th><th>What it looks like</th></tr></thead>
+      <tbody>
+        <tr><td>Score 2 — Exposed</td><td>Five people asked the same question get five different numbers. Every board deck requires a reconciliation process. The finance team and the commercial team run parallel exports. Nobody is confident which dashboard is right, but nobody wants to be the one to say it out loud.</td></tr>
+        <tr><td>Score 4 — Progressing</td><td>The business has defined its five to seven operating metrics, assigned a named owner to each, documented the source system and calculation rule, and agreed a review cadence. Disagreements about numbers now have a resolution path rather than an endless negotiation.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4 class="sub2-title">Decision confidence</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th style="width:25%">Score</th><th>What it looks like</th></tr></thead>
+      <tbody>
+        <tr><td>Score 2 — Exposed</td><td>The last three major technology decisions were made under time pressure, led by a vendor proposal, or approved by the founder without a written rationale that the COO could defend eighteen months later.</td></tr>
+        <tr><td>Score 4 — Progressing</td><td>Every major technology commitment is preceded by a one-page decision brief: the problem, the cost of inaction, the alternatives considered, the owner, the success measures, and what will be stopped or removed as a result. The brief is the thing that stops the team buying the demo.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection-title">The full index</h3>
+  <div class="index-grid">
+    <div class="index-card"><div class="index-card-title">Strategic alignment</div><div class="index-card-q">Do leaders agree on the problem technology is meant to solve?</div></div>
+    <div class="index-card"><div class="index-card-title">Decision confidence</div><div class="index-card-q">Can executives defend major technology decisions in front of a board?</div></div>
+    <div class="index-card"><div class="index-card-title">Technology governance</div><div class="index-card-q">Who owns technology decisions, standards, risk and sequencing?</div></div>
+    <div class="index-card"><div class="index-card-title">Infrastructure readiness</div><div class="index-card-q">Can the operating backbone support growth across channels, products and geographies?</div></div>
+    <div class="index-card"><div class="index-card-title">Data ownership</div><div class="index-card-q">Can the business trust its numbers, definitions and customer view?</div></div>
+    <div class="index-card"><div class="index-card-title">AI clarity</div><div class="index-card-q">Does the organisation know which AI use cases are valuable, risky or distracting?</div></div>
+    <div class="index-card"><div class="index-card-title">Optionality</div><div class="index-card-q">Can technology choices be reversed, integrated or evolved without excessive lock-in?</div></div>
+    <div class="index-card"><div class="index-card-title">ROI visibility</div><div class="index-card-q">Can the organisation explain what value, cost reduction or risk reduction came from the investment?</div></div>
+  </div>
+
+  <h3 class="subsection-title">How to interpret the score</h3>
+  <div class="score-grid">
+    <div class="score-band exposed">
+      <div class="score-range">8–15</div>
+      <div class="score-label">Exposed</div>
+      <div class="score-desc">Decisions are largely reactive. Pause major platform commitments until the problem, ownership and success measures are clearer.</div>
+    </div>
+    <div class="score-band emerging">
+      <div class="score-range">16–24</div>
+      <div class="score-label">Emerging</div>
+      <div class="score-desc">Useful tools and good intent, but decision-making is inconsistent. This is where most scaling brands sit.</div>
+    </div>
+    <div class="score-band progressing">
+      <div class="score-range">25–32</div>
+      <div class="score-label">Progressing</div>
+      <div class="score-desc">Some governance and ownership in place. The priority is making decision quality repeatable.</div>
+    </div>
+    <div class="score-band adaptive">
+      <div class="score-range">33–40</div>
+      <div class="score-label">Adaptive</div>
+      <div class="score-desc">Technology decisions are linked to strategy, data ownership and operating cadence.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- APPENDIX: INTERACTIVE DIAGNOSTIC -->
+<div class="section" id="appendix" style="background:#0A0A0A;padding:0;border-bottom:none">
+<div style="background:#0A0A0A;padding:4rem 0 5rem">
+  <div class="page">
+    <div class="section-eyebrow" style="color:#0E5A64">Performance Ceiling Index™</div>
+    <h2 class="section-title" style="color:#F2F2F2;border-bottom-color:#0E5A64">Take the diagnostic</h2>
+    <p style="color:rgba(242,242,242,0.65);margin-bottom:2rem">Sixteen scenario questions scored across eight dimensions. Takes under five minutes. Your results include a personalised radar chart, dimension scores, and a prioritised action list — generated from what you actually answered, not a generic template.</p>
+  </div>
+
+  <div id="pci-widget" style="max-width:680px;margin:0 auto;padding:0 2rem">
+    <!-- STEP: INTRO -->
+    <div class="pci-step active" id="pci-intro">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(255,255,255,0.09);border-radius:8px;overflow:hidden;margin-bottom:2rem">
+        <div style="padding:1.1rem 1.25rem;border-right:1px solid rgba(255,255,255,0.09)"><div style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:700;color:#0E5A64;line-height:1;margin-bottom:0.3rem">8</div><div style="font-size:0.75rem;color:rgba(242,242,242,0.4)">dimensions</div></div>
+        <div style="padding:1.1rem 1.25rem;border-right:1px solid rgba(255,255,255,0.09)"><div style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:700;color:#0E5A64;line-height:1;margin-bottom:0.3rem">16</div><div style="font-size:0.75rem;color:rgba(242,242,242,0.4)">questions</div></div>
+        <div style="padding:1.1rem 1.25rem"><div style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:700;color:#0E5A64;line-height:1;margin-bottom:0.3rem">&lt;5</div><div style="font-size:0.75rem;color:rgba(242,242,242,0.4)">minutes</div></div>
+      </div>
+      <button onclick="pciBegin()" style="display:inline-flex;align-items:center;gap:0.75rem;background:#0E5A64;color:white;font-family:'Sora',sans-serif;font-size:0.95rem;font-weight:700;padding:1rem 2.25rem;border:none;border-radius:6px;cursor:pointer;transition:background 0.15s" onmouseover="this.style.background='#0f6872'" onmouseout="this.style.background='#0E5A64'">Begin the diagnostic <span style="font-size:1.1rem">→</span></button>
+    </div>
+
+    <!-- STEP: QUESTIONS -->
+    <div class="pci-step" id="pci-q" style="display:none">
+      <div id="pci-segs" style="display:flex;gap:3px;margin-bottom:1.75rem"></div>
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem">
+        <div id="pci-dim-chip" style="font-size:0.62rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:0.28rem 0.65rem;border-radius:3px;background:rgba(14,90,100,0.12);color:#0E5A64;border:1px solid rgba(14,90,100,0.3)">Strategic alignment</div>
+        <div style="font-size:0.7rem;color:rgba(242,242,242,0.45)"><span id="pci-num">1</span><span style="opacity:0.5"> / 16</span></div>
+      </div>
+      <div id="pci-qtext" style="font-family:'Sora',sans-serif;font-size:clamp(1.1rem,2.5vw,1.4rem);font-weight:600;line-height:1.35;color:#F2F2F2;margin-bottom:1.75rem;min-height:3rem"></div>
+      <div id="pci-opts" style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.5rem"></div>
+      <div style="border-top:1px solid rgba(255,255,255,0.09);padding:1rem 0 0.5rem;display:flex;align-items:center;gap:1rem">
+        <button id="pci-back" onclick="pciBack()" disabled style="background:transparent;border:1px solid #e0dbd4;color:#6b7178;font-size:0.82rem;padding:0.55rem 1rem;border-radius:5px;cursor:pointer;transition:all 0.15s">← Back</button>
+        <span id="pci-hint" style="font-size:0.72rem;color:rgba(242,242,242,0.35);margin-left:0.5rem">Pick the option that fits best</span>
+        <button id="pci-next" onclick="pciNext()" disabled style="margin-left:auto;background:#0E5A64;border:none;color:white;font-family:'Sora',sans-serif;font-size:0.85rem;font-weight:600;padding:0.6rem 1.4rem;border-radius:5px;cursor:pointer;opacity:0.3;transition:all 0.15s">Next →</button>
+      </div>
+    </div>
+
+    <!-- STEP: EMAIL GATE -->
+    <div class="pci-step" id="pci-gate" style="display:none">
+      <div style="text-align:center;margin-bottom:2rem">
+        <div style="font-size:0.65rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#0E5A64;margin-bottom:0.75rem">Almost there</div>
+        <div style="font-family:'Sora',sans-serif;font-size:1.5rem;font-weight:700;color:#F2F2F2;margin-bottom:0.5rem">Your results are ready</div>
+        <div style="font-size:0.88rem;color:rgba(242,242,242,0.5);line-height:1.6;max-width:420px;margin:0 auto">Enter your details to unlock your personalised Performance Ceiling Index — including radar chart, dimension scores, and priority actions.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.85rem;margin-bottom:1.5rem">
+        <div>
+          <label style="display:block;font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,242,242,0.5);margin-bottom:0.4rem">Your name</label>
+          <input id="pci-fname" type="text" placeholder="First name" style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);border-radius:5px;padding:0.7rem 0.9rem;color:#F2F2F2;font-size:0.9rem;font-family:'Inter',sans-serif;outline:none" onfocus="this.style.borderColor='#0E5A64'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
+        </div>
+        <div>
+          <label style="display:block;font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,242,242,0.5);margin-bottom:0.4rem">Job title</label>
+          <input id="pci-title" type="text" placeholder="Founder / COO / CEO" style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);border-radius:5px;padding:0.7rem 0.9rem;color:#F2F2F2;font-size:0.9rem;font-family:'Inter',sans-serif;outline:none" onfocus="this.style.borderColor='#0E5A64'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
+        </div>
+        <div>
+          <label style="display:block;font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,242,242,0.5);margin-bottom:0.4rem">Work email <span style="color:#e74c3c">*</span></label>
+          <input id="pci-email" type="email" placeholder="you@yourcompany.com" style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);border-radius:5px;padding:0.7rem 0.9rem;color:#F2F2F2;font-size:0.9rem;font-family:'Inter',sans-serif;outline:none" onfocus="this.style.borderColor='#0E5A64'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
+          <div id="pci-email-err" style="font-size:0.75rem;color:#e74c3c;margin-top:0.35rem;display:none">Please enter a valid email address</div>
+        </div>
+      </div>
+      <button onclick="pciGateSubmit()" style="width:100%;background:#0E5A64;border:none;color:white;font-family:'Sora',sans-serif;font-size:0.95rem;font-weight:700;padding:1rem;border-radius:6px;cursor:pointer;margin-bottom:0.75rem;transition:background 0.15s" onmouseover="this.style.background='#0f6872'" onmouseout="this.style.background='#0E5A64'">See my results →</button>
+      <p style="font-size:0.72rem;color:rgba(242,242,242,0.3);text-align:center">Corbelle will only use your details to send you relevant research and insights. No spam.</p>
+    </div>
+
+    <!-- STEP: RESULTS -->
+    <div class="pci-step" id="pci-results" style="display:none;background:#FFF7F7;border-radius:8px;padding:2rem;border:1px solid #e0dbd4">
+      <div style="border-bottom:1px solid rgba(255,255,255,0.09);padding-bottom:1.5rem;margin-bottom:1.5rem">
+        <div style="font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#0E5A64;margin-bottom:0.6rem">Your Performance Ceiling Index™</div>
+        <div id="pci-r-greeting" style="font-size:0.9rem;color:rgba(242,242,242,0.55);margin-bottom:0.5rem"></div>
+        <div id="pci-r-profile" style="font-family:'Sora',sans-serif;font-size:clamp(1.4rem,3.5vw,2.2rem);font-weight:700;color:#F2F2F2;margin-bottom:0.5rem"></div>
+        <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-top:0.5rem">
+          <div id="pci-r-score" style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:700;color:#0E5A64;line-height:1"></div>
+          <div style="font-size:0.95rem;color:rgba(242,242,242,0.4);align-self:flex-end;margin-bottom:3px">/ 40</div>
+          <div id="pci-r-badge"></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem">
+        <div style="background:white;border:1px solid #e0dbd4;border-radius:8px;padding:1.25rem">
+          <div style="font-size:0.62rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#6b7178;margin-bottom:1rem">Capability radar</div>
+          <canvas id="pci-radar" role="img" aria-label="Radar chart of Performance Ceiling Index scores" style="width:100%"></canvas>
+        </div>
+        <div style="background:white;border:1px solid #e0dbd4;border-radius:8px;padding:1.25rem">
+          <div style="font-size:0.62rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#6b7178;margin-bottom:1rem">Dimension scores</div>
+          <div id="pci-r-dims"></div>
+        </div>
+      </div>
+      <div style="background:rgba(14,90,100,0.07);border:1px solid rgba(14,90,100,0.2);border-top:2px solid #0E5A64;border-radius:0 0 8px 8px;padding:1.5rem 1.75rem;margin-bottom:1.25rem">
+        <div style="font-size:0.62rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#0E5A64;margin-bottom:0.85rem">Corbelle read</div>
+        <div id="pci-r-commentary" style="font-size:0.9rem;line-height:1.8;color:rgba(242,242,242,0.8)"></div>
+      </div>
+      <div style="margin-bottom:1.5rem">
+        <div style="font-family:'Sora',sans-serif;font-size:0.88rem;font-weight:600;color:#1C1F24;margin-bottom:0.85rem">Where to focus first</div>
+        <div id="pci-r-priorities"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto;gap:1.25rem;align-items:center;background:white;border:1px solid #e0dbd4;border-radius:8px;padding:1.5rem 1.75rem;margin-bottom:1rem">
+        <div>
+          <div style="font-size:0.62rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#0E5A64;margin-bottom:0.4rem">Next step</div>
+          <div style="font-family:'Sora',sans-serif;font-size:0.95rem;font-weight:600;color:#1C1F24;margin-bottom:0.35rem">Turn this into a sequenced action plan</div>
+          <div style="font-size:0.8rem;color:#4a4e54;line-height:1.6">A 45-minute conversation with Corbelle identifies which decisions to pause, which to accelerate, and where the ceiling is forming fastest.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;flex-shrink:0">
+          <button onclick="window.open('https://corbelle.ai','_blank')" style="background:#0E5A64;border:none;color:white;font-family:'Sora',sans-serif;font-size:0.82rem;font-weight:600;padding:0.7rem 1.4rem;border-radius:5px;cursor:pointer;white-space:nowrap;transition:background 0.15s" onmouseover="this.style.background='#0f6872'" onmouseout="this.style.background='#0E5A64'">Book a call →</button>
+          <button onclick="pciRetake()" style="background:transparent;border:1px solid rgba(255,255,255,0.09);color:rgba(242,242,242,0.45);font-size:0.78rem;padding:0.65rem 1.25rem;border-radius:5px;cursor:pointer;transition:all 0.15s;white-space:nowrap;text-align:center" onmouseover="this.style.color='#1C1F24'" onmouseout="this.style.color='#6b7178'">Retake</button>
+        </div>
+      </div>
+    </div>
+
+
+  </div><!-- end pci-widget -->
+</div>
+</div>
+
+
+<!-- 9. MISTAKES -->
+<div class="section" id="s9">
+<div class="page">
+  <div class="section-eyebrow">Section 9</div>
+  <h2 class="section-title">Mistakes to avoid</h2>
+  <p>The following mistakes are adapted from financial services, but translated for scaling performance brands. They are not theoretical. They are the predictable failure modes that appear when technology investment runs ahead of decision maturity.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th style="width:28%">Mistake</th><th style="width:36%">How it shows up</th><th>Better decision</th></tr></thead>
+      <tbody>
+        <tr><td>Buying the tool before defining the exam question</td><td>A founder asks which AI tool to buy before defining the business problem, workflow, owner, data requirement and success metric.</td><td>Start with the decision or process that needs to improve. Technology comes last.</td></tr>
+        <tr><td>Letting the vendor set the roadmap</td><td>The platform demo becomes the strategy. The business starts solving the vendor's problem rather than its own.</td><td>Create an internal decision brief before seeing vendor proposals.</td></tr>
+        <tr><td>Mistaking dashboards for clarity</td><td>The company has more reporting but leaders still argue over the numbers.</td><td>Define metric ownership, source of truth and decision cadence.</td></tr>
+        <tr><td>Over-automating weak processes</td><td>AI or automation is applied to a workflow nobody has properly mapped.</td><td>Fix the process before automating it.</td></tr>
+        <tr><td>Ignoring decommissioning</td><td>Every new tool is additive. Nothing is removed. Cost and complexity compound.</td><td>Make decommissioning part of every business case.</td></tr>
+        <tr><td>Treating data quality as an IT issue</td><td>The team blames systems when the root cause is unclear ownership, weak definitions or inconsistent behaviours.</td><td>Assign data ownership to business processes, not only systems.</td></tr>
+        <tr><td>Building business cases on uncertain AI economics</td><td>Savings are assumed before usage cost, governance, review and retraining are understood.</td><td>Model best, expected and downside case. Revisit after 90 days.</td></tr>
+        <tr><td>Scaling without operating cadence</td><td>The leadership team reviews technology episodically, usually when something breaks.</td><td>Create a quarterly technology decision review linked to strategy, risk and performance.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- 10. ACTIONS -->
+<div class="section" id="s10">
+<div class="page">
+  <div class="section-eyebrow">Section 10</div>
+  <h2 class="section-title">Actions for founders and COOs</h2>
+  <p>The practical response is not to slow down ambition. Performance brands win because they move with conviction. The response is to increase the quality of decisions before spend accelerates. Treat technology as an operating discipline, not a purchasing category.</p>
+  <ul class="action-list">
+    <li class="action-item">
+      <div class="action-num">1</div>
+      <div><div class="action-title">Create a technology decision brief</div><p class="action-desc">Before any major spend, write one page defining the problem, cost of inaction, desired outcome, owner, dependencies, risks, success measures and what will be stopped or removed.</p></div>
+    </li>
+    <li class="action-item">
+      <div class="action-num">2</div>
+      <div><div class="action-title">Establish a quarterly technology decision forum</div><p class="action-desc">Bring founder, COO, finance, commercial, operations and relevant technology or data owners together quarterly to review priorities, risks, spend and decommissioning.</p></div>
+    </li>
+    <li class="action-item">
+      <div class="action-num">3</div>
+      <div><div class="action-title">Build a single commercial truth layer</div><p class="action-desc">Identify the 5 to 7 metrics that actually run the business. Define owners, source systems, calculation rules and review cadence.</p></div>
+    </li>
+    <li class="action-item">
+      <div class="action-num">4</div>
+      <div><div class="action-title">Separate experimentation from operating commitments</div><p class="action-desc">AI pilots should be cheap, bounded and reversible. Platform commitments should require a stronger governance threshold.</p></div>
+    </li>
+    <li class="action-item">
+      <div class="action-num">5</div>
+      <div><div class="action-title">Appoint an accountable technology decision owner</div><p class="action-desc">This does not always mean hiring a CTO or CDO. It may mean assigning decision accountability to a COO with external support and clear governance.</p></div>
+    </li>
+    <li class="action-item">
+      <div class="action-num">6</div>
+      <div><div class="action-title">Use optionality as a decision criterion</div><p class="action-desc">Ask how easy it would be to exit, integrate, change, scale or decommission each major tool.</p></div>
+    </li>
+    <li class="action-item">
+      <div class="action-num">7</div>
+      <div><div class="action-title">Measure decision quality, not just project delivery</div><p class="action-desc">Track whether decisions improved speed, confidence, cost, risk, revenue or customer experience. Delivery on time is not enough.</p></div>
+    </li>
+    <li class="action-item">
+      <div class="action-num">8</div>
+      <div><div class="action-title">Review AI through operating readiness</div><p class="action-desc">Only scale AI where process clarity, data quality, accountability and risk ownership are sufficient.</p></div>
+    </li>
+  </ul>
+  <div class="callout">
+    <div class="callout-label">The founder question</div>
+    <p>Before signing the next platform contract, ask: would we still make this decision if we had to defend it to the board eighteen months from now?</p>
+  </div>
+</div>
+</div>
+
+<!-- 11. CONCLUSION -->
+<div class="section" id="s11">
+<div class="page">
+  <div class="section-eyebrow">Section 11</div>
+  <h2 class="section-title">Conclusion</h2>
+  <p>Performance brands are entering a decisive period. The sector has strong products, loyal customers, rich communities and growing data. It also faces increasing complexity. AI will accelerate that complexity. So will international expansion, channel diversification, personalisation, subscription models, retail partnerships and investor expectations.</p>
+  <p>The brands that win will not simply be the brands that buy the most technology. They will be the brands that make better decisions about technology. They will know what problem they are solving, which capability they are building, which risks they are accepting, which costs they are creating and which decisions can be reversed.</p>
+  <p>Financial services has already learned this lesson. The tuition fee was enormous. Performance brands do not need to pay it again.</p>
+  <div class="pull-quote">The next generation of performance brands will not be defined by technology adoption alone. They will be defined by how effectively they recognise and navigate the Performance Ceiling before it slows them down.</div>
+  <p>Before your next board meeting, ask yourself: where are we most likely to waste money in the next twelve months because our decision quality is not yet good enough? If you can answer that question with confidence, you are already ahead of most scaling brands in this sector. If you cannot, the work starts here.</p>
+</div>
+</div>
+
+
+
+<!-- SOURCE NOTES -->
+<div class="section" id="sources">
+<div class="page">
+  <div class="section-eyebrow">References</div>
+  <h2 class="section-title">Source notes</h2>
+  <ul class="source-list">
+    <li>McKinsey & Company, <em>Managing bank IT spending: Five questions for tech leaders</em>, 18 October 2024. Reported that banks' IT spending reached 10.6% of revenues and 20.0% of expenses in 2022.</li>
+    <li>McKinsey & Company, <em>Unlocking value from technology in banking: an investor lens</em>, 23 October 2024. Reported global technology spending in banking of approximately $650bn in 2023 (original data: Gartner, 2024 Enterprise IT Spending Forecast for Banking and Investment Services, 2023).</li>
+    <li>PwC, <em>8th Global Sports Survey</em>, 2024. Reported that 59% of sports organisations surveyed did not yet have a GenAI strategy.</li>
+    <li>Sport England / ukactive, <em>Digital Futures 2024 report</em>, 28 November 2024. Reported a 51% average digital maturity and effectiveness score for the UK sport and physical activity sector, categorised as Digital Experimenter. Note: this survey covers fitness and leisure operators, national governing bodies, active partnerships and sports clubs — a strong sector proxy, though not a direct measurement of performance brands as defined in this report.</li>
+    <li>Data & AI Leadership Exchange / Wavestone, <em>2025 AI & Data Leadership Executive Benchmark Survey</em>. Reported that 92% of respondents viewed people and organisation change as the primary barrier to establishing data and AI-driven cultures.</li>
+    <li>Bain & Company, <em>How banks can parlay technology into a competitive edge</em>, 2023. Analysis of the 42 largest global banks found that technology leaders deliver 5 percentage points higher total shareholder return through deft use, not simply higher spend.</li>
+    <li>The Pixel, Science in Sport personalisation case study. SiS's challenge capitalising on abundant data and implementing Adobe Commerce and Adobe Experience Platform.</li>
+    <li>Snowflake / Shopify / n8n, Huel customer case studies. Described Huel's data infrastructure, global commerce stack and AI and automation programme.</li>
+    <li>Strava press release, <em>Strava to acquire Runna</em>, 17 April 2025.</li>
+    <li>Monzo Annual Report 2026. Reported 15.2m customers, 10.4m monthly active users and £73.0bn card spend.</li>
+    <li>Revolut Annual Report 2025. Reported revenue of £4.5bn and profit before tax of £1.7bn.</li>
+    <li>Precision Fuel & Hydration public materials and Sports Business Journal coverage.</li>
+  </ul>
+</div>
+</div>
+
+
+</main>
+
+<!-- ABOUT -->
+<div class="about-band">
+  <div class="about-inner">
+    <div class="callout-label">About Corbelle</div>
+    <p>Corbelle is a technology decision advisory practice for senior leaders of scaling businesses. It helps founders and COOs make high-stakes technology, AI and data decisions before they spend money they cannot get back. Corbelle is not a technology consultancy. It is a thinking partner for leaders who need clarity before commitment.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">COR<span>BE</span>LLE</div>
+    <div class="footer-meta">corbelle.ai &nbsp;·&nbsp; The Performance Ceiling™ &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Confidential research paper</div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+(function(){
+const DIMS=["Strategic alignment","Decision confidence","Tech governance","Infrastructure","Data ownership","AI clarity","Optionality","ROI visibility"];
+const QS=[
+  {dim:0,q:"How aligned is your leadership team on what technology is meant to solve right now?",opts:[{s:1,t:"No shared view — everyone has a different priority"},{s:2,t:"Rough direction, but we'd give different answers if pressed"},{s:3,t:"Broadly aligned, though priorities differ by team"},{s:5,t:"One clear shared position we can each articulate"}]},
+  {dim:0,q:"When did your leadership team last have a structured conversation about technology strategy?",opts:[{s:1,t:"We haven't — it happens reactively when something breaks"},{s:2,t:"Over a year ago, or informally at best"},{s:3,t:"In the last six months, but without a consistent format"},{s:5,t:"Quarterly, with a standing agenda and decision record"}]},
+  {dim:1,q:"How was your last major technology decision actually reached?",opts:[{s:1,t:"A vendor demo was compelling and we moved from there"},{s:2,t:"Someone senior pushed for it and it was approved"},{s:3,t:"An internal evaluation happened, but informally"},{s:5,t:"We wrote a decision brief first — problem, owner, success measures"}]},
+  {dim:1,q:"Could you defend your last three technology decisions to your board today?",opts:[{s:1,t:"No — the reasoning was in people's heads, not on paper"},{s:2,t:"Partly — there are emails and decks but no clear rationale"},{s:3,t:"Mostly — we had a business case, though not a full brief"},{s:5,t:"Yes — each has documented rationale, criteria and outcomes"}]},
+  {dim:2,q:"Who is accountable for technology decision quality — not delivery, but whether the right calls are made?",opts:[{s:1,t:"Nobody explicitly — it's absorbed by the founder"},{s:2,t:"The founder or CEO, informally and without a process"},{s:3,t:"The COO, but reactively rather than through a framework"},{s:5,t:"A named owner with defined criteria and a review cadence"}]},
+  {dim:2,q:"When a vendor proposes a new platform, what happens before anyone agrees to move forward?",opts:[{s:1,t:"The proposal creates its own momentum — no standard process"},{s:2,t:"The decision-maker asks questions and makes a call"},{s:3,t:"We have informal criteria, but they're not written down"},{s:5,t:"A decision brief is completed before any vendor goes further"}]},
+  {dim:3,q:"How well does your current technology infrastructure support where you want to be in 18 months?",opts:[{s:1,t:"It's already a constraint — growth is happening around it"},{s:2,t:"It works today but wouldn't survive the next growth phase"},{s:3,t:"Mostly fine, with known gaps we're managing around"},{s:5,t:"Ready for where we're going, with a sequenced plan for what's next"}]},
+  {dim:3,q:"How much operational capacity is absorbed by manual reconciliation and data workarounds?",opts:[{s:1,t:"A lot — it's a visible cost and morale issue"},{s:2,t:"More than it should be, but the team has learned to live with it"},{s:3,t:"Some — the main bottlenecks are known and on the roadmap"},{s:5,t:"Very little — the systems do what systems should be doing"}]},
+  {dim:4,q:"If five people from your leadership team were asked the same commercial metric, how many different answers would you get?",opts:[{s:1,t:"Five — and a long debate about which is right"},{s:2,t:"Two or three — people pull from different systems"},{s:3,t:"Roughly the same, but with different logic and sources"},{s:5,t:"One — everyone knows the source and who owns it"}]},
+  {dim:4,q:"Who is responsible for the accuracy of your most important commercial metrics?",opts:[{s:1,t:"Nobody — it's everyone's problem and therefore nobody's"},{s:2,t:"The analytics team, but not a named business owner"},{s:3,t:"Informally understood — people know who to ask"},{s:5,t:"Named business owners with documented definitions and sources"}]},
+  {dim:5,q:"If your board asked for your AI strategy next month, what could you show them?",opts:[{s:1,t:"A list of experiments and a general enthusiasm for AI"},{s:2,t:"Some use cases we're exploring, with no prioritised plan"},{s:3,t:"A shortlist of use cases with rough business cases"},{s:5,t:"A prioritised roadmap — owners, data readiness, governance defined"}]},
+  {dim:5,q:"When your team proposes a new AI tool, how is the decision made?",opts:[{s:1,t:"Whoever proposes it most enthusiastically tends to win"},{s:2,t:"Informal questions — cost, integration, what problem it solves"},{s:3,t:"We check process maturity and data quality first"},{s:5,t:"A defined threshold: process clarity, data quality, risk, ownership"}]},
+  {dim:6,q:"For your most significant platforms, how easy would it be to switch if you needed to?",opts:[{s:1,t:"Very difficult — we are deeply locked in and we know it"},{s:2,t:"Difficult — integrations and data dependencies are extensive"},{s:3,t:"Manageable — we've thought about it and there are options"},{s:5,t:"Well-managed — optionality was a criterion when we chose"}]},
+  {dim:6,q:"When you last evaluated a significant platform, how explicitly did you consider how you might exit it?",opts:[{s:1,t:"We didn't — the focus was entirely on what it could do"},{s:2,t:"It came up briefly but wasn't formally investigated"},{s:3,t:"We checked data export options and contract notice periods"},{s:5,t:"Exit conditions, data portability and switching cost were modelled"}]},
+  {dim:7,q:"Can you state what value your last three significant technology investments have delivered?",opts:[{s:1,t:"No — we know things are better but can't quantify it"},{s:2,t:"Partly — we can point to some outcomes but not a full picture"},{s:3,t:"For some yes, not others — our measurement is inconsistent"},{s:5,t:"Yes — we set outcome measures before investing and track them"}]},
+  {dim:7,q:"What happens 90 days after a significant technology investment goes live?",opts:[{s:1,t:"We move on — the project is delivered and we don't revisit"},{s:2,t:"An informal check happens, if someone remembers"},{s:3,t:"A retrospective focused on delivery rather than value"},{s:5,t:"A structured review against pre-defined success measures"}]}
+];
+
+// Deep commentary per dimension — three framings mixed based on lowest scores
+// moat = protect the moat angle, fs = financial services comparison, founder = founder/COO pressure
+const DIM_DEEP = [
+  { // 0: Strategic alignment
+    low: { moat:"Without alignment on what technology is protecting, every vendor who walks in the door can reframe your priorities. The classic pattern in performance brands is a leadership team that broadly agrees on the product direction but hasn't had the harder conversation about which parts of the business create genuine advantage — and which are just necessary overhead. AI has accelerated this problem because the number of plausible initiatives now outruns any team's ability to evaluate them.", fs:"Banks spent years discovering that technology without a shared strategic intent creates competing empires. Each team bought platforms that solved their problem. Nobody owned the aggregate. Performance brands are now entering the same trap — but without the institutional scale to absorb the mistakes.", founder:"If every technology conversation requires you to rebuild consensus from scratch, you are absorbing a cost that compound over time. The founder who knows where everything lives and why every decision was made is a business risk, not just a personal one. The ceiling forms when that knowledge can no longer be transferred fast enough." },
+    watch: { moat:"There is rough alignment, but the gaps are where expensive decisions live. When the next AI or platform proposal lands, the team will each hear it through a different strategic lens — and without a shared framework for evaluation, the loudest voice or the most compelling demo tends to win.", fs:"Financial services learned that informal alignment looks fine until a major platform commitment requires it to become explicit. The misalignment surfaces in the implementation, not the decision meeting.", founder:"You can hold this together now. The question is whether the alignment survives a major acquisition, a new senior hire, or a board that starts asking harder questions about technology return." }
+  },
+  { // 1: Decision confidence
+    low: { moat:"When decisions are vendor-led rather than problem-led, the risk is not just that you buy the wrong platform. It is that you define your problem as whatever the vendor's product happens to solve. For performance brands, this is particularly dangerous: the vendor sees an efficient scalable product, but they cannot see which parts of your experience your participants actually pay for. That judgement has to come from inside.", fs:"The most expensive mistakes financial services made were not poor implementations. They were correct implementations of the wrong problem. A bank bought a CRM before it had decided what a customer relationship meant in its business. Performance brands are making the same sequencing error — reaching for the tool before the brief is written.", founder:"The COO ends up absorbing the consequence of undocumented decisions. When something goes wrong twelve months in, the justification for the original decision is gone — it was in the founder's head, or in a vendor proposal, or in a meeting that was never minuted. The COO is left defending a decision they didn't author." },
+    watch: { moat:"Informal evaluations work when the decisions are small and reversible. They become dangerous at platform scale, where three years of operating cost and data architecture follow from a decision made in four meetings.", fs:"The tell in financial services was the business case written after the decision was made. The numbers were worked backwards from the commitment rather than forwards from the problem. This is not dishonesty — it is the natural result of advocacy-led rather than brief-led decision-making.", founder:"The shift from informal to formal is not about bureaucracy. It is about creating a standard that protects the decision-maker — including you — from being unable to explain, eighteen months later, what the investment was meant to achieve." }
+  },
+  { // 2: Tech governance
+    low: { moat:"Without an owner for technology decision quality, the process defaults to whoever has the most momentum at the time. In performance brands, that is often the vendor, an enthusiastic team member, or a board that has read an article about AI and wants to know what the company is doing. None of those are the right person to be setting your technology agenda.", fs:"Governance is the thing financial services built under regulatory pressure that performance brands now need to build voluntarily. The difference is that banks were compelled by external force. You have to choose to do it before the forcing mechanism arrives — which in a performance brand is usually a failed platform implementation, a data breach, or a board that loses confidence in technology leadership.", founder:"The COO carrying this informally is not a governance model. It is a pressure valve. The role can absorb ambiguity when the business is small enough for one person to hold the full picture. At scale, that model breaks — and when it breaks, it breaks loudly." },
+    watch: { moat:"Reactive governance catches problems after they arrive. What it cannot do is prevent the decisions that look fine at the time and only reveal their cost later — the platform with three-year lock-in, the AI tool that creates a new full-time monitoring role, the integration that becomes load-bearing for something it was never designed to support.", fs:"Banks with weak governance did not fail to make decisions. They made too many decisions, each locally rational, that collectively created systems no one person fully understood. The aggregate was ungovernable.", founder:"Assigning accountability is not the same as adding bureaucracy. The right framing is: who has permission to say no? In most scaling performance brands, the answer to that question is either nobody, or the founder. Neither is sustainable." }
+  },
+  { // 3: Infrastructure
+    low: { moat:"The back office is not glamorous. But for performance brands, it is where the moat is protected or eroded. Sam Heward at Ultra X put it simply: participants see 5% of the effort. The 95% — permits, risk assessments, logistics, data flows — has to work invisibly for the experience to be remarkable. When the infrastructure is a constraint, the team spends energy on workarounds rather than the 5% that creates the brand.", fs:"Legacy infrastructure is the single most expensive lesson financial services has paid for. Systems built for a smaller, simpler business became load-bearing for a larger, more complex one. Performance brands are at the exact point in their growth curve where those decisions are being made — and most don't yet have a CDO or CTO who has lived through the consequences.", founder:"The COO's job becomes harder with every workaround that gets embedded into the operating rhythm. What starts as a spreadsheet fix becomes a team's weekly process becomes a dependency nobody wants to be responsible for removing. The cost is invisible because it has been normalised." },
+    watch: { moat:"Known gaps being managed around are infrastructure debt accumulating. The team has adapted to the constraint so effectively that it no longer feels like a constraint — until the business tries to scale into a new geography, product line, or channel and finds that the workarounds don't travel.", fs:"Banks called it 'technical debt.' The term obscures what it actually is: deferred decisions with compounding interest. Performance brands are beginning to accumulate the same debt.", founder:"The honest question is whether the infrastructure can support the business you are trying to build in the next 18 months — not the business you are running today. If the answer involves the phrase 'we'll deal with that when we get there,' the ceiling is already forming." }
+  },
+  { // 4: Data ownership
+    low: { moat:"A performance brand's data is a strategic asset — participant preferences, event performance, retention patterns, athlete feedback. But data that cannot be trusted is not an asset. It is a liability that produces confidence in wrong decisions. The value of that participant relationship data is entirely dependent on whether the business can act on it consistently.", fs:"Data governance was the hardest lesson in financial services — not because the technology was difficult, but because ownership is a political question. Who has authority to say this number is right? Which team's definition prevails? Banks spent years and significant budget on data warehouses that did not produce clarity, because they had not resolved the ownership question before building the platform.", founder:"When the founder is the person who knows which dashboard to trust and why, that knowledge cannot scale. The first time a new COO, a new CFO, or a board member pulls a different number and challenges it in a meeting, the absence of a defined source of truth becomes visible — and expensive." },
+    watch: { moat:"Fragmented data that the business has learned to work around is not a stable equilibrium. It is a slow accumulation of decisions made without confidence that the underlying data was right. Those decisions compound.", fs:"The tell in financial services was not chaos. It was the quietly accepted parallel: marketing had their numbers, finance had theirs, and the monthly reconciliation was a standing item on the leadership agenda. That reconciliation is a cost that never appears on any budget.", founder:"The informal knowledge of which number to trust does not transfer. When the person who holds it leaves, or is absent, or is challenged in a room they are not in, the gap becomes visible." }
+  },
+  { // 5: AI clarity
+    low: { moat:"The question that matters for a performance brand is not 'what can AI do?' It is 'which parts of this business benefit from AI, and which parts are destroyed by it?' The founder who automates the wrong touchpoint has not saved time. They have commoditised something their participants were paying for. AI applied to the moat without that discrimination is an accelerant of the wrong kind.", fs:"Financial services firms that moved fastest on AI in 2019 and 2020 often discovered in 2022 and 2023 that they had automated processes nobody had properly mapped, on data nobody had properly governed, with ROI nobody had properly defined. The second wave of investment was corrective. Performance brands can skip that tuition fee — but only if they build the evaluation framework before the spend.", founder:"The vendor noise is real. Every week brings a new AI tool that promises to scan your tone of voice, respond to your participants, and reduce your support load. The ones that are right for you and the ones that would damage you look identical from the outside. The filter has to be internal." },
+    watch: { moat:"A shortlist of use cases without governance is a budget allocation without accountability. The right use cases pursued without clear ownership, data readiness assessment, and defined success measures will produce the same ambiguity as no strategy at all — just with more spend.", fs:"Banks with 'AI strategies' that were lists of use cases rather than evaluated priorities found that the list grew faster than the execution capacity. Prioritisation without a threshold is not prioritisation.", founder:"The framing that works: where do we already have enough process clarity, data quality, and accountability for AI to create value safely? Start there. Everything else is a future conversation." }
+  },
+  { // 6: Optionality
+    low: { moat:"Lock-in is not just a cost problem. It is a strategic problem. When the business needs to move — because a competitor has changed the market, because participant expectations have evolved, because an acquisition changes the operating model — a locked stack is a constraint on the response. The moat requires the ability to adapt. Lock-in limits adaptation.", fs:"The most expensive technology mistakes in financial services were not bad implementations. They were implementations that worked well enough to become permanent. A system that is 70% fit becomes load-bearing. Removing it requires a transformation programme. The vendor knows this. Renewal negotiations reflect it.", founder:"The time to think about exit is before the contract is signed. The switching cost conversation is not pessimistic. It is the one that protects the decision-maker from finding out, three years later, that the dependency was priced into the relationship from the beginning." },
+    watch: { moat:"Optionality erodes incrementally and invisibly. Each integration adds a dependency. Each contract renewal with a price increase is accepted because the switching cost is now higher than the increase. The vendor's leverage grows with each year of use. Reviewing optionality now costs almost nothing. Reviewing it when you need to exit costs considerably more.", fs:"Banks refer to this as 'strategic lock-in' and treat it as a recognised risk category. Performance brands rarely have a process for tracking it. They should.", founder:"The practical ask is simple: in every significant platform evaluation, the exit scenario should be a named criterion. Not because you plan to exit, but because the answer to that question changes the contract terms, the data portability requirements, and the integration architecture." }
+  },
+  { // 7: ROI visibility
+    low: { moat:"A performance brand that cannot measure whether its technology investments are creating value cannot protect its moat, because it cannot tell the difference between technology that is amplifying what makes it special and technology that is slowly eroding it. ROI visibility is not an accounting exercise. It is the feedback loop that keeps technology aligned with strategy.", fs:"Banks spent the last decade discovering that high technology spend and productivity improvement are not the same thing. McKinsey's analysis of global banking found that technology spend growing faster than revenue has not produced the returns that were expected. The investments were real. The measurement of their value was not.", founder:"The COO who cannot demonstrate what the technology spend has produced is in a vulnerable position in a board conversation. Not because the investments were wrong, but because the absence of measurement looks like the absence of management. Setting outcome measures before commitment is not bureaucracy — it is the thing that makes the next budget conversation easier." },
+    watch: { moat:"Inconsistent measurement is a pattern, not an exception. The investments that were set up well had clear success measures. The ones that were not are now operating in an evidence vacuum. The pattern reveals where the decision process was mature and where it wasn't — and the investments in the evidence vacuum are the ones most likely to be renewed without scrutiny.", fs:"Financial services eventually built formal measurement frameworks because regulation required evidence of value. Performance brands don't have that external pressure — which means the discipline has to be chosen rather than imposed.", founder:"The 90-day review is the simplest structural change available. Before the go-live, agree what success looks like in 90 days. Put the review in the calendar. The review does not have to be complex. It has to exist." }
+  }
+];
+
+// ─── State ───────────────────────────────────
+let pciCur=0, pciAns=new Array(16).fill(null), pciAdv=false;
+
+// ─── Screen switch ────────────────────────────
+function pciSwitch(id){
+  ['pci-intro','pci-q','pci-gate','pci-results'].forEach(s=>{
+    const el=document.getElementById(s);
+    if(el) el.style.display = s===id ? 'block' : 'none';
+  });
+  setTimeout(()=>{
+    const el=document.getElementById('appendix');
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 80);
+}
+
+function pciBegin(){
+  pciCur=0; pciAns=new Array(16).fill(null);
+  pciInitSegs();
+  pciSwitch('pci-q');
+  pciRenderQ();
+}
+
+function pciInitSegs(){
+  const w=document.getElementById('pci-segs');
+  if(!w) return;
+  w.innerHTML='';
+  for(let i=0;i<16;i++){
+    const s=document.createElement('div');
+    s.id='pci-seg'+i;
+    s.style.cssText='flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,0.1);transition:background 0.3s;position:relative;overflow:hidden';
+    w.appendChild(s);
+  }
+}
+
+function pciUpdateSegs(){
+  for(let i=0;i<16;i++){
+    const s=document.getElementById('pci-seg'+i);
+    if(!s) continue;
+    if(i<pciCur){ s.style.background='#0E5A64'; s.innerHTML=''; }
+    else if(i===pciCur){
+      s.style.background='rgba(14,90,100,0.4)';
+      s.innerHTML='<div style="position:absolute;top:0;left:0;bottom:0;background:#0E5A64;animation:pciSF 0.6s ease forwards"></div>';
+    } else { s.style.background='rgba(255,255,255,0.1)'; s.innerHTML=''; }
+  }
+}
+
+function pciRenderQ(){
+  const q=QS[pciCur];
+  const dc=document.getElementById('pci-dim-chip');
+  if(dc) dc.textContent=DIMS[q.dim];
+  const qn=document.getElementById('pci-num');
+  if(qn) qn.textContent=pciCur+1;
+  const qt=document.getElementById('pci-qtext');
+  if(qt) qt.textContent=q.q;
+  const back=document.getElementById('pci-back');
+  if(back){ back.disabled=pciCur===0; back.style.opacity=pciCur===0?'0.25':'1'; }
+  const nxt=document.getElementById('pci-next');
+  if(nxt){
+    nxt.disabled=pciAns[pciCur]===null;
+    nxt.style.opacity=pciAns[pciCur]===null?'0.3':'1';
+    nxt.textContent=pciCur===15?'Continue →':'Next →';
+  }
+  const hint=document.getElementById('pci-hint');
+  if(hint) hint.textContent=pciAns[pciCur]===null?'Pick the option that fits best':'';
+  pciUpdateSegs();
+  const wrap=document.getElementById('pci-opts');
+  if(!wrap) return;
+  wrap.innerHTML='';
+  const keys=['A','B','C','D'];
+  q.opts.forEach((opt,i)=>{
+    const div=document.createElement('div');
+    const sel=pciAns[pciCur]===i;
+    const col=opt.s<=2?'#e74c3c':opt.s===3?'#e6990f':'#4ecdc4';
+    const bg=opt.s<=2?'rgba(192,57,43,0.15)':opt.s===3?'rgba(212,130,10,0.15)':'rgba(14,90,100,0.2)';
+    const sl=opt.s<=2?'Exposed':opt.s===3?'Emerging':'Strong';
+    div.style.cssText=`display:flex;align-items:center;gap:0.85rem;padding:0.85rem 1rem;border:1.5px solid ${sel?'#0E5A64':'rgba(255,255,255,0.1)'};border-radius:7px;cursor:pointer;background:${sel?'rgba(14,90,100,0.15)':'rgba(255,255,255,0.02)'};transition:all 0.15s;user-select:none`;
+    div.innerHTML=`<div style="width:24px;height:24px;border-radius:4px;border:1.5px solid ${sel?'#0E5A64':'rgba(255,255,255,0.2)'};display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:700;color:${sel?'white':'rgba(242,242,242,0.4)'};background:${sel?'#0E5A64':'transparent'};flex-shrink:0;font-family:'Sora',sans-serif;transition:all 0.15s">${keys[i]}</div><div style="font-size:0.88rem;line-height:1.5;color:#F2F2F2;flex:1">${opt.t}</div><div style="font-size:0.6rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.18rem 0.4rem;border-radius:3px;flex-shrink:0;opacity:${sel?1:0};color:${col};background:${bg};transition:opacity 0.2s">${sl}</div>`;
+    div.addEventListener('mouseover',()=>{ if(!sel) div.style.borderColor='rgba(14,90,100,0.45)'; });
+    div.addEventListener('mouseout',()=>{ if(pciAns[pciCur]!==i) div.style.borderColor='rgba(255,255,255,0.1)'; });
+    div.addEventListener('click',()=>pciPick(i));
+    wrap.appendChild(div);
+  });
+  pciAdv=false;
+}
+
+function pciPick(idx){
+  if(pciAdv) return;
+  pciAns[pciCur]=idx; pciAdv=true;
+  pciRenderQ();
+  setTimeout(()=>{
+    if(pciCur===15) pciSwitch('pci-gate');
+    else { pciCur++; pciRenderQ(); }
+  },380);
+}
+
+function pciNext(){ if(pciAns[pciCur]===null) return; if(pciCur===15) pciSwitch('pci-gate'); else { pciCur++; pciRenderQ(); } }
+function pciBack(){ if(pciCur>0){ pciCur--; pciRenderQ(); } }
+
+function pciGateSubmit(){
+  const email=(document.getElementById('pci-email')||{}).value||'';
+  const errEl=document.getElementById('pci-email-err');
+  if(!email.trim()||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())){
+    if(errEl) errEl.style.display='block';
+    return;
+  }
+  if(errEl) errEl.style.display='none';
+  pciBuildResults();
+}
+
+function pciCalcScores(){
+  return DIMS.map((_,di)=>{
+    const idx=QS.reduce((a,q,i)=>{ if(q.dim===di) a.push(i); return a; },[]);
+    const vals=idx.map(i=>QS[i].opts[pciAns[i]].s);
+    return Math.round((vals.reduce((a,b)=>a+b,0)/vals.length)*10)/10;
+  });
+}
+
+function pciProfileData(t){
+  if(t<=15) return {label:'Exposed',bg:'rgba(192,57,43,0.12)',col:'#c0392b',bdr:'rgba(192,57,43,0.3)',badgeStyle:'background:rgba(192,57,43,0.12);color:#c0392b;border:1px solid rgba(192,57,43,0.3)'};
+  if(t<=24) return {label:'Emerging',bg:'rgba(200,121,65,0.12)',col:'#c87941',bdr:'rgba(200,121,65,0.3)',badgeStyle:'background:rgba(200,121,65,0.12);color:#c87941;border:1px solid rgba(200,121,65,0.3)'};
+  if(t<=32) return {label:'Progressing',bg:'rgba(30,138,74,0.12)',col:'#1e8a4a',bdr:'rgba(30,138,74,0.3)',badgeStyle:'background:rgba(30,138,74,0.12);color:#1e8a4a;border:1px solid rgba(30,138,74,0.3)'};
+  return {label:'Adaptive',bg:'rgba(14,90,100,0.12)',col:'#0E5A64',bdr:'rgba(14,90,100,0.3)',badgeStyle:'background:rgba(14,90,100,0.12);color:#0E5A64;border:1px solid rgba(14,90,100,0.3)'};
+}
+
+// Pick which framing to use based on which dimension is lowest
+// Rotates: moat for governance/AI/alignment, fs for infrastructure/data/roi, founder for decision/governance/optionality
+function pickFraming(dimIdx, score){
+  const framingMap = {
+    0: score<=2 ? 'moat' : 'founder',    // strategic alignment
+    1: score<=2 ? 'founder' : 'fs',      // decision confidence
+    2: score<=2 ? 'moat' : 'founder',    // tech governance
+    3: score<=2 ? 'founder' : 'fs',      // infrastructure
+    4: score<=2 ? 'fs' : 'founder',      // data ownership
+    5: score<=2 ? 'moat' : 'fs',         // AI clarity
+    6: score<=2 ? 'moat' : 'founder',    // optionality
+    7: score<=2 ? 'fs' : 'founder'       // ROI visibility
+  };
+  return framingMap[dimIdx] || 'moat';
+}
+
+function pciBuildResults(){
+  const scores=pciCalcScores();
+  const total=Math.round(scores.reduce((a,b)=>a+b,0));
+  const p=pciProfileData(total);
+  const fname=((document.getElementById('pci-fname')||{}).value||'').trim();
+  const title=((document.getElementById('pci-title')||{}).value||'').trim();
+
+  // ── LIGHT PANEL: results section on white/warm background ──
+  const resultsEl=document.getElementById('pci-results');
+  if(resultsEl){
+    resultsEl.style.cssText='display:block;background:#FFF7F7;border-radius:8px;padding:2rem;border:1px solid #e0dbd4;margin-top:1rem';
+  }
+
+  // Header
+  const greetEl=document.getElementById('pci-r-greeting');
+  if(greetEl){
+    const greeting = fname ? `Here are your results, ${fname}${title?' ('+title+')':''}.` : 'Here are your results.';
+    greetEl.style.cssText='font-size:0.9rem;color:#4a4e54;margin-bottom:0.5rem';
+    greetEl.textContent=greeting;
+  }
+  const profEl=document.getElementById('pci-r-profile');
+  if(profEl){ profEl.style.cssText='font-family:\'Sora\',sans-serif;font-size:clamp(1.4rem,3.5vw,2.2rem);font-weight:700;color:#1C1F24;margin-bottom:0.5rem'; profEl.textContent='Profile: '+p.label; }
+  const scoreEl=document.getElementById('pci-r-score');
+  if(scoreEl){ scoreEl.style.cssText='font-family:\'Sora\',sans-serif;font-size:2rem;font-weight:700;color:'+p.col+';line-height:1'; scoreEl.textContent=total; }
+  const denomEl=document.querySelector('#pci-results .r-score-denom');
+  if(denomEl) denomEl.style.color='#6b7178';
+  const badgeEl=document.getElementById('pci-r-badge');
+  if(badgeEl){ badgeEl.textContent=p.label; badgeEl.style.cssText='font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.7rem;border-radius:3px;'+p.badgeStyle; }
+
+  // Dim bars (dark bars on light bg)
+  const dw=document.getElementById('pci-r-dims');
+  if(dw){
+    dw.innerHTML='';
+    scores.forEach((s,i)=>{
+      const col=s<=2?'#c0392b':s<3.5?'#c87941':'#0E5A64';
+      dw.innerHTML+=`<div style="display:flex;align-items:center;gap:0.65rem;padding:0.5rem 0;border-bottom:1px solid #e8e4de"><div style="font-size:0.78rem;color:#1C1F24;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${DIMS[i]}</div><div style="width:60px;flex-shrink:0"><div style="height:4px;border-radius:2px;background:#e0dbd4;overflow:hidden"><div style="height:100%;border-radius:2px;width:${s/5*100}%;background:${col}"></div></div></div><div style="font-family:'Sora',sans-serif;font-size:0.78rem;font-weight:600;width:22px;text-align:right;color:${col};flex-shrink:0">${s.toFixed(1)}</div></div>`;
+    });
+  }
+
+  // Radar (on light panel, use dark labels)
+  const existingChart=Chart.getChart('pci-radar');
+  if(existingChart) existingChart.destroy();
+  const ctx=document.getElementById('pci-radar');
+  if(ctx){
+    new Chart(ctx.getContext('2d'),{
+      type:'radar',
+      data:{
+        labels:DIMS,
+        datasets:[
+          {data:[5,5,5,5,5,5,5,5],borderColor:'rgba(0,0,0,0.1)',backgroundColor:'rgba(0,0,0,0.03)',borderWidth:1,pointRadius:0,borderDash:[3,3]},
+          {label:'Score',data:scores,borderColor:'rgba(14,90,100,0.85)',backgroundColor:'rgba(14,90,100,0.12)',borderWidth:2,pointBackgroundColor:'#0E5A64',pointBorderColor:'white',pointBorderWidth:1.5,pointRadius:4,pointHoverRadius:6}
+        ]
+      },
+      options:{
+        responsive:true, maintainAspectRatio:true,
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label?` ${c.raw}/5`:null}}},
+        scales:{r:{
+          min:0,max:5,
+          ticks:{stepSize:1,color:'rgba(28,31,36,0.35)',font:{size:9},backdropColor:'transparent',callback:v=>v===0?'':v},
+          grid:{color:'rgba(0,0,0,0.07)'},
+          angleLines:{color:'rgba(0,0,0,0.07)'},
+          pointLabels:{color:'rgba(28,31,36,0.75)',font:{size:9,weight:'500'}}
+        }}
+      }
+    });
+  }
+
+  // ── DEEP COMMENTARY ──
+  const sorted=scores.map((s,i)=>({s,i})).sort((a,b)=>a.s-b.s);
+  const lo1=sorted[0], lo2=sorted[1], lo3=sorted[2], hi=sorted[7];
+
+  // Overall profile paragraph
+  const overallPara = {
+    exposed: `Your index reveals a business that is data-rich, brand-strong, and commercially led — but operating without the decision infrastructure to absorb the complexity ahead. That combination is not unusual at this stage. It is, however, the exact profile that financial services exhibited before its most expensive technology decade. The brands that come through this period well are not the ones that spend the most or move the fastest. They are the ones that build decision quality before the spend accelerates.`,
+    emerging: `Your index shows a business with genuine instincts about technology but without the consistent process to back them up. The instincts are right — you know what the problems are, you are making broadly sensible choices, and you are beginning to think about governance. The gap is that decision quality still depends too much on context: who is in the room, how loud the vendor is, how much pressure is coming from the board. At the next phase of growth, that inconsistency becomes the ceiling.`,
+    progressing: `Your index shows strong capability in several dimensions, with specific areas still developing. You are ahead of most scaling performance brands in how you approach technology decisions — and that matters, because the cost of poor decisions at your scale is real. The work now is targeted: close the remaining gaps before the business reaches a stage where those gaps become expensive, visible, or both.`,
+    adaptive: `Your index reflects strong decision maturity across most dimensions. You have built, or are building, the governance and ownership structures that most scaling performance brands lack. The risk at this stage is that the organisation adds complexity faster than the governance model can absorb it. Review your lowest-scoring dimensions carefully — that is where the ceiling is still forming.`
+  };
+
+  // Pick framing for top 2 lowest dims
+  const lo1framing = pickFraming(lo1.i, lo1.s);
+  const lo2framing = lo1.i!==lo2.i ? pickFraming(lo2.i, lo2.s) : (lo1framing==='moat'?'fs':'moat');
+  const level1 = lo1.s <= 2 ? 'low' : 'watch';
+  const level2 = lo2.s <= 2 ? 'low' : 'watch';
+
+  const lo1text = DIM_DEEP[lo1.i][level1][lo1framing];
+  const lo2text = DIM_DEEP[lo2.i][level2][lo2framing];
+
+  let commentaryHtml = `<p style="color:#1C1F24;margin-bottom:0.75rem">${overallPara[p.label.toLowerCase()]}</p>`;
+  commentaryHtml += `<p style="color:#1C1F24;margin-bottom:0.75rem"><strong style="color:#0E5A64">${DIMS[lo1.i]} (${lo1.s.toFixed(1)}/5).</strong> ${lo1text}</p>`;
+  commentaryHtml += `<p style="color:#1C1F24;margin-bottom:0.75rem"><strong style="color:#0E5A64">${DIMS[lo2.i]} (${lo2.s.toFixed(1)}/5).</strong> ${lo2text}</p>`;
+  if(hi.s>=4){
+    commentaryHtml += `<p style="color:#1C1F24;margin-bottom:0"><strong style="color:#1e8a4a">${DIMS[hi.i]} (${hi.s.toFixed(1)}/5) is your strongest dimension.</strong> That is a genuine asset — but a capable area alongside a weak one does not average out. The weakest area is what sets the ceiling.`;
+    // Add a third dimension note if it's also weak
+    if(lo3.s<=3) commentaryHtml += ` And ${DIMS[lo3.i]} (${lo3.s.toFixed(1)}) deserves attention alongside your top two — three weak dimensions reinforce each other.`;
+    commentaryHtml += '</p>';
+  }
+
+  const commEl=document.getElementById('pci-r-commentary');
+  if(commEl){
+    commEl.style.cssText='font-size:0.9rem;line-height:1.8;color:#1C1F24';
+    commEl.innerHTML=commentaryHtml;
+  }
+
+  // Update commentary container to light style
+  const commContainer=commEl?commEl.closest('[style*="rgba(14,90,100,0.07)"]'):null;
+  if(commContainer){
+    commContainer.style.cssText='background:#e8f4f5;border:1px solid #bdd9dc;border-top:2px solid #0E5A64;border-radius:0 0 8px 8px;padding:1.5rem 1.75rem;margin-bottom:1.25rem';
+  }
+
+  // ── PRIORITIES ──
+  const pw=document.getElementById('pci-r-priorities');
+  if(pw){
+    pw.innerHTML='';
+    const toShow=sorted.filter(d=>d.s<=3.5).slice(0,4);
+    if(!toShow.length){
+      pw.innerHTML='<div style="font-size:0.82rem;color:#4a4e54;padding:0.5rem 0">Strong across all dimensions. Continue reviewing quarterly as complexity grows.</div>';
+    } else {
+      toShow.forEach(d=>{
+        const crit=d.s<=2.5;
+        const framing=pickFraming(d.i,d.s);
+        const level=d.s<=2.5?'low':'watch';
+        const note=DIM_DEEP[d.i][level][framing];
+        // Shorten to first sentence for priorities
+        const shortNote=note.split('.')[0]+'.';
+        const flagBg=crit?'rgba(192,57,43,0.1)':'rgba(200,121,65,0.1)';
+        const flagCol=crit?'#c0392b':'#c87941';
+        const flagBdr=crit?'rgba(192,57,43,0.25)':'rgba(200,121,65,0.25)';
+        pw.innerHTML+=`<div style="display:flex;gap:0.85rem;align-items:flex-start;padding:0.85rem 0;border-bottom:1px solid #e8e4de"><div style="font-size:0.6rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.5rem;border-radius:3px;flex-shrink:0;margin-top:1px;background:${flagBg};color:${flagCol};border:1px solid ${flagBdr};white-space:nowrap">${crit?'Critical':'Watch'}</div><div><div style="font-weight:600;font-size:0.85rem;color:#1C1F24;margin-bottom:0.2rem">${DIMS[d.i]} · ${d.s.toFixed(1)}/5</div><div style="font-size:0.8rem;color:#4a4e54;line-height:1.55">${shortNote}</div></div></div>`;
+      });
+    }
+  }
+
+  // Update the priorities title colour
+  const prioTitle=document.querySelector('#pci-results .r-priorities-title, #pci-r-priorities');
+  const prioTitleEl=document.getElementById('pci-r-priorities');
+  if(prioTitleEl && prioTitleEl.previousElementSibling){
+    prioTitleEl.previousElementSibling.style.color='#1C1F24';
+  }
+
+  // Update CTA container
+  const ctaEl=document.querySelector('#pci-results [style*="rgba(255,255,255,0.03)"]');
+  if(ctaEl) ctaEl.style.background='white';
+
+  pciSwitch('pci-results');
+}
+
+function pciRetake(){ pciBegin(); }
+
+if(!document.getElementById('pci-keyframe-style')){
+  const st=document.createElement('style');
+  st.id='pci-keyframe-style';
+  st.textContent='@keyframes pciSF{from{width:0}to{width:100%}}';
+  document.head.appendChild(st);
+}
+
+window.pciBegin=pciBegin; window.pciBack=pciBack; window.pciNext=pciNext;
+window.pciGateSubmit=pciGateSubmit; window.pciRetake=pciRetake;
+})();
+</script>
+
+</body>
+</html>
