@@ -111,8 +111,9 @@
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2rem;
       list-style: none;
+      align-items: center;
     }
 
     .nav-links a {
@@ -138,6 +139,30 @@
       transition: border-color 0.2s, color 0.2s !important;
     }
     .nav-cta:hover { border-color: var(--gold); color: var(--gold-lt) !important; }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .back-to-top {
+      display: inline-block;
+      margin-top: 3rem;
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201,169,110,0.45);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .back-to-top:hover {
+      color: var(--gold-lt);
+      border-color: var(--gold-lt);
+    }
 
     /* ─── Hero ──────────────────────────────────────── */
     #home {
@@ -691,7 +716,8 @@
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#method">The Method</a></li>
-        <li><a class="nav-cta" href="#contact">Start a conversation</a></li>
+        <li><a href="/performance-ceiling#appendix">Questionnaire</a></li>
+        <li><a class="nav-cta" href="#contact">Get in touch</a></li>
       </ul>
     </div>
   </nav>
@@ -702,7 +728,10 @@
       <p class="hero-eyebrow">Strategic Advisory</p>
       <h1 class="hero-headline">When the decision really matters, who do you speak to?</h1>
       <p class="hero-sub">Corbelle is the strategic advisory for high-performing leaders navigating high-stakes technology decisions. Not coaching. Not consulting. Partnership.</p>
-      <a href="#contact" class="btn">Start a conversation</a>
+      <div class="hero-actions">
+        <a href="#contact" class="btn">Get in touch</a>
+        <a href="/performance-ceiling#appendix" class="btn btn--ghost">Take the questionnaire</a>
+      </div>
     </div>
     <span class="hero-scroll">Scroll</span>
   </section>
@@ -1013,8 +1042,8 @@
         <p class="section-label">Start a Conversation</p>
         <h2>If there&rsquo;s a decision on your desk that matters.</h2>
         <p>A first conversation costs nothing. What you&rsquo;ll leave with is at least a clearer sense of the question.</p>
-        <a href="mailto:brendan@corbelle.ai" class="btn">Send a message</a>
-        <a href="mailto:brendan@corbelle.ai" class="contact-email">brendan@corbelle.ai</a>
+        <a href="mailto:brendan@corbelle.ai" class="btn" target="_blank" rel="noopener">Send a message</a>
+        <a href="mailto:brendan@corbelle.ai" class="contact-email" target="_blank" rel="noopener">brendan@corbelle.ai</a>
       </div>
     </div>
   </section>
@@ -1028,6 +1057,18 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    document.querySelectorAll('section:not(#home)').forEach((section) => {
+      const target = section.querySelector('.container, .container--wide');
+      if (!target) return;
+      const link = document.createElement('a');
+      link.href = '#home';
+      link.className = 'back-to-top';
+      link.textContent = 'Back to top';
+      target.appendChild(link);
+    });
+  </script>
 
 </body>
 </html>

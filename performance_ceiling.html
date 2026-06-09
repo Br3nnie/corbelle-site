@@ -35,7 +35,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: var(--charcoal);
     padding: 0 2.5rem;
-    display: flex; align-items: center; justify-content: space-between;
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
     height: 52px;
     border-bottom: 2px solid var(--teal);
   }
@@ -47,6 +47,70 @@
   }
   .nav-logo span { color: var(--teal); }
   .nav-meta { font-size: 0.75rem; color: var(--sand); letter-spacing: 0.05em; }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    justify-self: center;
+  }
+  .nav-cta {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    color: white;
+    background: var(--teal);
+    border-radius: 4px;
+    padding: 0.45rem 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .nav-cta--secondary {
+    color: var(--sand);
+    background: transparent;
+    border: 1px solid rgba(217,205,191,0.3);
+    border-radius: 4px;
+    padding: calc(0.45rem - 1px) 0.75rem;
+  }
+  .nav-cta:hover { background: #0f6872; }
+  .nav-cta--secondary:hover {
+    color: #F2F2F2;
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(217,205,191,0.55);
+  }
+  .nav-meta {
+    justify-self: end;
+  }
+
+  .print-fab {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 120;
+    border: 1px solid rgba(217,205,191,0.45);
+    border-radius: 999px;
+    background: var(--charcoal);
+    color: #F2F2F2;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+    cursor: pointer;
+    appearance: none;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.75rem 1rem;
+    transition: transform 0.15s, background 0.15s, border-color 0.15s;
+  }
+  .print-fab:hover {
+    transform: translateY(-1px);
+    background: #263039;
+    border-color: var(--teal-mid);
+  }
 
   /* ── COVER ── */
   .cover {
@@ -162,6 +226,43 @@
   }
   .section:last-child { border-bottom: none; }
 
+  .back-to-top {
+    display: inline-block;
+    margin-top: 2.5rem;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--teal);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(14,90,100,0.35);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .back-to-top:hover {
+    color: var(--navy);
+    border-color: var(--navy);
+  }
+  #appendix .back-to-top {
+    color: var(--teal-mid);
+    border-color: rgba(197,222,225,0.45);
+    margin-bottom: 2rem;
+  }
+  #appendix .back-to-top:hover {
+    color: #F2F2F2;
+    border-color: rgba(242,242,242,0.7);
+  }
+  .diagnostic-back-to-top {
+    display: inline-block;
+    margin-top: 1rem;
+    color: rgba(242,242,242,0.62);
+    border-color: rgba(242,242,242,0.25);
+  }
+  .diagnostic-back-to-top:hover {
+    color: #F2F2F2;
+    border-color: rgba(242,242,242,0.6);
+  }
+
   .section-eyebrow {
     font-family: 'Sora', sans-serif;
     font-size: 0.65rem; font-weight: 600;
@@ -218,6 +319,74 @@
     margin-bottom: 0.5rem;
   }
   .callout p { font-size: 0.95rem; color: var(--charcoal); margin-bottom: 0; }
+
+  /* ── CASE STUDY ── */
+  .case-study {
+    background: white;
+    border: 1px solid #e0dbd4;
+    border-top: 3px solid var(--teal);
+    border-radius: 0 0 6px 6px;
+    padding: 1.5rem 1.75rem;
+    margin: 1.75rem 0 2rem;
+  }
+  .case-study-label {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--teal);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .case-study-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.9rem;
+  }
+  .case-study p {
+    font-size: 0.93rem;
+    color: var(--charcoal);
+    line-height: 1.7;
+    margin-bottom: 0.9rem;
+  }
+  .case-study-sequence {
+    display: grid;
+    gap: 0.65rem;
+    margin: 1.1rem 0;
+  }
+  .case-study-step {
+    border-left: 2px solid var(--teal-mid);
+    padding-left: 0.9rem;
+  }
+  .case-study-step strong {
+    display: block;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.78rem;
+    color: var(--teal);
+    margin-bottom: 0.15rem;
+  }
+  .case-study-step span {
+    display: block;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+  .case-study-takeaway {
+    background: var(--teal-light);
+    border-left: 3px solid var(--teal);
+    padding: 1rem 1.15rem;
+    margin-top: 1.2rem;
+  }
+  .case-study-takeaway p {
+    margin-bottom: 0.65rem;
+  }
+  .case-study-takeaway p:last-child {
+    margin-bottom: 0;
+    font-weight: 600;
+    color: var(--navy);
+  }
 
   /* ── TABLES ── */
   .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
@@ -428,11 +597,274 @@
     min-width: 120px;
   }
 
+  @page {
+    size: A4;
+    margin: 12mm 12mm 14mm;
+  }
+
   @media print {
-    .nav { display: none; }
-    .cover { padding-top: 60px; }
-    body { background: white; }
-    .section { page-break-inside: avoid; }
+    * {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+
+    body {
+      background: white;
+      color: #1C1F24;
+      font-size: 9.2pt;
+      line-height: 1.42;
+    }
+
+    .nav,
+    .print-fab,
+    .back-to-top,
+    #appendix,
+    .cover-thesis a {
+      display: none !important;
+    }
+
+    .cover {
+      min-height: calc(297mm - 26mm);
+      padding: 18mm 0 16mm;
+      page-break-after: always;
+      break-after: page;
+      display: flex;
+      align-items: center;
+    }
+
+    .cover-inner,
+    .toc-inner,
+    .page,
+    .about-inner {
+      max-width: none;
+      padding: 0;
+    }
+
+    .cover-inner {
+      width: 100%;
+    }
+
+    .cover-title {
+      font-size: 31pt;
+      margin-bottom: 7mm;
+    }
+
+    .cover-subtitle {
+      font-size: 10.5pt;
+      max-width: 145mm;
+      margin-bottom: 8mm;
+    }
+
+    .cover-byline {
+      padding-top: 7mm;
+    }
+
+    .byline-avatar {
+      width: 34px;
+      height: 34px;
+      font-size: 8pt;
+    }
+
+    .byline-name {
+      font-size: 8.5pt;
+    }
+
+    .byline-role {
+      font-size: 7.5pt;
+    }
+
+    .cover-thesis {
+      margin-top: 10mm;
+      padding: 4mm 5mm;
+    }
+
+    .cover-thesis p {
+      font-size: 8.8pt;
+    }
+
+    .toc-section {
+      padding: 0 0 7mm;
+      background: white;
+      border-bottom: 1px solid #D9CDBF;
+      page-break-after: auto;
+      break-after: auto;
+    }
+
+    .toc-list {
+      column-count: 1;
+    }
+
+    .toc-list li {
+      padding: 1.6mm 0;
+    }
+
+    .toc-list li:last-child {
+      display: none;
+    }
+
+    .toc-list a {
+      font-size: 8.5pt;
+    }
+
+    main {
+      background: white;
+    }
+
+    .section {
+      padding: 0 0 7mm;
+      border-bottom: 1px solid #D9CDBF;
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+
+    .section + .section {
+      padding-top: 6mm;
+    }
+
+    .toc-section + main .section:first-child {
+      padding-top: 6mm;
+    }
+
+    .section-eyebrow,
+    .callout-label,
+    .case-study-label {
+      font-size: 7.5pt;
+      margin-bottom: 2mm;
+    }
+
+    .section-title {
+      font-size: 14.5pt;
+      margin-bottom: 4mm;
+      padding-bottom: 2.5mm;
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+
+    .subsection-title {
+      font-size: 10.5pt;
+      margin: 5mm 0 2.5mm;
+    }
+
+    .sub2-title {
+      font-size: 9.2pt;
+      margin: 4mm 0 2mm;
+    }
+
+    .subsection-title,
+    .sub2-title {
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+
+    p,
+    li,
+    td,
+    th {
+      orphans: 3;
+      widows: 3;
+    }
+
+    p {
+      font-size: 9.2pt;
+      margin-bottom: 2.6mm;
+    }
+
+    .pull-quote,
+    .callout,
+    .case-study,
+    .index-card,
+    .stage-card,
+    .score-band,
+    .action-item,
+    .about-band {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .callout,
+    .case-study,
+    .pull-quote {
+      margin: 4.5mm 0;
+      padding: 4mm 5mm;
+    }
+
+    .pull-quote {
+      font-size: 9.8pt;
+    }
+
+    .callout p,
+    .case-study p,
+    .case-study-step span,
+    .action-desc,
+    .stage-desc,
+    .index-card-q,
+    .score-desc {
+      font-size: 8.5pt;
+    }
+
+    .case-study-title {
+      font-size: 9.5pt;
+      margin-bottom: 2.5mm;
+    }
+
+    .case-study-sequence {
+      gap: 2.5mm;
+      margin: 3.5mm 0;
+    }
+
+    .case-study-takeaway {
+      padding: 3.5mm 4mm;
+      margin-top: 4mm;
+    }
+
+    .table-wrap {
+      overflow: visible;
+      margin: 3.5mm 0;
+    }
+
+    table {
+      font-size: 7.6pt;
+      page-break-inside: auto;
+    }
+
+    thead {
+      display: table-header-group;
+    }
+
+    tr {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    th,
+    td {
+      padding: 2mm;
+    }
+
+    .stage-grid,
+    .index-grid,
+    .score-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .about-band {
+      background: #1C1F24;
+      margin-top: 6mm;
+      padding: 8mm 0;
+    }
+
+    .about-inner {
+      padding: 0;
+    }
+
+    .source-list li {
+      font-size: 7.4pt;
+      margin-bottom: 1.7mm;
+    }
   }
 </style>
 </head>
@@ -440,12 +872,17 @@
 
 <!-- NAV -->
 <nav class="nav">
-  <a class="nav-logo" href="#">COR<span>BE</span>LLE</a>
+  <a class="nav-logo" href="#top">COR<span>BE</span>LLE</a>
+  <div class="nav-actions">
+    <a class="nav-cta" href="#appendix">Questionnaire <span aria-hidden="true">↓</span></a>
+    <a class="nav-cta nav-cta--secondary" href="mailto:brendan@corbelle.ai" target="_blank" rel="noopener">Get in touch</a>
+  </div>
   <span class="nav-meta">The Performance Ceiling™ &nbsp;|&nbsp; 2026</span>
 </nav>
+<button class="print-fab" type="button" onclick="window.print()">Print PDF</button>
 
 <!-- COVER -->
-<div class="cover">
+<div class="cover" id="top">
   <div class="cover-inner">
     <div class="cover-series">Corbelle Research Series &nbsp;|&nbsp; 2026</div>
     <h1 class="cover-title">The Performance<br><span>Ceiling™</span></h1>
@@ -567,7 +1004,7 @@
   <div class="callout" style="margin-bottom:1.5rem">
         <div class="callout-label">Validation from the field</div>
         <p style="font-style:italic;margin-bottom:0.6rem">"I also think that the participation events and performance brands are about a decade behind where financial services firms were in terms of the investment and the exposure. It&#x27;s an exciting time ahead especially if you can catch the front of the wave."</p>
-        <p style="font-size:0.82rem;color:#4a4e54;margin-bottom:0"><strong>Sam Heward</strong> &nbsp;&middot;&nbsp; Co-Founder, Ultra X &nbsp;&middot;&nbsp; LinkedIn comment, 2026</p>
+        <p style="font-size:0.82rem;color:#4a4e54;margin-bottom:0">Co-Founder, Ultra X &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/feed/update/urn:li:activity:7470007964251181056/?dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287470022380002914305%2Curn%3Ali%3Aactivity%3A7470007964251181056%29&amp;dashReplyUrn=urn%3Ali%3Afsd_comment%3A%287470130489551515649%2Curn%3Ali%3Aactivity%3A7470007964251181056%29" target="_blank" rel="noopener" style="color:#0E5A64;text-decoration:none;border-bottom:1px solid rgba(14,90,100,0.35)">LinkedIn comment</a>, 2026</p>
       </div>
       <h3 class="subsection-title">What is not proven</h3>
   <p>There is no single public benchmark that directly compares performance brands against financial services across AI maturity, data maturity, governance maturity, technology spend and decision quality. Some performance brands are highly mature — WHOOP, Garmin, Strava, Oura and other technology-native businesses are better understood as technology companies operating in the performance ecosystem. The Corbelle opportunity is strongest among commercially led scaling brands that are not technology-native.</p>
@@ -583,9 +1020,31 @@
   <p>During the last fifteen years, banking and fintech underwent several overlapping waves of technology investment. The sector discovered that technology access is not enough. Without governance, architecture, operating discipline and clear ownership, technology investment can make an organisation slower, not faster.</p>
 
   <h3 class="subsection-title">A real illustration: when data abundance meets decision immaturity</h3>
-  <div class="placeholder-box">
-    <div class="placeholder-label">Case study — to be inserted</div>
-    <p>This space is reserved for a concrete case study of a scaling business where technology investment ran ahead of decision maturity. The more specific the better: what they bought, what went wrong, what it cost them, and what the trigger to fix it was.</p>
+  <div class="case-study">
+    <div class="case-study-label">Case study</div>
+    <div class="case-study-title">TSB's &pound;330 million technology failure</div>
+    <p>In 2018, TSB migrated more than five million customer accounts to a new banking platform designed to support future growth.</p>
+    <p>The technology worked in testing. The migration plan was approved. The programme went live.</p>
+    <div class="case-study-sequence">
+      <div class="case-study-step">
+        <strong>Immediate customer impact</strong>
+        <span>Within hours, customers were locked out of accounts, payments failed, and online banking became unavailable.</span>
+      </div>
+      <div class="case-study-step">
+        <strong>Commercial and regulatory cost</strong>
+        <span>The disruption ultimately cost TSB more than &pound;330 million, alongside regulatory fines, reputational damage, and leadership departures.</span>
+      </div>
+      <div class="case-study-step">
+        <strong>Underlying failure mode</strong>
+        <span>Multiple investigations concluded the programme suffered from weaknesses in governance, oversight, testing, risk management, and decision-making.</span>
+      </div>
+    </div>
+    <div class="case-study-takeaway">
+      <p>The lesson was not that the technology failed.</p>
+      <p>Technology was not the root cause. It was the amplifier.</p>
+      <p>The platform exposed organisational complexity that the business was not fully prepared to manage.</p>
+      <p>When technology capability grows faster than decision-making capability, performance suffers. That's the Performance Ceiling.</p>
+    </div>
   </div>
   <p>This pattern — platform first, strategy second — is not a failure of intelligence or ambition. It is a failure of sequencing. The technology forces every unresolved question into the open at once. Who owns the customer? Which metric matters? What will be decommissioned? A platform cannot answer those questions. It can only make the cost of not answering them unavoidable.</p>
 
@@ -823,7 +1282,7 @@
     <p style="color:rgba(242,242,242,0.65);margin-bottom:2rem">Sixteen scenario questions scored across eight dimensions. Takes under five minutes. Your results include a personalised radar chart, dimension scores, and a prioritised action list — generated from what you actually answered, not a generic template.</p>
   </div>
 
-  <div id="pci-widget" style="max-width:680px;margin:0 auto;padding:0 2rem">
+  <div id="pci-widget" style="max-width:800px;margin:0 auto;padding:0 2.5rem">
     <!-- STEP: INTRO -->
     <div class="pci-step active" id="pci-intro">
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(255,255,255,0.09);border-radius:8px;overflow:hidden;margin-bottom:2rem">
@@ -832,6 +1291,7 @@
         <div style="padding:1.1rem 1.25rem"><div style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:700;color:#0E5A64;line-height:1;margin-bottom:0.3rem">&lt;5</div><div style="font-size:0.75rem;color:rgba(242,242,242,0.4)">minutes</div></div>
       </div>
       <button onclick="pciBegin()" style="display:inline-flex;align-items:center;gap:0.75rem;background:#0E5A64;color:white;font-family:'Sora',sans-serif;font-size:0.95rem;font-weight:700;padding:1rem 2.25rem;border:none;border-radius:6px;cursor:pointer;transition:background 0.15s" onmouseover="this.style.background='#0f6872'" onmouseout="this.style.background='#0E5A64'">Begin the diagnostic <span style="font-size:1.1rem">→</span></button>
+      <a href="#top" class="back-to-top diagnostic-back-to-top">Back to top</a>
     </div>
 
     <!-- STEP: QUESTIONS -->
@@ -1465,6 +1925,18 @@ if(!document.getElementById('pci-keyframe-style')){
 window.pciBegin=pciBegin; window.pciBack=pciBack; window.pciNext=pciNext;
 window.pciGateSubmit=pciGateSubmit; window.pciRetake=pciRetake;
 })();
+</script>
+<script>
+  document.querySelectorAll('.section').forEach((section) => {
+    if (section.id === 'appendix') return;
+    const target = section.querySelector('.page');
+    if (!target) return;
+    const link = document.createElement('a');
+    link.href = '#top';
+    link.className = 'back-to-top';
+    link.textContent = 'Back to top';
+    target.appendChild(link);
+  });
 </script>
 
 </body>
