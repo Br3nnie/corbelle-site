@@ -110,12 +110,21 @@ body { background: var(--navy); font-family: var(--sans); min-height: 100vh; -we
   .s-nav-links a { white-space: nowrap; }
   .s-section { padding: 56px 0; }
   .s-h1,
+  .s-h2,
   .s-hero-sub,
   .s-btns { max-width: 100%; }
+  .s-h2 { white-space: normal !important; }
   .s-grid-2,
   .s-quotes,
   .s-svc-layout,
   .s-who { grid-template-columns: 1fr; }
+  .s-section .wrap > div[style*="grid-template-columns: 300px 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .s-section .wrap > div[style*="grid-template-columns: 300px 1fr"] > div[style*="sticky"] {
+    position: static !important;
+  }
   .s-grid-cell,
   .s-cred { border-right: none; border-bottom: 1px solid var(--rule); }
   .s-grid-cell:last-child,
