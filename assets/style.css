@@ -34,6 +34,7 @@ body { background: var(--navy); color: rgba(245,243,238,0.8); font-family: var(-
 .s-h4 { font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
 .s-p { font-size: 17px; color: rgba(245,243,238,0.78); line-height: 1.72; margin-bottom: 18px; max-width: 760px; }
 .s-p:last-child { margin-bottom: 0; }
+.s-contact-line { max-width: none; white-space: nowrap; }
 .s-italic-intro { font-family: var(--serif); font-size: 24px; font-style: italic; font-weight: 300; color: var(--cream); line-height: 1.45; margin-bottom: 24px; }
 .s-link { display: inline-block; font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.35); padding-bottom: 2px; transition: border-color 0.15s; }
 .s-link:hover { border-color: var(--gold); }
@@ -123,6 +124,7 @@ body { background: var(--navy); color: rgba(245,243,238,0.8); font-family: var(-
   .s-hero-sub,
   .s-btns { max-width: 100%; }
   .s-h2 { white-space: normal !important; }
+  .s-contact-line { white-space: normal; }
   .s-grid-2,
   .s-quotes,
   .s-svc-layout,
