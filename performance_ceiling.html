@@ -872,7 +872,8 @@
           <div id="pci-email-err" style="font-size:0.75rem;color:#e74c3c;margin-top:0.35rem;display:none">Please enter a valid email address</div>
         </div>
       </div>
-      <button onclick="pciGateSubmit()" style="width:100%;background:#0E5A64;border:none;color:white;font-family:'Sora',sans-serif;font-size:0.95rem;font-weight:700;padding:1rem;border-radius:6px;cursor:pointer;margin-bottom:0.75rem;transition:background 0.15s" onmouseover="this.style.background='#0f6872'" onmouseout="this.style.background='#0E5A64'">See my results →</button>
+      <button id="pci-submit" onclick="pciGateSubmit()" style="width:100%;background:#0E5A64;border:none;color:white;font-family:'Sora',sans-serif;font-size:0.95rem;font-weight:700;padding:1rem;border-radius:6px;cursor:pointer;margin-bottom:0.75rem;transition:background 0.15s" onmouseover="this.style.background='#0f6872'" onmouseout="this.style.background='#0E5A64'">See my results →</button>
+      <div id="pci-submit-err" style="font-size:0.75rem;color:#e74c3c;text-align:center;margin:-0.25rem 0 0.75rem;display:none">Something went wrong. Please try again.</div>
       <p style="font-size:0.72rem;color:rgba(242,242,242,0.3);text-align:center">Corbelle will only use your details to send you relevant research and insights. No spam.</p>
     </div>
 
@@ -1210,15 +1211,68 @@ function pciPick(idx){
 function pciNext(){ if(pciAns[pciCur]===null) return; if(pciCur===15) pciSwitch('pci-gate'); else { pciCur++; pciRenderQ(); } }
 function pciBack(){ if(pciCur>0){ pciCur--; pciRenderQ(); } }
 
-function pciGateSubmit(){
+async function pciGateSubmit(){
   const email=(document.getElementById('pci-email')||{}).value||'';
+  const fname=((document.getElementById('pci-fname')||{}).value||'').trim();
+  const title=((document.getElementById('pci-title')||{}).value||'').trim();
   const errEl=document.getElementById('pci-email-err');
+  const submitErr=document.getElementById('pci-submit-err');
+  const submitBtn=document.getElementById('pci-submit');
   if(!email.trim()||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())){
     if(errEl) errEl.style.display='block';
     return;
   }
   if(errEl) errEl.style.display='none';
-  pciBuildResults();
+  if(submitErr) submitErr.style.display='none';
+
+  const scores=pciCalcScores();
+  const total=Math.round(scores.reduce((a,b)=>a+b,0));
+  const profile=pciProfileData(total).label;
+  const originalText=submitBtn?submitBtn.textContent:'';
+
+  if(submitBtn){
+    submitBtn.disabled=true;
+    submitBtn.style.opacity='0.65';
+    submitBtn.style.cursor='wait';
+    submitBtn.textContent='Saving...';
+  }
+
+  try{
+    const response=await fetch('/api/loops-contact',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        email:email.trim(),
+        firstName:fname,
+        jobTitle:title,
+        score:total,
+        profile,
+        strategicAlignment:scores[0],
+        decisionConfidence:scores[1],
+        techGovernance:scores[2],
+        infrastructure:scores[3],
+        dataOwnership:scores[4],
+        aiClarity:scores[5],
+        optionality:scores[6],
+        roiVisibility:scores[7]
+      })
+    });
+    const data=await response.json().catch(()=>({}));
+    if(!response.ok||data.success===false) throw new Error(data.message||'Unable to save contact');
+    pciBuildResults();
+  }catch(error){
+    if(submitErr){
+      submitErr.textContent=error.message||'Something went wrong. Please try again.';
+      submitErr.style.display='block';
+    }
+  }finally{
+    if(submitBtn){
+      submitBtn.disabled=false;
+      submitBtn.style.opacity='1';
+      submitBtn.style.cursor='pointer';
+      submitBtn.textContent=originalText||'See my results →';
+    }
+  }
 }
 
 function pciCalcScores(){
