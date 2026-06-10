@@ -1,0 +1,21 @@
+{
+  "text": {
+    "hero.eyebrow": "Start a conversation",
+    "hero.title": "If there’s a decision on your desk that matters. Let's Talk.",
+    "panel.kicker": "First conversation",
+    "panel.line": "A first conversation costs nothing. What you’ll leave with is at least a clearer sense of the question.",
+    "panel.cta": "Start a conversation",
+    "expect.eyebrow": "What to expect",
+    "expect.title": "A calm conversation before any commitment.",
+    "expect.copy": "The first call is not a sales process. It is a chance to name the decision, understand the pressure around it, and work out whether Corbelle is the right partner for the moment.",
+    "step1.number": "01",
+    "step1.title": "Name the decision",
+    "step1.copy": "What is on the table, who is involved, and what makes the timing difficult?",
+    "step2.number": "02",
+    "step2.title": "Clarify the real question",
+    "step2.copy": "We separate the presenting technology issue from the leadership decision underneath it.",
+    "step3.number": "03",
+    "step3.title": "Decide if there is a fit",
+    "step3.copy": "If the work is right for Corbelle, the next step is clear. If it is not, you will still leave with a sharper frame."
+  }
+}

@@ -8,8 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/style.css" />
+<script src="assets/content-loader.js" defer></script>
 </head>
-<body class="services-brand">
+<body class="services-brand" data-content-page="services">
 
 <nav class="s-nav">
   <div class="wrap">
@@ -18,7 +19,8 @@
       <li><a href="about.html">About</a></li>
       <li><a href="services.html" class="current">Services</a></li>
       <li><a href="method.html">The Method</a></li>
-      <li><a href="/performance-ceiling">Diagnostic></li>
+      <li><a href="/tools">Tools</a></li>
+      <li><a href="/performance-ceiling">Diagnostic</a></li>
       <li><a class="s-nav-cta" href="contact.html">Get in touch</a></li>
     </ul>
   </div>
@@ -27,12 +29,12 @@
 <section class="services-cover">
   <div class="wrap services-cover-grid">
     <div>
-      <p class="s-eyebrow">Services</p>
-      <h1 class="services-title">Two practices. One commitment to clarity.</h1>
+      <p class="s-eyebrow" data-copy="hero.eyebrow">Services</p>
+      <h1 class="services-title" data-copy="hero.title">Two practices. One commitment to clarity.</h1>
     </div>
     <div class="services-cover-copy">
-      <p>Corbelle operates across two distinct but connected practices. They serve different needs, but draw on the same philosophy: technology decisions made well require independence, context, and a partner who has no interest in the outcome except getting it right.</p>
-      <a class="s-btn" href="contact.html">Start a conversation</a>
+      <p data-copy="hero.copy">Corbelle operates across two distinct but connected practices. They serve different needs, but draw on the same philosophy: technology decisions made well require independence, context, and a partner who has no interest in the outcome except getting it right.</p>
+      <a class="s-btn" href="contact.html" data-copy="hero.cta">Start a conversation</a>
     </div>
   </div>
 </section>
@@ -40,14 +42,14 @@
 <section class="services-overview">
   <div class="wrap services-overview-grid">
     <a class="service-practice-card" href="#tech-consultancy">
-      <span>01</span>
-      <h2>Tech Consultancy</h2>
-      <p>For organisations facing significant technology decisions without the internal function to navigate them.</p>
+      <span data-copy="overview1.number">01</span>
+      <h2 data-copy="overview1.title">Tech Consultancy</h2>
+      <p data-copy="overview1.copy">For organisations facing significant technology decisions without the internal function to navigate them.</p>
     </a>
     <a class="service-practice-card" href="#executive-leadership">
-      <span>02</span>
-      <h2>Executive Leadership Practice</h2>
-      <p>For individual executives personally responsible for high-stakes technology decisions.</p>
+      <span data-copy="overview2.number">02</span>
+      <h2 data-copy="overview2.title">Executive Leadership Practice</h2>
+      <p data-copy="overview2.copy">For individual executives personally responsible for high-stakes technology decisions.</p>
     </a>
   </div>
 </section>
@@ -55,23 +57,23 @@
 <section class="service-practice" id="tech-consultancy">
   <div class="wrap service-practice-layout">
     <aside class="service-practice-intro">
-      <p class="service-number">01</p>
-      <h2>Tech Consultancy</h2>
-      <p>Most technology problems in mid-market businesses are not technical problems. They are leadership problems wearing a technical costume.</p>
-      <a class="s-link" href="contact.html">Start a conversation</a>
+      <p class="service-number" data-copy="tech.number">01</p>
+      <h2 data-copy="tech.title">Tech Consultancy</h2>
+      <p data-copy="tech.intro">Most technology problems in mid-market businesses are not technical problems. They are leadership problems wearing a technical costume.</p>
+      <a class="s-link" href="contact.html" data-copy="practice.cta">Start a conversation</a>
     </aside>
 
     <div class="service-detail">
       <div class="service-items">
-        <div class="service-item"><h3>Technology Reviews &amp; Audits</h3><p>A structured assessment of the current technology landscape: what&rsquo;s working, what isn&rsquo;t, and what the business is actually spending its technology budget on. Delivered as a leadership-ready document, not a technical report.</p></div>
-        <div class="service-item"><h3>AI Education &amp; Readiness</h3><p>Not technical training, but the contextual understanding that allows executives to ask better questions, evaluate vendor claims, and make AI decisions with confidence rather than anxiety.</p></div>
-        <div class="service-item"><h3>Operating Model Work</h3><p>When a business is growing, restructuring, or facing a step-change in complexity. Corbelle helps leadership teams design the technology relationship before it becomes a crisis.</p></div>
-        <div class="service-item"><h3>Vendor &amp; Proposal Review</h3><p>When a proposal lands on your desk and you need a genuinely independent assessment. No vendor relationships. No referral fees. Just the honest answer.</p></div>
+        <div class="service-item"><h3 data-copy="tech.item1.title">Technology Reviews &amp; Audits</h3><p data-copy="tech.item1.copy">A structured assessment of the current technology landscape: what&rsquo;s working, what isn&rsquo;t, and what the business is actually spending its technology budget on. Delivered as a leadership-ready document, not a technical report.</p></div>
+        <div class="service-item"><h3 data-copy="tech.item2.title">AI Education &amp; Readiness</h3><p data-copy="tech.item2.copy">Not technical training, but the contextual understanding that allows executives to ask better questions, evaluate vendor claims, and make AI decisions with confidence rather than anxiety.</p></div>
+        <div class="service-item"><h3 data-copy="tech.item3.title">Operating Model Work</h3><p data-copy="tech.item3.copy">When a business is growing, restructuring, or facing a step-change in complexity. Corbelle helps leadership teams design the technology relationship before it becomes a crisis.</p></div>
+        <div class="service-item"><h3 data-copy="tech.item4.title">Vendor &amp; Proposal Review</h3><p data-copy="tech.item4.copy">When a proposal lands on your desk and you need a genuinely independent assessment. No vendor relationships. No referral fees. Just the honest answer.</p></div>
       </div>
 
       <div class="service-fit">
-        <div><span>Right fit</span><p>Leaders of sub-500 person businesses facing a significant technology decision who need someone to validate their direction, or challenge it, before committing.</p></div>
-        <div><span>Not for</span><p>Businesses with a strong internal technology function, enterprise vendor-management processes, or a need for end-to-end implementation management.</p></div>
+        <div><span data-copy="tech.fit1.label">Right fit</span><p data-copy="tech.fit1.copy">Leaders of sub-500 person businesses facing a significant technology decision who need someone to validate their direction, or challenge it, before committing.</p></div>
+        <div><span data-copy="tech.fit2.label">Not for</span><p data-copy="tech.fit2.copy">Businesses with a strong internal technology function, enterprise vendor-management processes, or a need for end-to-end implementation management.</p></div>
       </div>
     </div>
   </div>
@@ -80,23 +82,23 @@
 <section class="service-practice service-practice-alt" id="executive-leadership">
   <div class="wrap service-practice-layout">
     <aside class="service-practice-intro">
-      <p class="service-number">02</p>
-      <h2>Executive Leadership Practice</h2>
-      <p>Technology decisions are not just technical events. They are political ones. And most executives have no one they can be completely honest with.</p>
-      <a class="s-link" href="contact.html">Start a conversation</a>
+      <p class="service-number" data-copy="leadership.number">02</p>
+      <h2 data-copy="leadership.title">Executive Leadership Practice</h2>
+      <p data-copy="leadership.intro">Technology decisions are not just technical events. They are political ones. And most executives have no one they can be completely honest with.</p>
+      <a class="s-link" href="contact.html" data-copy="practice.cta">Start a conversation</a>
     </aside>
 
     <div class="service-detail">
       <div class="service-items">
-        <div class="service-item"><h3>A partner who understands the technology and the politics.</h3><p>Not just what the system does, but what approving it says, who it affects, and what it will be judged against in twelve months.</p></div>
-        <div class="service-item"><h3>Preparation for the difficult conversations.</h3><p>The board presentation. The investment committee. The team that has been asked to absorb another change. Corbelle helps you walk in knowing exactly what you&rsquo;re going to say, and ready for what comes back.</p></div>
-        <div class="service-item"><h3>A generational perspective built into the work.</h3><p>Active MSc research on generational dynamics means Corbelle brings an evidence-based perspective on the friction inside organisations navigating an AI mandate.</p></div>
-        <div class="service-item"><h3>Continuity through implementation.</h3><p>The decision doesn&rsquo;t end when the meeting does. Corbelle stays present through the period where original intent most often gets lost.</p></div>
+        <div class="service-item"><h3 data-copy="leadership.item1.title">A partner who understands the technology and the politics.</h3><p data-copy="leadership.item1.copy">Not just what the system does, but what approving it says, who it affects, and what it will be judged against in twelve months.</p></div>
+        <div class="service-item"><h3 data-copy="leadership.item2.title">Preparation for the difficult conversations.</h3><p data-copy="leadership.item2.copy">The board presentation. The investment committee. The team that has been asked to absorb another change. Corbelle helps you walk in knowing exactly what you&rsquo;re going to say, and ready for what comes back.</p></div>
+        <div class="service-item"><h3 data-copy="leadership.item3.title">A generational perspective built into the work.</h3><p data-copy="leadership.item3.copy">Active MSc research on generational dynamics means Corbelle brings an evidence-based perspective on the friction inside organisations navigating an AI mandate.</p></div>
+        <div class="service-item"><h3 data-copy="leadership.item4.title">Continuity through implementation.</h3><p data-copy="leadership.item4.copy">The decision doesn&rsquo;t end when the meeting does. Corbelle stays present through the period where original intent most often gets lost.</p></div>
       </div>
 
       <div class="service-fit">
-        <div><span>Right fit</span><p>CXOs, MDs, and VPs at PE-backed or owner-managed businesses who are personally responsible for technology decisions with huge career implications.</p></div>
-        <div><span>Not for</span><p>Executives looking for coaching or leadership development programmes, or leaders who want to validate decisions already made.</p></div>
+        <div><span data-copy="leadership.fit1.label">Right fit</span><p data-copy="leadership.fit1.copy">CXOs, MDs, and VPs at PE-backed or owner-managed businesses who are personally responsible for technology decisions with huge career implications.</p></div>
+        <div><span data-copy="leadership.fit2.label">Not for</span><p data-copy="leadership.fit2.copy">Executives looking for coaching or leadership development programmes, or leaders who want to validate decisions already made.</p></div>
       </div>
     </div>
   </div>
@@ -109,6 +111,7 @@
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="method.html">The Method</a>
+      <a href="/tools">Tools</a>
       <a href="contact.html">Contact</a>
     </div>
     <span class="s-footer-copy">&copy; 2026 Corbelle</span>

@@ -8,8 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/style.css" />
+<script src="assets/content-loader.js" defer></script>
 </head>
-<body class="contact-brand">
+<body class="contact-brand" data-content-page="contact">
 
 <nav class="s-nav">
   <div class="wrap">
@@ -18,6 +19,7 @@
       <li><a href="about.html">About</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="method.html">The Method</a></li>
+      <li><a href="/tools">Tools</a></li>
       <li><a href="/performance-ceiling">Diagnostic</a></li>
       <li><a class="s-nav-cta current" href="contact.html">Get in touch</a></li>
     </ul>
@@ -27,13 +29,13 @@
 <section class="contact-cover">
   <div class="wrap contact-cover-grid">
     <div>
-      <p class="s-eyebrow">Start a conversation</p>
-      <h1 class="contact-title">If there&rsquo;s a decision on your desk that matters. Let's Talk.</h1>
+      <p class="s-eyebrow" data-copy="hero.eyebrow">Start a conversation</p>
+      <h1 class="contact-title" data-copy="hero.title">If there&rsquo;s a decision on your desk that matters. Let's Talk.</h1>
     </div>
     <aside class="contact-panel">
-      <p class="contact-panel-kicker">First conversation</p>
-      <p class="contact-line">A first conversation costs nothing. What you&rsquo;ll leave with is at least a clearer sense of the question.</p>
-      <a class="s-btn" href="mailto:brendan@corbelle.ai" target="_blank" rel="noopener noreferrer">Start a conversation</a>
+      <p class="contact-panel-kicker" data-copy="panel.kicker">First conversation</p>
+      <p class="contact-line" data-copy="panel.line">A first conversation costs nothing. What you&rsquo;ll leave with is at least a clearer sense of the question.</p>
+      <a class="s-btn" href="mailto:brendan@corbelle.ai" target="_blank" rel="noopener noreferrer" data-copy="panel.cta">Start a conversation</a>
     </aside>
   </div>
 </section>
@@ -41,15 +43,15 @@
 <section class="contact-main">
   <div class="wrap contact-main-grid">
     <div class="contact-note">
-      <p class="s-eyebrow">What to expect</p>
-      <h2>A calm conversation before any commitment.</h2>
-      <p>The first call is not a sales process. It is a chance to name the decision, understand the pressure around it, and work out whether Corbelle is the right partner for the moment.</p>
+      <p class="s-eyebrow" data-copy="expect.eyebrow">What to expect</p>
+      <h2 data-copy="expect.title">A calm conversation before any commitment.</h2>
+      <p data-copy="expect.copy">The first call is not a sales process. It is a chance to name the decision, understand the pressure around it, and work out whether Corbelle is the right partner for the moment.</p>
     </div>
 
     <div class="contact-steps">
-      <div><span>01</span><h3>Name the decision</h3><p>What is on the table, who is involved, and what makes the timing difficult?</p></div>
-      <div><span>02</span><h3>Clarify the real question</h3><p>We separate the presenting technology issue from the leadership decision underneath it.</p></div>
-      <div><span>03</span><h3>Decide if there is a fit</h3><p>If the work is right for Corbelle, the next step is clear. If it is not, you will still leave with a sharper frame.</p></div>
+      <div><span data-copy="step1.number">01</span><h3 data-copy="step1.title">Name the decision</h3><p data-copy="step1.copy">What is on the table, who is involved, and what makes the timing difficult?</p></div>
+      <div><span data-copy="step2.number">02</span><h3 data-copy="step2.title">Clarify the real question</h3><p data-copy="step2.copy">We separate the presenting technology issue from the leadership decision underneath it.</p></div>
+      <div><span data-copy="step3.number">03</span><h3 data-copy="step3.title">Decide if there is a fit</h3><p data-copy="step3.copy">If the work is right for Corbelle, the next step is clear. If it is not, you will still leave with a sharper frame.</p></div>
     </div>
   </div>
 </section>
@@ -62,6 +64,7 @@
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
       <a href="method.html">The Method</a>
+      <a href="/tools">Tools</a>
     </div>
     <span class="s-footer-copy">&copy; 2026 Corbelle</span>
   </div>

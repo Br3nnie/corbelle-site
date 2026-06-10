@@ -1,0 +1,50 @@
+{
+  "hero": {
+    "eyebrow": "Tools",
+    "title": "Practical assessments for clearer decisions.",
+    "copy": [
+      "A growing set of Corbelle tools for leaders who need to pressure-test a decision, understand a leadership pattern, or create a sharper starting point for a conversation.",
+      "These are not diagnosis engines. They are structured prompts for better judgement."
+    ]
+  },
+  "intro": {
+    "eyebrow": "Available now",
+    "title": "Start with the tool closest to the decision in front of you.",
+    "copy": "Each assessment is designed to return a practical frame: what appears promising, what needs testing, and where a leadership conversation should begin."
+  },
+  "tools": [
+    {
+      "status": "Live tool",
+      "title": "Use Case Validator",
+      "description": "Pressure-test an AI or technology use case before time, money, and political capital are committed.",
+      "url": "https://usecase-validator.vercel.app/",
+      "linkLabel": "Open assessment",
+      "state": "live"
+    },
+    {
+      "status": "Live tool",
+      "title": "Magnetic Leadership",
+      "description": "Assess how your leadership presence is experienced, where it creates pull, and where it may create drag.",
+      "url": "https://magnetic-leadership.vercel.app/",
+      "linkLabel": "Open assessment",
+      "state": "live"
+    },
+    {
+      "status": "Coming soon",
+      "title": "Decision Readiness",
+      "description": "A short assessment for leaders preparing to take a major technology recommendation to board or investment committee.",
+      "state": "soon"
+    },
+    {
+      "status": "Coming soon",
+      "title": "AI Operating Model",
+      "description": "A practical review of whether your organisation has the ownership, capacity, and governance needed for AI adoption.",
+      "state": "soon"
+    }
+  ],
+  "note": {
+    "copy": "Future tools will live under Corbelle as dedicated assessments, with the same design language and clearer paths back into advisory conversations.",
+    "ctaLabel": "Talk through a decision",
+    "ctaUrl": "contact.html"
+  }
+}

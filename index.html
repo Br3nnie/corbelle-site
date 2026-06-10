@@ -8,8 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/style.css" />
+<script src="assets/content-loader.js" defer></script>
 </head>
-<body class="home-brand">
+<body class="home-brand" data-content-page="home">
 
 <nav class="s-nav">
   <div class="wrap">
@@ -18,6 +19,7 @@
       <li><a href="about.html">About</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="method.html">The Method</a></li>
+      <li><a href="/tools">Tools</a></li>
       <li><a href="/performance-ceiling">Diagnostic</a></li>
       <li><a class="s-nav-cta" href="contact.html">Get in touch</a></li>
     </ul>
@@ -27,13 +29,13 @@
 <section class="s-section s-hero">
   <div class="wrap s-hero-wrap">
     <div class="s-hero-copy">
-      <p class="s-eyebrow">Strategic Advisory</p>
-      <h1 class="s-h1">When you are making a decision that really matters, who do you speak to?</h1>
-      <p class="s-hero-sub"><strong>Corbelle</strong> is the boutique advisory firm for leaders navigating high-stakes technology decisions.</p>
-      <p class="s-hero-sub">Not coaching. Not consulting. Partnership.</p>
+      <p class="s-eyebrow" data-copy="hero.eyebrow">Strategic Advisory</p>
+      <h1 class="s-h1" data-copy="hero.title">When you are making a decision that really matters, who do you speak to?</h1>
+      <p class="s-hero-sub" data-copy="hero.subtitle"><strong>Corbelle</strong> is the boutique advisory firm for leaders navigating high-stakes technology decisions.</p>
+      <p class="s-hero-sub" data-copy="hero.subtitle2">Not coaching. Not consulting. Partnership.</p>
       <div class="s-btns">
-        <a class="s-btn" href="https://cal.com/brennie/30min" target="_blank" rel="noopener">Start a conversation</a>
-        <a class="s-btn s-btn-ghost" href="/performance-ceiling">Take the diagnostic</a>
+        <a class="s-btn" href="https://cal.com/brennie/30min" target="_blank" rel="noopener" data-copy="hero.primaryCta">Start a conversation</a>
+        <a class="s-btn s-btn-ghost" href="/performance-ceiling" data-copy="hero.secondaryCta">Take the diagnostic</a>
       </div>
     </div>
     <figure class="s-hero-photo">
@@ -44,24 +46,24 @@
 
 <section class="s-section s-section-alt">
   <div class="wrap">
-    <p class="s-eyebrow">The Problem</p>
-    <p class="s-italic-intro" style="max-width: none;">There&rsquo;s a kind of pressure that doesn&rsquo;t get talked about much.</p>
-    <p class="s-p" style="max-width: none;">You’re leading an organisation of fifty, a hundred, or two hundred people. A vendor has sent you a major proposal, an investor is asking about your AI strategy. The decisions are significant. The spend is real. Your political capital is at risk.</p>
-    <p class="s-p" style="max-width: none;">You could call a Big 4 firm but you’re not a big enough for them to give you a senior partner. You could bring in a niche development shop, but they’ll solve the technical problem without touching the strategic one.</p>
-    <p class="s-p" style="max-width: none;">With deadlines fast approaching, and no way to side-step the scenario, the weight of the decision is crippling you.</p>
-    <p class="s-p" style="color: var(--cream); font-weight: 500; max-width: none;">That&rsquo;s why Corbelle exists.</p>
+    <p class="s-eyebrow" data-copy="problem.eyebrow">The Problem</p>
+    <p class="s-italic-intro" style="max-width: none;" data-copy="problem.intro">There&rsquo;s a kind of pressure that doesn&rsquo;t get talked about much.</p>
+    <p class="s-p" style="max-width: none;" data-copy="problem.copy1">You&rsquo;re leading an organisation of fifty, a hundred, or two hundred people. A vendor has sent you a major proposal, an investor is asking about your AI strategy. The decisions are significant. The spend is real. Your political capital is at risk.</p>
+    <p class="s-p" style="max-width: none;" data-copy="problem.copy2">You could call a Big 4 firm but you&rsquo;re not a big enough for them to give you a senior partner. You could bring in a niche development shop, but they&rsquo;ll solve the technical problem without touching the strategic one.</p>
+    <p class="s-p" style="max-width: none;" data-copy="problem.copy3">With deadlines fast approaching, and no way to side-step the scenario, the weight of the decision is crippling you.</p>
+    <p class="s-p" style="color: var(--cream); font-weight: 500; max-width: none;" data-copy="problem.close">That&rsquo;s why Corbelle exists.</p>
     <div class="s-grid-2">
       <div class="s-grid-cell">
-        <p class="s-h4">Tech Consultancy</p>
-        <h3 class="s-h3">Clear-eyed technology strategy.</h3>
-        <p class="s-p" style="font-size: 13px;">Tech reviews, AI audits, leadership education and operating model work for sub-500 person businesses. No stake in the vendor. No incentive to overcomplicate the answer.</p>
-        <a class="s-link" href="services.html">Find out more &rarr;</a>
+        <p class="s-h4" data-copy="practice1.eyebrow">Tech Consultancy</p>
+        <h3 class="s-h3" data-copy="practice1.title">Clear-eyed technology strategy.</h3>
+        <p class="s-p" style="font-size: 13px;" data-copy="practice1.copy">Reviews, audits, AI education and operating model work for sub&#8209;500 person businesses. No stake in the vendor. No incentive to complicate what is simple.</p>
+        <a class="s-link" href="services.html" data-copy="practice.link">Find out more &rarr;</a>
       </div>
       <div class="s-grid-cell">
-        <p class="s-h4">Executive Leadership Practice</p>
-        <h3 class="s-h3">Decision advisory with career implications.</h3>
-        <p class="s-p" style="font-size: 13px;">Not coaching, a partnership. A thinking partner who stays in the room throughout the process. For leaders under decision pressure.</p>
-        <a class="s-link" href="services.html">Find out more &rarr;</a>
+        <p class="s-h4" data-copy="practice2.eyebrow">Executive Leadership Practice</p>
+        <h3 class="s-h3" data-copy="practice2.title">Advisory for decisions with career implications.</h3>
+        <p class="s-p" style="font-size: 13px;" data-copy="practice2.copy">Not coaching. A thinking&#8209;partnership for someone who stays in the room through implementation.</p>
+        <a class="s-link" href="services.html" data-copy="practice.link">Find out more &rarr;</a>
       </div>
     </div>
   </div>
@@ -69,19 +71,19 @@
 
 <section class="s-section s-section-alt2">
   <div class="wrap">
-    <p class="s-eyebrow">In their words</p>
+    <p class="s-eyebrow" data-copy="quotes.eyebrow">In their words</p>
     <div class="s-quotes">
-      <div class="s-quote"><blockquote>&ldquo;This is the kind of thinking partnership I didn&rsquo;t know I was missing until I had it.&rdquo;</blockquote><cite>CEO, Event Management business</cite></div>
-      <div class="s-quote"><blockquote>&ldquo;I walked into the board presentation knowing exactly what I was going to say and why. That&rsquo;s not something I&rsquo;ve had before.&rdquo;</blockquote><cite>COO, PE-Backed Business</cite></div>
-      <div class="s-quote"><blockquote>&ldquo;Brendan&rsquo;s value isn&rsquo;t the report. It&rsquo;s the thinking that happens before anyone writes anything.&rdquo;</blockquote><cite>VP, Corporate Finance Business</cite></div>
+      <div class="s-quote"><blockquote data-copy="quote1.copy">&ldquo;This is the kind of thinking partnership I didn&rsquo;t know I was missing until I had it.&rdquo;</blockquote><cite data-copy="quote1.cite">COO, PE-backed business</cite></div>
+      <div class="s-quote"><blockquote data-copy="quote2.copy">&ldquo;I walked into the board presentation knowing exactly what I was going to say and why. That&rsquo;s not something I&rsquo;ve had before.&rdquo;</blockquote><cite data-copy="quote2.cite">Group MD, Family Office</cite></div>
+      <div class="s-quote"><blockquote data-copy="quote3.copy">&ldquo;Brendan&rsquo;s value isn&rsquo;t the report. It&rsquo;s the thinking that happens before anyone writes anything.&rdquo;</blockquote><cite data-copy="quote3.cite">CEO, &pound;200M AUM firm</cite></div>
     </div>
   </div>
 </section>
 
 <section class="s-section s-section-alt" style="padding: 36px 0;">
   <div class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
-    <p style="font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--cream); margin: 0;">Corbelle works with a small number of clients at any one time.</p>
-    <a class="s-btn" href="https://cal.com/brennie/30min" target="_blank" rel="noopener">Start a conversation</a>
+    <p style="font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--cream); margin: 0;" data-copy="closing.copy">Corbelle works with a small number of clients at any one time.</p>
+    <a class="s-btn" href="https://cal.com/brennie/30min" target="_blank" rel="noopener" data-copy="closing.cta">Start a conversation</a>
   </div>
 </section>
 
@@ -92,6 +94,7 @@
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
       <a href="method.html">The Method</a>
+      <a href="/tools">Tools</a>
       <a href="contact.html">Contact</a>
     </div>
     <span class="s-footer-copy">&copy; 2026 Corbelle</span>

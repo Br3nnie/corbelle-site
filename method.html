@@ -8,8 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/style.css" />
+<script src="assets/content-loader.js" defer></script>
 </head>
-<body class="method-brand">
+<body class="method-brand" data-content-page="method">
 
 <nav class="s-nav">
   <div class="wrap">
@@ -18,6 +19,7 @@
       <li><a href="about.html">About</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="method.html" class="current">The Method</a></li>
+      <li><a href="/tools">Tools</a></li>
       <li><a href="/performance-ceiling">Diagnostic</a></li>
       <li><a class="s-nav-cta" href="contact.html">Get in touch</a></li>
     </ul>
@@ -27,74 +29,74 @@
 <section class="method-cover">
   <div class="wrap method-cover-grid">
     <div>
-      <p class="s-eyebrow">The Method</p>
-      <h1 class="method-title">The Clearline Method.</h1>
+      <p class="s-eyebrow" data-copy="hero.eyebrow">The Method</p>
+      <h1 class="method-title" data-copy="hero.title">The Clearline Method.</h1>
     </div>
     <div class="method-cover-copy">
-      <p>Most technology decisions go wrong before a single vendor is ever selected. They fail in the framing. It happens the moment a surface level problem is accepted at face-value, triggering an expensive solution built around entirely the wrong questions. </p>
-      <p>The Clearline Method is named for the concept of the clearline in navigation: not the shortest path, but the one that accounts for the actual terrain.</p>
+      <p data-copy="hero.copy1">Most technology decisions go wrong before a single vendor is ever selected. They fail in the framing. It happens the moment a surface level problem is accepted at face-value, triggering an expensive solution built around entirely the wrong questions.</p>
+      <p data-copy="hero.copy2">The Clearline Method is named for the concept of the clearline in navigation: not the shortest path, but the one that accounts for the actual terrain.</p>
     </div>
   </div>
 </section>
 
 <section class="method-principle">
   <div class="wrap method-principle-grid">
-    <p>Speed is a dangerous metric. Moving fast in the wrong direction only gets you to disaster sooner.</p>
-    <a class="s-btn" href="contact.html">Start a conversation</a>
+    <p data-copy="principle.copy">Speed is a dangerous metric. Moving fast in the wrong direction only gets you to disaster sooner.</p>
+    <a class="s-btn" href="contact.html" data-copy="principle.cta">Start a conversation</a>
   </div>
 </section>
 
 <section class="method-stages">
   <div class="wrap">
     <div class="method-stage">
-      <div class="method-stage-number">01</div>
+      <div class="method-stage-number" data-copy="stage1.number">01</div>
       <div class="method-stage-body">
-        <h2>Signal</h2>
-        <p class="method-stage-sub">Separating noise from what actually matters.</p>
-        <p>Before touching anything technical, Corbelle spends time understanding the business context, the decision pressure, and the political landscape. Who is pushing for this decision? What would success actually look like, for the business and for the executive personally?</p>
+        <h2 data-copy="stage1.title">Signal</h2>
+        <p class="method-stage-sub" data-copy="stage1.subtitle">Separating noise from what actually matters.</p>
+        <p data-copy="stage1.copy">Before touching anything technical, Corbelle spends time understanding the business context, the decision pressure, and the political landscape. Who is pushing for this decision? What would success actually look like, for the business and for the executive personally?</p>
       </div>
       <aside class="method-stage-output">
-        <span>Output</span>
-        <p>A Signal Brief: a short, clear document that names the real problem, the decision that needs to be made, and the pressures shaping it.</p>
+        <span data-copy="output.label">Output</span>
+        <p data-copy="stage1.output">A Signal Brief: a short, clear document that names the real problem, the decision that needs to be made, and the pressures shaping it.</p>
       </aside>
     </div>
 
     <div class="method-stage">
-      <div class="method-stage-number">02</div>
+      <div class="method-stage-number" data-copy="stage2.number">02</div>
       <div class="method-stage-body">
-        <h2>Survey</h2>
-        <p class="method-stage-sub">Understanding the landscape honestly.</p>
-        <p>With the real problem named, Corbelle maps what is actually in front of us. Existing technology. Vendor proposals. Team capacity. A situational assessment that includes the human and political dimensions of the decision.</p>
+        <h2 data-copy="stage2.title">Survey</h2>
+        <p class="method-stage-sub" data-copy="stage2.subtitle">Understanding the landscape honestly.</p>
+        <p data-copy="stage2.copy">With the real problem named, Corbelle maps what is actually in front of us. Existing technology. Vendor proposals. Team capacity. A situational assessment that includes the human and political dimensions of the decision.</p>
       </div>
       <aside class="method-stage-output">
-        <span>Output</span>
-        <p>A Survey Report: a leadership-ready assessment of the current state, the options available, and what each option actually implies in terms of cost, risk, and complexity.</p>
+        <span data-copy="output.label">Output</span>
+        <p data-copy="stage2.output">A Survey Report: a leadership-ready assessment of the current state, the options available, and what each option actually implies in terms of cost, risk, and complexity.</p>
       </aside>
     </div>
 
     <div class="method-stage">
-      <div class="method-stage-number">03</div>
+      <div class="method-stage-number" data-copy="stage3.number">03</div>
       <div class="method-stage-body">
-        <h2>Sight</h2>
-        <p class="method-stage-sub">Building a recommendation that holds.</p>
-        <p>Using the Signal Brief and Survey Report, Corbelle develops a clear direction: a recommendation with a rationale that can be explained, defended, and owned. This stage also prepares the executive for the boardroom, the investment committee, the team meeting.</p>
+        <h2 data-copy="stage3.title">Sight</h2>
+        <p class="method-stage-sub" data-copy="stage3.subtitle">Building a recommendation that holds.</p>
+        <p data-copy="stage3.copy">Using the Signal Brief and Survey Report, Corbelle develops a clear direction: a recommendation with a rationale that can be explained, defended, and owned. This stage also prepares the executive for the boardroom, the investment committee, the team meeting.</p>
       </div>
       <aside class="method-stage-output">
-        <span>Output</span>
-        <p>A Decision Document: the recommendation, the reasoning, the key assumptions, and a framework for making the case.</p>
+        <span data-copy="output.label">Output</span>
+        <p data-copy="stage3.output">A Decision Document: the recommendation, the reasoning, the key assumptions, and a framework for making the case.</p>
       </aside>
     </div>
 
     <div class="method-stage">
-      <div class="method-stage-number">04</div>
+      <div class="method-stage-number" data-copy="stage4.number">04</div>
       <div class="method-stage-body">
-        <h2>Stand</h2>
-        <p class="method-stage-sub">Holding the decision through implementation.</p>
-        <p>Decisions are tested once they leave the meeting. They are challenged, revisited, and eroded. This stage provides ongoing advisory support, not managing the work, but ensuring the original strategic intent is preserved as conditions shift and pressures mount.</p>
+        <h2 data-copy="stage4.title">Stand</h2>
+        <p class="method-stage-sub" data-copy="stage4.subtitle">Holding the decision through implementation.</p>
+        <p data-copy="stage4.copy">Decisions are tested once they leave the meeting. They are challenged, revisited, and eroded. This stage provides ongoing advisory support, not managing the work, but ensuring the original strategic intent is preserved as conditions shift and pressures mount.</p>
       </div>
       <aside class="method-stage-output">
-        <span>Output</span>
-        <p>Decision integrity. A confidential partner to think with as new information emerges.</p>
+        <span data-copy="output.label">Output</span>
+        <p data-copy="stage4.output">Decision integrity. A confidential partner to think with as new information emerges.</p>
       </aside>
     </div>
   </div>
@@ -103,12 +105,12 @@
 <section class="method-practice">
   <div class="wrap method-practice-grid">
     <div>
-      <p class="s-eyebrow">Clearline in practice</p>
-      <h2>How the method flexes by engagement.</h2>
+      <p class="s-eyebrow" data-copy="practice.eyebrow">Clearline in practice</p>
+      <h2 data-copy="practice.title">How the method flexes by engagement.</h2>
     </div>
     <div class="method-practice-cards">
-      <div><span>Tech Consultancy</span><p>Engagements typically run through Stages 1&ndash;3, delivering a complete, leadership-ready recommendation over four to eight weeks.</p></div>
-      <div><span>Executive Leadership Practice</span><p>Engagements run all four stages, with particular depth in Stage&nbsp;1 and Stage&nbsp;4.</p></div>
+      <div><span data-copy="practice.card1.label">Tech Consultancy</span><p data-copy="practice.card1.copy">Engagements typically run through Stages 1&ndash;3, delivering a complete, leadership-ready recommendation over four to eight weeks.</p></div>
+      <div><span data-copy="practice.card2.label">Executive Leadership Practice</span><p data-copy="practice.card2.copy">Engagements run all four stages, with particular depth in Stage&nbsp;1 and Stage&nbsp;4.</p></div>
     </div>
   </div>
 </section>
@@ -120,6 +122,7 @@
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
+      <a href="/tools">Tools</a>
       <a href="contact.html">Contact</a>
     </div>
     <span class="s-footer-copy">&copy; 2026 Corbelle</span>

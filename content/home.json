@@ -1,0 +1,34 @@
+{
+  "html": {
+    "hero.subtitle": "<strong>Corbelle</strong> is the boutique advisory firm for leaders navigating high-stakes technology decisions."
+  },
+  "text": {
+    "hero.eyebrow": "Strategic Advisory",
+    "hero.title": "When you are making a decision that really matters, who do you speak to?",
+    "hero.subtitle2": "Not coaching. Not consulting. Partnership.",
+    "hero.primaryCta": "Start a conversation",
+    "hero.secondaryCta": "Take the diagnostic",
+    "problem.eyebrow": "The Problem",
+    "problem.intro": "There’s a kind of pressure that doesn’t get talked about much.",
+    "problem.copy1": "You’re leading an organisation of fifty, a hundred, or two hundred people. A vendor has sent you a major proposal, an investor is asking about your AI strategy. The decisions are significant. The spend is real. Your political capital is at risk.",
+    "problem.copy2": "You could call a Big 4 firm but you’re not a big enough for them to give you a senior partner. You could bring in a niche development shop, but they’ll solve the technical problem without touching the strategic one.",
+    "problem.copy3": "With deadlines fast approaching, and no way to side-step the scenario, the weight of the decision is crippling you.",
+    "problem.close": "That’s why Corbelle exists.",
+    "practice1.eyebrow": "Tech Consultancy",
+    "practice1.title": "Clear-eyed technology strategy.",
+    "practice1.copy": "Tech reviews, AI audits, leadership education and operating model work for sub-500 person businesses. No stake in the vendor. No incentive to overcomplicate the answer.",
+    "practice2.eyebrow": "Executive Leadership Practice",
+    "practice2.title": "Decision advisory with career implications.",
+    "practice2.copy": "Not coaching, a partnership. A thinking partner who stays in the room throughout the process. For leaders under decision pressure.",
+    "practice.link": "Find out more →",
+    "quotes.eyebrow": "In their words",
+    "quote1.copy": "“This is the kind of thinking partnership I didn’t know I was missing until I had it.”",
+    "quote1.cite": "CEO, Event Management business",
+    "quote2.copy": "“I walked into the board presentation knowing exactly what I was going to say and why. That’s not something I’ve had before.”",
+    "quote2.cite": "COO, PE-Backed Business",
+    "quote3.copy": "“Brendan’s value isn’t the report. It’s the thinking that happens before anyone writes anything.”",
+    "quote3.cite": "VP, Corporate Finance Business",
+    "closing.copy": "Corbelle works with a small number of clients at any one time.",
+    "closing.cta": "Start a conversation"
+  }
+}
