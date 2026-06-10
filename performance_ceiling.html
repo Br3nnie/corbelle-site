@@ -30,60 +30,70 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── NAV ── */
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: var(--charcoal);
-    padding: 0 2.5rem;
-    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
-    height: 52px;
-    border-bottom: 2px solid var(--teal);
+  /* ── SITE NAV ── */
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  .s-nav {
+    background: rgba(28,31,36,0.97);
+    border-bottom: 1px solid rgba(255,247,247,0.12);
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
-  .nav-logo {
-    font-family: 'Sora', sans-serif;
-    font-size: 1rem; font-weight: 700;
-    color: #F2F2F2; letter-spacing: 0.08em;
-    text-decoration: none;
-  }
-  .nav-logo span { color: var(--teal); }
-  .nav-meta { font-size: 0.75rem; color: var(--sand); letter-spacing: 0.05em; }
-  .nav-actions {
+  .s-nav .wrap {
+    height: 100%;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    justify-self: center;
+    justify-content: space-between;
   }
-  .nav-cta {
+  .s-logo {
     font-family: 'Sora', sans-serif;
-    font-size: 0.68rem;
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #F2F2F2;
+    text-decoration: none;
+  }
+  .s-logo::after {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-left: 10px;
+    border-radius: 50%;
+    background: var(--teal);
+    vertical-align: 1px;
+  }
+  .s-nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    list-style: none;
+  }
+  .s-nav-links a {
+    color: rgba(242,242,242,0.72);
+    font-family: 'Sora', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     text-decoration: none;
+    transition: color 0.15s;
     white-space: nowrap;
-    color: white;
+  }
+  .s-nav-links a:hover,
+  .s-nav-links a.current {
+    color: #F2F2F2;
+  }
+  .s-nav-cta {
+    color: #F2F2F2 !important;
     background: var(--teal);
     border-radius: 4px;
-    padding: 0.45rem 0.75rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
+    padding: 8px 14px;
   }
-  .nav-cta--secondary {
-    color: var(--sand);
-    background: transparent;
-    border: 1px solid rgba(217,205,191,0.3);
-    border-radius: 4px;
-    padding: calc(0.45rem - 1px) 0.75rem;
-  }
-  .nav-cta:hover { background: #0f6872; }
-  .nav-cta--secondary:hover {
-    color: #F2F2F2;
-    background: rgba(255,255,255,0.06);
-    border-color: rgba(217,205,191,0.55);
-  }
-  .nav-meta {
-    justify-self: end;
+  .s-nav-cta:hover {
+    background: #0f6872;
   }
 
   .float-fab {
@@ -118,38 +128,25 @@
   }
 
   @media (max-width: 640px) {
-    .nav {
-      grid-template-columns: auto 1fr;
-      gap: 0.5rem;
-      height: 50px;
-      padding: 0 0.75rem;
-      overflow: hidden;
+    .wrap { padding: 0 24px; }
+    .s-nav { height: auto; }
+    .s-nav .wrap {
+      min-height: 60px;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      padding-top: 14px;
+      padding-bottom: 14px;
     }
-
-    .nav-logo {
-      font-size: 0.76rem;
-      letter-spacing: 0.1em;
+    .s-nav-links {
+      width: 100%;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 2px;
     }
-
-    .nav-actions {
-      justify-self: end;
-      gap: 0;
-      min-width: 0;
-    }
-
-    .nav-meta {
-      display: none;
-    }
-
-    .nav-cta--secondary {
-      display: none;
-    }
-
-    .nav-cta {
-      font-size: 0.62rem;
-      letter-spacing: 0.08em;
-      padding: 0.48rem 0.62rem;
-      border-radius: 3px;
+    .s-nav-links a {
+      font-size: 11px;
     }
 
     .float-fab {
@@ -166,15 +163,13 @@
       bottom: 3.8rem;
     }
 
-    .cover {
-      padding-top: 100px;
-    }
+    .cover { padding-top: 72px; }
   }
 
   /* ── COVER ── */
   .cover {
     background: var(--charcoal);
-    padding: 120px 0 80px;
+    padding: 84px 0 80px;
     position: relative;
     overflow: hidden;
   }
@@ -932,13 +927,18 @@
 <body>
 
 <!-- NAV -->
-<nav class="nav">
-  <a class="nav-logo" href="https://corbelle.ai/">COR<span>BE</span>LLE</a>
-  <div class="nav-actions">
-    <a class="nav-cta" href="/performance-ceiling">Diagnostic</a>
-    <a class="nav-cta nav-cta--secondary" href="mailto:brendan@corbelle.ai" target="_blank" rel="noopener">Get in touch</a>
+<nav class="s-nav">
+  <div class="wrap">
+    <a class="s-logo" href="https://corbelle.ai/">Corbelle</a>
+    <ul class="s-nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="method.html">The Method</a></li>
+      <li><a href="/tools">Tools</a></li>
+      <li><a href="/performance-ceiling" class="current">Diagnostic</a></li>
+      <li><a class="s-nav-cta" href="contact.html">Get in touch</a></li>
+    </ul>
   </div>
-  <span class="nav-meta">The Performance Ceiling &nbsp;|&nbsp; 2026</span>
 </nav>
 <button class="float-fab share-fab" type="button" onclick="shareReport()">Share</button>
 <button class="float-fab print-fab" type="button" onclick="window.print()">Print PDF</button>
