@@ -22,8 +22,10 @@
 
     if (isLive) {
       card.href = tool.url;
-      card.target = "_blank";
-      card.rel = "noopener";
+      if (!tool.url.startsWith("/")) {
+        card.target = "_blank";
+        card.rel = "noopener";
+      }
     }
 
     const status = document.createElement("span");

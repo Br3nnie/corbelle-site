@@ -2,9 +2,9 @@
     "rewrites": [
           { "source": "/performance-ceiling", "destination": "/performance_ceiling.html" },
           { "source": "/tools", "destination": "/tools.html" },
-          { "source": "/usecasevalidator", "destination": "https://usecase-validator.vercel.app/" },
-          { "source": "/usecasevalidator/:path*", "destination": "https://usecase-validator.vercel.app/:path*" },
-          { "source": "/magneticleadership", "destination": "https://magnetic-leadership.vercel.app/" },
-          { "source": "/magneticleadership/:path*", "destination": "https://magnetic-leadership.vercel.app/:path*" }
+          { "source": "/usecasevalidator", "destination": "/usecasevalidator.html" },
+          { "source": "/usecasevalidator/:path*", "destination": "/usecasevalidator.html" },
+          { "source": "/magneticleadership", "destination": "/magneticleadership.html" },
+          { "source": "/magneticleadership/:path*", "destination": "/magneticleadership.html" }
     ]
 }
