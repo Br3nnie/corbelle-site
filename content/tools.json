@@ -17,7 +17,7 @@
       "status": "Live tool",
       "title": "Use Case Validator",
       "description": "Pressure-test an AI or technology use case before time, money, and political capital are committed.",
-      "url": "https://usecase-validator.vercel.app/",
+      "url": "/usecasevalidator",
       "linkLabel": "Open assessment",
       "state": "live"
     },
@@ -25,7 +25,7 @@
       "status": "Live tool",
       "title": "Magnetic Leadership",
       "description": "Assess how your leadership presence is experienced, where it creates pull, and where it may create drag.",
-      "url": "https://magnetic-leadership.vercel.app/",
+      "url": "/magneticleadership",
       "linkLabel": "Open assessment",
       "state": "live"
     },
