@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thank you — Corbelle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/style.css" />
+<style>
+  body.thankyou-brand {
+    background: var(--brand-charcoal, #1C1F24);
+    color: #F2F2F2;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .thankyou-brand .s-nav {
+    background: rgba(28,31,36,0.97);
+    border-bottom: 1px solid rgba(217,205,191,0.18);
+  }
+
+  .thankyou-brand .s-logo,
+  .thankyou-brand .s-nav-links a {
+    font-family: 'Sora', sans-serif;
+  }
+
+  .thankyou-brand .s-logo::after {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-left: 10px;
+    border-radius: 50%;
+    background: var(--brand-teal, #0E5A64);
+    vertical-align: 1px;
+  }
+
+  .thankyou-brand .s-nav-links a {
+    color: rgba(242,242,242,0.72);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .thankyou-brand .s-nav-links a:hover,
+  .thankyou-brand .s-nav-links a.current {
+    color: #F2F2F2;
+  }
+
+  .thankyou-brand .s-nav-cta {
+    color: #F2F2F2 !important;
+    background: var(--brand-teal, #0E5A64);
+    border: none;
+    border-radius: 4px;
+    padding: 8px 14px;
+  }
+
+  .thankyou-hero {
+    min-height: calc(100vh - 60px);
+    display: grid;
+    align-items: center;
+    padding: clamp(64px, 9vw, 108px) 0;
+    background:
+      linear-gradient(90deg, rgba(14,90,100,0.18), transparent 34%),
+      var(--brand-charcoal, #1C1F24);
+  }
+
+  .thankyou-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+    gap: clamp(40px, 7vw, 88px);
+    align-items: center;
+  }
+
+  .thankyou-kicker {
+    margin-bottom: 18px;
+    color: var(--brand-teal, #0E5A64);
+    font-family: 'Sora', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .thankyou-title {
+    max-width: 840px;
+    margin: 0 0 26px;
+    color: #F2F2F2;
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(44px, 5.8vw, 78px);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.04;
+  }
+
+  .thankyou-copy {
+    max-width: 690px;
+    margin: 0 0 34px;
+    color: rgba(245,242,238,0.76);
+    font-size: clamp(18px, 2vw, 21px);
+    line-height: 1.74;
+  }
+
+  .thankyou-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .thankyou-actions .s-btn {
+    border-radius: 4px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+  }
+
+  .thankyou-actions .s-btn:first-child {
+    background: var(--brand-teal, #0E5A64);
+    color: white;
+  }
+
+  .thankyou-panel {
+    padding: clamp(28px, 4vw, 42px);
+    background: #FFF7F7;
+    border-top: 4px solid var(--brand-teal, #0E5A64);
+    box-shadow: 0 28px 70px rgba(0,0,0,0.22);
+  }
+
+  .thankyou-panel h2 {
+    margin: 0 0 24px;
+    color: var(--brand-charcoal, #1C1F24);
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1.12;
+  }
+
+  .thankyou-next {
+    display: grid;
+    gap: 18px;
+  }
+
+  .thankyou-next div {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+  }
+
+  .thankyou-next span {
+    color: var(--brand-teal, #0E5A64);
+    font-family: 'Sora', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .thankyou-next h3 {
+    margin: 0 0 6px;
+    color: var(--brand-charcoal, #1C1F24);
+    font-family: 'Sora', sans-serif;
+    font-size: 18px;
+  }
+
+  .thankyou-next p {
+    margin: 0;
+    color: #4a4e54;
+    font-size: 16px;
+    line-height: 1.64;
+  }
+
+  .thankyou-strip {
+    padding: 34px 0;
+    background: #FFF7F7;
+    border-top: 1px solid rgba(217,205,191,0.7);
+  }
+
+  .thankyou-strip .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .thankyou-strip p {
+    max-width: 760px;
+    margin: 0;
+    color: var(--brand-charcoal, #1C1F24);
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(20px, 2.4vw, 28px);
+    font-weight: 700;
+    line-height: 1.24;
+  }
+
+  .thankyou-strip .s-link {
+    color: var(--brand-teal, #0E5A64);
+    border-color: rgba(14,90,100,0.35);
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+  }
+
+  .thankyou-brand .s-footer {
+    background: var(--brand-charcoal, #1C1F24);
+    border-top: 1px solid rgba(217,205,191,0.18);
+  }
+
+  .thankyou-brand .s-footer-logo,
+  .thankyou-brand .s-footer-links a,
+  .thankyou-brand .s-footer-copy {
+    color: rgba(242,242,242,0.5);
+    font-family: 'Sora', sans-serif;
+  }
+
+  @media (max-width: 860px) {
+    .thankyou-hero {
+      min-height: auto;
+    }
+
+    .thankyou-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .thankyou-title {
+      font-size: clamp(36px, 10vw, 52px);
+    }
+
+    .thankyou-panel {
+      padding: 24px;
+    }
+  }
+</style>
+</head>
+<body class="thankyou-brand">
+
+<nav class="s-nav">
+  <div class="wrap">
+    <a class="s-logo" href="/">Corbelle</a>
+    <ul class="s-nav-links">
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/method.html">The Method</a></li>
+      <li><a href="/tools">Tools</a></li>
+      <li><a href="/performance-ceiling">Diagnostic</a></li>
+      <li><a class="s-nav-cta" href="/contact.html">Get in touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <section class="thankyou-hero">
+    <div class="wrap thankyou-grid">
+      <div>
+        <p class="thankyou-kicker">Guide downloaded</p>
+        <h1 class="thankyou-title">The guide is on its way.</h1>
+        <p class="thankyou-copy">You now have a clearer starting point for the decision in front of you. The useful work begins when the ideas in the guide meet the pressure, politics, and timing inside your organisation.</p>
+        <div class="thankyou-actions">
+          <a class="s-btn" href="https://cal.com/brennie/30min" target="_blank" rel="noopener">Start a conversation</a>
+          <a class="s-btn s-btn-ghost" href="/tools">Explore the tools</a>
+        </div>
+      </div>
+
+      <aside class="thankyou-panel">
+        <h2>Three useful next moves.</h2>
+        <div class="thankyou-next">
+          <div>
+            <span>01</span>
+            <section>
+              <h3>Read it with one decision in mind.</h3>
+              <p>Do not treat the guide as general advice. Put one real technology decision next to it and notice which questions become harder to ignore.</p>
+            </section>
+          </div>
+          <div>
+            <span>02</span>
+            <section>
+              <h3>Run a quick pressure test.</h3>
+              <p>Use one of the Corbelle tools to turn the issue into a sharper frame before money, time, or political capital gets committed.</p>
+            </section>
+          </div>
+          <div>
+            <span>03</span>
+            <section>
+              <h3>Talk before the decision hardens.</h3>
+              <p>A first conversation costs nothing. You will leave with at least a clearer sense of the real question.</p>
+            </section>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="thankyou-strip">
+    <div class="wrap">
+      <p>If the guide has put a specific decision in your head, that is usually the one worth talking about.</p>
+      <a class="s-link" href="mailto:brendan@corbelle.ai?subject=Guide%20follow-up">Email Brendan</a>
+    </div>
+  </section>
+</main>
+
+<footer class="s-footer">
+  <div class="wrap">
+    <span class="s-footer-logo">Corbelle</span>
+    <div class="s-footer-links">
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/services.html">Services</a>
+      <a href="/method.html">The Method</a>
+      <a href="/tools">Tools</a>
+    </div>
+    <span class="s-footer-copy">&copy; 2026 Corbelle</span>
+  </div>
+</footer>
+
+</body>
+</html>
