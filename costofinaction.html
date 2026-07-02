@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cost of Inaction Diagnostic &mdash; Corbelle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#17324d;--teal:#167d88;--teal2:#0e6973;--paper:#f4f7f8;--card:#fff;--muted:#607181;--line:#dbe4e8;--good:#197044;--bad:#b73535;--amber:#a66b11;--blue:#245b89;--shadow:0 10px 30px rgba(23,50,77,.08)}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:#1d2b36;font:15px/1.45 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select{font:inherit}
+    .shell{max-width:1500px;margin:auto;padding:22px}.hero{background:linear-gradient(125deg,#102b44,#173d58 62%,#126b74);color:#fff;border-radius:22px;padding:28px 32px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:360px;height:360px;border:1px solid rgba(255,255,255,.13);border-radius:50%;right:-100px;top:-230px}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:800;color:#9adbe0}.hero h1{font-size:clamp(28px,4vw,48px);line-height:1.05;margin:8px 0 10px;letter-spacing:-.035em}.hero p{max-width:790px;color:#d7e7ee;margin:0}.hero-actions{position:absolute;right:30px;bottom:26px;display:flex;gap:8px;z-index:2}.btn{border:0;border-radius:9px;padding:9px 13px;font-weight:700;cursor:pointer;background:#fff;color:var(--ink)}.btn.secondary{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.24)}.btn:hover{transform:translateY(-1px)}
+    .tabs{display:flex;gap:7px;margin:18px 0 14px;overflow:auto}.tab{border:0;background:transparent;color:var(--muted);padding:10px 15px;border-radius:9px;font-weight:800;cursor:pointer;white-space:nowrap}.tab.active{background:var(--ink);color:#fff}.panel{display:none}.panel.active{display:block}
+    .notice{border-left:4px solid var(--teal);background:#e6f2f3;color:#254c55;padding:12px 15px;border-radius:0 10px 10px 0;margin-bottom:14px}.kpis{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:13px}.card{background:var(--card);border:1px solid #e6ecef;border-radius:15px;padding:18px;box-shadow:0 2px 12px rgba(23,50,77,.045)}.kpi .label,.mini-label{text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-size:11px;font-weight:800}.kpi .value{font-size:clamp(24px,3vw,38px);font-weight:850;color:var(--ink);letter-spacing:-.035em;margin:6px 0 3px}.sub{color:var(--muted);font-size:12px}.status{display:inline-block;padding:4px 8px;border-radius:999px;font-weight:800;font-size:11px}.positive{color:var(--good)}.negative{color:var(--bad)}.status.good{background:#e2f3e9;color:var(--good)}.status.warn{background:#fff0d8;color:var(--amber)}.status.bad{background:#f9e2e2;color:var(--bad)}
+    .grid2{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;margin-top:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}.card h2{font-size:17px;margin:0 0 4px;color:var(--ink)}.card h3{font-size:14px;margin:0 0 12px;color:var(--ink)}.chart{height:300px;margin-top:9px}.chart svg{width:100%;height:100%;overflow:visible}.axis{stroke:#dbe3e8;stroke-width:1}.chart-label{font-size:11px;fill:#677784}.chart-value{font-size:11px;fill:#233746;font-weight:700}.legend{display:flex;gap:18px;color:var(--muted);font-size:12px;margin-top:6px}.dot{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:5px}.scenario-table,.driver-table{width:100%;border-collapse:collapse}.scenario-table th,.scenario-table td,.driver-table th,.driver-table td{padding:10px 9px;border-bottom:1px solid var(--line);text-align:right}.scenario-table th,.driver-table th{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}.scenario-table th:first-child,.scenario-table td:first-child,.driver-table th:first-child,.driver-table td:first-child{text-align:left}.scenario-table tr:last-child td{border-bottom:0}.bar-row{display:grid;grid-template-columns:190px 1fr 100px;gap:10px;align-items:center;margin:12px 0}.bar-track{height:12px;background:#edf1f3;border-radius:999px;overflow:hidden}.bar-fill{height:100%;border-radius:999px}.bar-value{text-align:right;font-weight:800;font-variant-numeric:tabular-nums}.callout{padding:15px;border-radius:12px;background:#edf5f6;border:1px solid #d4e7e9;color:#24434a}.callout strong{color:var(--ink)}
+    .toolbar{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:12px}.client-meta{display:flex;gap:10px;flex-wrap:wrap}.field label{display:block;font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:800;margin-bottom:4px}.field input,.field select{border:1px solid #cdd9df;border-radius:8px;background:#fff;padding:8px 10px;min-width:190px;color:#243745}.input-groups{display:grid;gap:12px}.group{background:#fff;border:1px solid #e1e9ed;border-radius:14px;overflow:hidden}.group-head{padding:14px 16px;background:#eef4f5;color:var(--ink);font-weight:850;display:flex;justify-content:space-between;cursor:pointer}.group-body{padding:0 14px 12px}.group.collapsed .group-body{display:none}.driver-table input{width:112px;border:1px solid #d4dfe4;border-radius:7px;padding:7px;text-align:right;color:#174c86;background:#fbfdff}.driver-table input[type=number]:focus{outline:2px solid #78bdc4;border-color:transparent}.driver-table .evidence{width:64px}.prompt{font-size:12px;color:var(--muted);max-width:350px;text-align:left!important}.unit{color:var(--muted);font-size:12px}.range-hint{display:block;font-size:10px;color:#8796a1;margin-top:3px}.prob-warning{color:var(--bad);font-size:12px;font-weight:750;display:none}.prob-warning.show{display:block}
+    .quick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.quick-card{background:#fff;border:1px solid #e1e9ed;border-radius:14px;padding:16px}.quick-number{display:flex;align-items:center;border:1px solid #cdd9df;border-radius:9px;background:#fbfdff;overflow:hidden}.quick-number span{padding:0 10px;color:var(--muted);font-weight:800}.quick-number input{width:100%;border:0;background:transparent;padding:11px 4px;color:#174c86;font-weight:750;outline:0}.quick-card>select{width:100%;border:1px solid #cdd9df;border-radius:9px;background:#fbfdff;padding:11px;color:#174c86;font-weight:750}.quick-title{font-weight:850;color:var(--ink);margin-bottom:4px}.quick-prompt{font-size:12px;color:var(--muted);min-height:34px}.quick-evidence{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:9px;border-top:1px solid #edf1f3;font-size:11px;color:var(--muted)}.quick-evidence select{border:0;background:#eef4f5;color:#365464;border-radius:999px;padding:5px 8px;font-size:11px;font-weight:800}.advanced{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:14px}.advanced>summary{cursor:pointer;padding:15px 17px;color:var(--ink);font-weight:850}.advanced .input-groups{padding:0 12px 12px}.plan-row{display:grid;grid-template-columns:32px minmax(180px,1fr) 140px 2fr;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}.plan-row:last-child{border-bottom:0}.plan-rank{width:27px;height:27px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:850}.plan-impact{font-weight:850;text-align:right}.plan-action{color:var(--muted);font-size:12px}.evidence-note{display:inline-flex;padding:4px 8px;border-radius:999px;background:#fff0d8;color:var(--amber);font-size:10px;font-weight:850;margin-left:6px}
+    .scan-actions{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:16px;padding:16px;background:#e9f2f3;border:1px solid #d3e5e7;border-radius:14px}.scan-actions .btn{padding:12px 18px}.btn.primary{background:var(--teal);color:#fff}.reset-link{border:0;background:transparent;color:#7b8993;text-decoration:underline;font-size:12px;cursor:pointer;margin-right:auto}.scan-status{color:#47636c;font-size:12px;font-weight:700;margin-right:4px}
+    #headroom-chart{height:360px}.insight-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}.insight{background:#f1f5f6;border-radius:10px;padding:10px}.insight strong{display:block;color:var(--ink);font-size:17px}.insight span{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em;font-weight:800}.gap-label{font-size:10px;font-weight:850;fill:#8d2727}.ceiling-label{font-size:10px;font-weight:850;fill:#fff}
+    .board-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.case-card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:12px;padding:15px}.case-card h3{margin:0 0 8px;color:var(--ink);font-size:14px}.case-card p{font-size:12px;color:var(--muted);margin:0}.question-list{margin:8px 0 0;padding-left:18px}.question-list li{margin:8px 0}.method{display:grid;grid-template-columns:250px 1fr;gap:14px}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#102b44;color:#e6f4f5;padding:15px;border-radius:11px;overflow:auto}.foot{color:var(--muted);font-size:12px;text-align:center;padding:25px 0 8px}
+    dialog{border:0;border-radius:16px;padding:0;max-width:550px;width:calc(100% - 30px);box-shadow:0 20px 70px #102b4466}dialog::backdrop{background:#102b4477}.modal{padding:22px}.modal textarea{width:100%;height:220px;border:1px solid var(--line);border-radius:10px;padding:10px;font:12px ui-monospace,monospace}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
+    @media(max-width:1050px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.board-grid{grid-template-columns:repeat(2,1fr)}.hero-actions{position:static;margin-top:18px}.method{grid-template-columns:1fr}}
+    @media(max-width:680px){.shell{padding:10px}.hero{padding:22px}.kpis,.grid3,.board-grid,.quick-grid{grid-template-columns:1fr}.driver-table{min-width:920px}.group-body{overflow:auto}.toolbar{align-items:stretch;flex-direction:column}.bar-row{grid-template-columns:125px 1fr 80px}.scenario-wrap{overflow:auto}.scenario-table{min-width:680px}.plan-row{grid-template-columns:28px 1fr}.plan-impact{text-align:left}.plan-action{grid-column:2}.scan-actions{display:grid;grid-template-columns:1fr}.scan-actions .btn{width:100%}.reset-link{order:3;margin:2px auto 0}.scan-status{display:none}.insight-strip{grid-template-columns:repeat(2,1fr)}#headroom-chart{height:330px}}
+    @media print{body{background:#fff}.shell{max-width:none;padding:0}.hero{border-radius:0;box-shadow:none}.hero-actions,.tabs,.toolbar,.no-print{display:none!important}.panel{display:none!important}#overview{display:block!important}.card{box-shadow:none;break-inside:avoid}.chart{height:250px}}
+
+    .costofinaction-brand{--ink:#1C1F24;--teal:#0E5A64;--teal2:#0f6872;--paper:#f5f2ee;--card:#FFF7F7;--muted:#596066;--line:rgba(28,31,36,.14);--good:#1e7a4a;--bad:#a94343;--amber:#9b6a22;--blue:#163A5F;--shadow:0 14px 34px rgba(28,31,36,.055);background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif}
+    .costofinaction-brand .s-nav{background:rgba(28,31,36,.98);border-bottom:2px solid var(--teal);height:60px;position:sticky;top:0;z-index:100}.costofinaction-brand .s-nav .wrap{max-width:1100px;margin:0 auto;padding:0 48px;height:100%;display:flex;align-items:center;justify-content:space-between}.costofinaction-brand .s-logo{font-family:Sora,sans-serif;font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F2F2F2;text-decoration:none}.costofinaction-brand .s-logo:after{content:"";display:block;width:20px;height:2px;margin:2px auto 0;background:var(--teal)}.costofinaction-brand .s-nav-links{display:flex;gap:28px;align-items:center;list-style:none;margin:0;padding:0}.costofinaction-brand .s-nav-links a{color:rgba(242,242,242,.72);font-family:Sora,sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap}.costofinaction-brand .s-nav-links a:hover,.costofinaction-brand .s-nav-links a.current{color:#F2F2F2}.costofinaction-brand .s-nav-cta{color:#F2F2F2!important;background:var(--teal);border-radius:4px;padding:8px 14px}.costofinaction-brand .shell{max-width:1280px;padding:0 48px 24px}.costofinaction-brand .hero{margin:0 -48px 0;padding:clamp(56px,7vw,88px) 48px;background:var(--ink);border-radius:0;box-shadow:none;border-bottom:2px solid var(--teal)}.costofinaction-brand .hero:after{content:none}.costofinaction-brand .eyebrow{font-family:Sora,sans-serif;color:var(--teal);letter-spacing:.16em;font-size:11px;font-weight:700}.costofinaction-brand .hero h1{font-family:Sora,sans-serif;font-size:clamp(40px,5vw,68px);font-weight:700;line-height:1.06;letter-spacing:0;color:#F2F2F2;margin:10px 0 18px}.costofinaction-brand .hero p{max-width:760px;color:rgba(245,242,238,.76);font-size:18px;line-height:1.7}.costofinaction-brand .hero-actions{right:48px;bottom:36px}.costofinaction-brand .btn{border-radius:4px;font-family:Sora,sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}.costofinaction-brand .btn.primary,.costofinaction-brand .modal-actions .btn[style*="teal"]{background:var(--teal)!important}.costofinaction-brand .btn.secondary{border:1px solid rgba(217,205,191,.34);background:transparent;color:var(--card)}.costofinaction-brand .tabs{margin:22px 0 18px;border-bottom:1px solid var(--line);gap:0}.costofinaction-brand .tab{border-radius:0;padding:14px 16px;font-family:Sora,sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase}.costofinaction-brand .tab.active{background:transparent;color:var(--teal);box-shadow:inset 0 -3px 0 var(--teal)}.costofinaction-brand .card,.costofinaction-brand .quick-card,.costofinaction-brand .group,.costofinaction-brand .advanced,.costofinaction-brand .case-card{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:0 0 6px 6px;box-shadow:var(--shadow)}.costofinaction-brand .card h2,.costofinaction-brand .card h3,.costofinaction-brand .quick-title{font-family:Sora,sans-serif;color:var(--ink)}.costofinaction-brand .notice,.costofinaction-brand .callout,.costofinaction-brand .scan-actions{background:#e6f2f4;border-color:rgba(14,90,100,.25);border-radius:0 4px 4px 0}.costofinaction-brand .kpi .label,.costofinaction-brand .mini-label,.costofinaction-brand .scenario-table th,.costofinaction-brand .driver-table th{font-family:Sora,sans-serif;color:var(--teal)}.costofinaction-brand .quick-number,.costofinaction-brand .field input,.costofinaction-brand .field select,.costofinaction-brand .quick-card>select,.costofinaction-brand .driver-table input{border-radius:4px;border-color:rgba(28,31,36,.18);color:var(--ink)}.costofinaction-brand .group-head{background:#f5f2ee;font-family:Sora,sans-serif}.costofinaction-brand .formula{background:var(--ink);border-radius:4px}.costofinaction-brand .foot{color:#6b7178}.costofinaction-brand .dot{border-radius:1px}@media(max-width:860px){.costofinaction-brand .s-nav{height:auto}.costofinaction-brand .s-nav .wrap{min-height:60px;align-items:flex-start;flex-direction:column;justify-content:center;gap:12px;padding:14px 24px}.costofinaction-brand .s-nav-links{width:100%;gap:16px;overflow-x:auto;padding-bottom:2px}.costofinaction-brand .shell{padding:0 18px 18px}.costofinaction-brand .hero{margin:0 -18px;padding:44px 18px}.costofinaction-brand .hero-actions{position:static;margin-top:24px}.costofinaction-brand .hero h1{font-size:clamp(34px,9vw,50px)}}
+  
+  </style>
+</head>
+<body class="costofinaction-brand">
+<nav class="s-nav">
+  <div class="wrap">
+    <a class="s-logo" href="/">Corbelle</a>
+    <ul class="s-nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="method.html">The Method</a></li>
+      <li><a href="/tools">Tools</a></li>
+      <li><a class="s-nav-cta" href="contact.html">Get in touch</a></li>
+    </ul>
+  </div>
+</nav>
+<main class="shell">
+  <header class="hero">
+    <div class="eyebrow">Decision tool · single-system investment diagnostic</div>
+    <h1>Cost of Inaction Diagnostic</h1>
+    <p>Put a board-level financial frame around the decision to defer a technology investment, before operating drag, risk and constrained growth turn an avoidable choice into a forced transformation.</p>
+    <div class="hero-actions"><button class="btn secondary" onclick="openCaseDialog()">Save / load case</button><button class="btn" onclick="window.print()">Print board view</button></div>
+  </header>
+
+  <nav class="tabs" aria-label="Page sections">
+    <button class="tab active" data-tab="overview">Decision view</button>
+    <button class="tab" data-tab="diagnostic">8-minute scan</button>
+    <button class="tab" data-tab="evidence">Range reduction plan</button>
+    <button class="tab" data-tab="board">Board case</button>
+    <button class="tab" data-tab="method">Method & safeguards</button>
+  </nav>
+
+  <section id="overview" class="panel active">
+    <div class="notice"><strong>Directional starting case.</strong> Complete the eight-question scan to generate a financial figure. The range narrows as estimates are replaced with evidence.</div>
+    <div class="kpis">
+      <article class="card kpi"><div class="label">Cost of inaction</div><div class="value" id="kpi-expected">&mdash;</div><div class="sub">Expected present value over ten years</div></article>
+      <article class="card kpi"><div class="label">Plausible range</div><div class="value" id="kpi-range">&mdash;</div><div class="sub">P10–P90, excluding the separate stress cases</div></article>
+      <article class="card kpi"><div class="label">Investment wins</div><div class="value" id="kpi-win">&mdash;</div><div class="sub">Share of simulated outcomes above &pound;0</div></article>
+      <article class="card kpi"><div class="label">Evidence confidence</div><div class="value" id="kpi-confidence">&mdash;</div><div class="sub" id="confidence-label">Evidence quality, not statistical certainty</div></article>
+    </div>
+
+    <div class="grid2">
+      <article class="card"><h2>Economic cost: business as usual vs invest now</h2><div class="sub">Present value over ten years · corner cases shown as stress tests</div><div id="cost-chart" class="chart" aria-label="Cost comparison chart"></div><div class="legend"><span><i class="dot" style="background:#1b6685"></i>Business as usual</span><span><i class="dot" style="background:#e27a3f"></i>Invest now</span></div></article>
+      <article class="card"><h2>Stress-test table</h2><div class="sub">These deliberately stack assumptions; they do not define the plausible range.</div><div class="scenario-wrap"><table class="scenario-table"><thead><tr><th>Case</th><th>Cost of inaction</th><th>Payback</th><th>Constraint point</th></tr></thead><tbody id="scenario-body"></tbody></table></div><div id="decision-callout" class="callout"></div></article>
+    </div>
+
+    <div class="grid2">
+      <article class="card"><h2>Capacity constraint view</h2><div class="sub">Demand versus sustainable capacity · red gap labels show annual profit exposed</div><div id="headroom-chart" class="chart"></div><div class="legend"><span><i class="dot" style="background:#17324d"></i>Business demand</span><span><i class="dot" style="background:#a94343"></i>BAU capacity</span><span><i class="dot" style="background:#167d88"></i>Invest-now capacity</span><span><i class="dot" style="background:#f2b5b5"></i>Profit exposed</span></div><div id="headroom-insights" class="insight-strip"></div></article>
+      <article class="card"><h2>What drives the Base case</h2><div class="sub">Present-value contribution to the result</div><div id="driver-bars"></div></article>
+    </div>
+  </section>
+
+  <section id="diagnostic" class="panel">
+    <div class="toolbar">
+      <div class="client-meta"><div class="field"><label>Client / company</label><input id="client-name" placeholder="Illustrative SME"></div><div class="field"><label>System being assessed</label><input id="system-name" placeholder="ERP, WMS, CRM…"></div><div class="field"><label>Currency</label><select id="currency"><option value="GBP">GBP &pound;</option><option value="EUR">EUR &euro;</option><option value="USD">USD $</option></select></div></div>
+      <div class="scan-status">Eight answers · live calculation</div>
+    </div>
+    <div class="notice"><strong>Ask what people can observe.</strong> The model derives the technical and financial assumptions behind the scenes. Mark each answer as estimated, observed or verified; this changes evidence strength, not the answer itself.</div>
+    <div id="quick-grid" class="quick-grid"></div>
+    <div class="scan-actions"><button class="reset-link" onclick="confirmReset()">Start over</button><button class="btn" onclick="openCaseDialog()">Save case</button><button class="btn primary" onclick="showTab('overview')">View Cost of Inaction &rarr;</button></div>
+    <details class="advanced"><summary>Advanced assumptions and audit trail</summary><div id="input-groups" class="input-groups"></div></details>
+  </section>
+
+  <section id="evidence" class="panel">
+    <div class="notice"><strong>Reduce the range by learning, not by negotiating the numbers.</strong> These are the assumptions currently creating the largest financial swing. Contributions overlap, so they should not be added together.</div>
+    <article class="card"><h2>Next best evidence to collect</h2><div class="sub">Ranked by one-at-a-time movement in Cost of Inaction</div><div id="range-plan"></div></article>
+    <div class="grid2"><article class="card"><h2>Suggested evidence sprint</h2><ol class="question-list"><li>Pull revenue, margin and current system spend from management accounts.</li><li>Sample workaround time for two representative weeks.</li><li>Review twelve months of incidents, delays and recovery effort.</li><li>Connect transaction-volume growth to an observable system limit.</li><li>Obtain a vendor estimate and compare it with one similar implementation.</li></ol></article><article class="card"><h2>Range discipline</h2><p>Known company facts stay fixed. The plausible range comes from repeated draws across uncertain assumptions and is reported as P10–P90. Fully stacked Low and High cases remain visible only as stress tests.</p><div id="range-summary" class="callout"></div></article></div>
+  </section>
+
+  <section id="board" class="panel">
+    <div class="board-grid">
+      <article class="case-card"><h3>Strategic case</h3><p>Why must the organisation act, and which growth or control objective is the current system blocking?</p></article>
+      <article class="case-card"><h3>Economic case</h3><p>Does invest now create more present value than business as usual across plausible scenarios?</p></article>
+      <article class="case-card"><h3>Commercial case</h3><p>Can the market supply the required capability, migration, support and exit terms?</p></article>
+      <article class="case-card"><h3>Financial case</h3><p>Can the company fund implementation, transition and recurring costs without creating liquidity stress?</p></article>
+      <article class="case-card"><h3>Management case</h3><p>Who owns adoption, benefit realisation, data migration, controls and post-launch measurement?</p></article>
+    </div>
+    <div class="grid2">
+      <article class="card"><h2>Board questions the number cannot answer alone</h2><ul class="question-list"><li>Which constraint is observable today, and what evidence would prove it is approaching?</li><li>What has to change in process and behaviour for the technology benefit to appear?</li><li>What tail risk matters even if its expected value is modest?</li><li>What option does this investment create: scale, speed, data, AI readiness or acquisition integration?</li><li>At what trigger point will management revisit a decision to defer?</li></ul></article>
+      <article class="card"><h2>Recommended decision language</h2><div id="board-language" class="callout"></div><h3 style="margin-top:18px">Minimum evidence pack</h3><ul class="question-list"><li>Management accounts and growth plan</li><li>System, incident and workaround cost records</li><li>Transaction-volume and capacity evidence</li><li>Vendor support / end-of-life position</li><li>Implementation estimate and comparable-project forecast error</li><li>Named benefit owners and measurement plan</li></ul></article>
+    </div>
+  </section>
+
+  <section id="method" class="panel">
+    <div class="method">
+      <aside class="card"><h2>Model boundary</h2><p class="sub">One system. Ten annual periods. Nominal cash flows. P10–P90 plausible range plus separate corner-case stress tests.</p><hr style="border:0;border-top:1px solid var(--line);margin:16px 0"><span class="status good">No EV double count</span><p class="sub">Enterprise value is not added on top of the same profit benefits.</p><span class="status warn">Option value disclosed</span><p class="sub">AI readiness, flexibility and data value remain qualitative until evidenced.</p></aside>
+      <article class="card"><h2>Core equation</h2><div class="formula">Cost of Inaction = PV(BAU economic costs) &minus; PV(Invest-now economic costs)</div><div class="grid3"><div><h3>BAU economic costs</h3><p class="sub">Legacy run cost + manual work + expected incident loss + forced remediation + constrained contribution.</p></div><div><h3>Invest-now costs</h3><p class="sub">Implementation + transition + new run cost + residual manual work + residual risk + any remaining constraint.</p></div><div><h3>Decision rule</h3><p class="sub">Positive supports investing now. Negative supports deferral within quantified scope&mdash;subject to tail risks and strategic options.</p></div></div><h2 style="margin-top:22px">Range and confidence safeguard</h2><p>The plausible range is the 10th to 90th percentile from deterministic simulation across uncertain assumptions. Fully stacked extremes are reported separately. Evidence strength combines the quality of supporting data with the remaining width of that P10–P90 range; it is not a statistical confidence interval.</p><h2 style="margin-top:22px">Research foundations</h2><p class="sub">Architecture informed by HM Treasury Green Book options appraisal and optimism-bias guidance; NIST SP 800-30 likelihood/impact risk decomposition; empirical technical-debt principal/interest research; and capability-based real-options approaches to IT investment. Full citations are retained in the companion workbook.</p></article>
+    </div>
+  </section>
+
+  <footer class="foot">Cost of Inaction Diagnostic · Built for facilitated SME technology-investment conversations</footer>
+</main>
+
+<dialog id="case-dialog"><div class="modal"><h2 style="margin-top:0">Save or load a client case</h2><p class="sub">Copy this JSON into the client file, or paste a saved case and load it. Nothing is uploaded.</p><textarea id="case-json"></textarea><div class="modal-actions"><button class="btn" onclick="document.getElementById('case-dialog').close()">Close</button><button class="btn" style="background:var(--teal);color:#fff" onclick="loadCase()">Load JSON</button><button class="btn" style="background:var(--ink);color:#fff" onclick="copyCase(this)">Copy JSON</button></div></div></dialog>
+
+<script>
+const GROUPS=[
+ {name:'Decision framing',items:[
+  ['discount','Nominal discount rate','%',.12,.10,.08,3,.03,'Use the company hurdle rate or WACC; nominal because projected cash flows include inflation.'],
+  ['inflation','General inflation','%',.02,.025,.04,3,.02,'Use the management forecast or central planning assumption.']]},
+ {name:'Growth and operating constraint',items:[
+  ['revenue','Current annual revenue','currency',6000000,10000000,18000000,5,.06,'Tie to the latest management accounts.'],
+  ['growth','Unconstrained annual revenue growth','%',.03,.07,.12,3,.08,'Use the commercial plan before system constraints&mdash;not suppressed historic growth.'],
+  ['margin','Contribution margin on constrained sales','%',.20,.32,.45,3,.07,'Use incremental contribution, not revenue and not EBITDA margin.'],
+  ['headroom','Current system capacity headroom','%',.40,.25,.10,2,.09,'How much additional order, transaction or reporting volume can the system sustain today?'],
+  ['legacyCapacityGrowth','Legacy capacity growth per year','%',.04,.02,0,2,.05,'Minor changes and process tuning that expand capacity without replacement.'],
+  ['maxConstraint','Maximum revenue constrained','%',.03,.08,.18,2,.08,'Maximum share of achievable revenue delayed or lost after capacity is exceeded.']]},
+ {name:'Cost and risk of business as usual',items:[
+  ['legacyCost','Current annual system cash cost','currency',40000,75000,140000,4,.04,'Licences, hosting, support, contractors and system run cost.'],
+  ['legacyEscalation','Legacy cost escalation','%',.03,.08,.15,3,.05,'Scarcity and complexity premium beyond general inflation.'],
+  ['manualFte','Manual work caused by the system','FTE',1,2.5,5,3,.07,'Include only effort genuinely avoidable or productively redeployable.'],
+  ['fteCost','Fully loaded annual cost per FTE','currency',40000,52000,65000,4,.03,'Salary, employer costs, benefits and relevant overhead.'],
+  ['incidentFrequency','Annual incident frequency','count',.3,1,2.5,3,.05,'Use incident history: outages, errors, late reporting and material rework.'],
+  ['incidentImpact','Average financial impact per incident','currency',10000,50000,175000,2,.07,'Lost margin, recovery effort, compensation, expedite fees and penalties&mdash;avoid overlap.'],
+  ['riskEscalation','Risk escalation per year','%',.03,.10,.20,2,.04,'How quickly exposure grows as support, skills, integrations and controls deteriorate.'],
+  ['remediationCost','Forced remediation cost today','currency',350000,900000,2200000,2,.07,'Replacement cost if forced today; the model escalates it to the trigger year.'],
+  ['remediationYear','Forced remediation year','year',9,7,5,2,.05,'Likely year of end-of-life, failure, regulation, scale break or skill loss.']]},
+ {name:'Invest-now case',items:[
+  ['implementation','Implementation cost','currency',350000,650000,1100000,3,.05,'Software, integration, migration, partner and internal programme effort.'],
+  ['optimism','Implementation optimism-bias uplift','%',.10,.20,.35,2,.03,'Use forecast error from comparable projects where available.'],
+  ['transition','Transition and parallel-run cost','currency',40000,100000,220000,3,.02,'Training, dual running, cutover support and temporary productivity loss.'],
+  ['newRunCost','New system annual cash cost','currency',65000,120000,200000,3,.03,'Steady-state subscription, hosting, support and administration.'],
+  ['capacityUplift','New system capacity uplift','%',.35,.70,1.20,3,.04,'Immediate sustainable volume uplift after implementation.'],
+  ['newCapacityGrowth','New system capacity growth per year','%',.06,.10,.15,3,.03,'Scalability from configuration, automation and platform capability.'],
+  ['manualReduction','Manual work reduction','%',.30,.55,.75,3,.06,'Share of system-driven effort eliminated or productively redeployed.'],
+  ['residualRisk','Residual incident exposure','%',.70,.40,.20,2,.04,'Remaining likelihood × impact after stabilisation and controls.'],
+  ['year1Benefit','Year-one benefit realisation','%',.35,.60,.80,3,.03,'Accounts for adoption, learning, process redesign and incomplete rollout.'],
+  ['year2Benefit','Steady-state benefit realisation by year three','%',.70,.90,1,3,.03,'The model ramps from year-one adoption through year two, reaching this level in year three.']]} 
+];
+const SCENARIOS=['low','base','high'];
+const DEFAULTS=Object.fromEntries(GROUPS.flatMap(g=>g.items.map(x=>[x[0],{low:x[3],base:x[4],high:x[5],evidence:x[6],weight:x[7]}])));
+const QUICK_DEFAULTS={revenue:10000000,growth:.07,projectCost:750000,users:25,hours:3,fteCost:52000,frequency:'quarterly',impact:'material',strain:'strained',trigger:'3-5',evidence:{revenue:'verified',growth:'estimated',projectCost:'observed',workarounds:'estimated',frequency:'observed',impact:'estimated',strain:'estimated',trigger:'observed'}};
+const EVIDENCE_GRADE={estimated:2,observed:3,verified:5};
+const EVIDENCE_ACTIONS={growth:'Reconcile the commercial plan to historic conversion, capacity and contribution margin.',margin:'Confirm incremental contribution margin with Finance.',headroom:'Use transaction volumes, queue times and practical load testing to locate the operating limit.',maxConstraint:'Identify orders, customers or launches already delayed by system capacity.',manualFte:'Sample workaround time across representative users for two weeks.',incidentFrequency:'Review twelve months of tickets, outages, reporting delays and corrections.',incidentImpact:'Cost three representative incidents using lost margin and recovery effort.',remediationCost:'Obtain a replacement estimate and compare it with one similar implementation.',remediationYear:'Confirm vendor support dates, key-person dependencies and the next growth trigger.',implementation:'Replace the estimate with a scoped vendor proposal.',optimism:'Compare budget versus outturn on two previous change projects.',newRunCost:'Confirm steady-state subscription, support and administration costs.',manualReduction:'Name the redesigned processes and benefit owners.',year1Benefit:'Create an adoption and benefit-realisation plan with accountable owners.'};
+let quick=structuredClone(QUICK_DEFAULTS),state=structuredClone(DEFAULTS),results=[],distribution=null;
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+function esc(v){return String(v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function currencySymbol(){return {GBP:'£',EUR:'€',USD:'$'}[$('#currency').value]||'£'}
+function money(v,compact=false){if(!Number.isFinite(v))return '—';const sign=v<0?'−':'';let n=Math.abs(v),s=currencySymbol();if(compact&&n>=1e6)return `${sign}${s}${(n/1e6).toFixed(n>=1e7?1:2)}m`;if(compact&&n>=1e3)return `${sign}${s}${(n/1e3).toFixed(0)}k`;return `${sign}${s}${Math.round(n).toLocaleString('en-GB')}`}
+function inputNumber(v){return Math.round(num(v)).toLocaleString('en-GB')}
+function pct(v,d=0){return `${(v*100).toFixed(d)}%`}
+function num(v){return Number(v)||0}
+function benefitForYear(a,y){if(y===0)return 0;if(y===1)return a.year1Benefit;if(y===2)return(a.year1Benefit+a.year2Benefit)/2;return a.year2Benefit}
+function calcModel(name,a){
+ let years=[],cum=0,channels={growth:0,manual:0,risk:0,remediation:0,systemOpex:0,implementation:0};
+ const remediationYear=Math.min(10,Math.max(1,Math.round(a.remediationYear)));
+ const goLiveCapacity=100*(1+a.headroom)*(1+a.legacyCapacityGrowth)+100*a.capacityUplift;
+ for(let y=0;y<=10;y++){
+  const df=1/Math.pow(1+a.discount,y),benefit=benefitForYear(a,y);
+  const revenue=a.revenue*Math.pow(1+a.growth,y),demand=100*Math.pow(1+a.growth,y);
+  const bauCapacity=100*(1+a.headroom)*Math.pow(1+a.legacyCapacityGrowth,y);
+  const fullInvestCapacity=y===0?bauCapacity:goLiveCapacity*Math.pow(1+a.newCapacityGrowth,y-1);
+  const investCapacity=y===0?bauCapacity:bauCapacity+(fullInvestCapacity-bauCapacity)*benefit;
+  const bauLoss=revenue*Math.min(a.maxConstraint,Math.max(0,(demand-bauCapacity)/demand))*a.margin;
+  const investLoss=revenue*Math.min(a.maxConstraint,Math.max(0,(demand-investCapacity)/demand))*a.margin;
+  const legacy=y? a.legacyCost*Math.pow(1+a.inflation+a.legacyEscalation,y-1):0;
+  const manual=y? a.manualFte*a.fteCost*Math.pow(1+a.inflation,y-1):0;
+  const risk=y? a.incidentFrequency*a.incidentImpact*Math.pow(1+a.riskEscalation,y-1):0;
+  const remediation=y===remediationYear?a.remediationCost*Math.pow(1+a.inflation+a.legacyEscalation,y-1):0;
+  const implementation=y===1?a.implementation*(1+a.optimism)+a.transition:0;
+  const newRun=y?a.newRunCost*Math.pow(1+a.inflation,y-1):0;
+  const investManual=y?Math.max(0,manual*(1-a.manualReduction*benefit)):0;
+  const investRisk=y?Math.max(0,risk*(1-(1-a.residualRisk)*benefit)):0;
+  const bau=bauLoss+legacy+manual+risk+remediation, invest=investLoss+implementation+newRun+investManual+investRisk;
+  const incremental=bau-invest, discounted=incremental*df;cum+=discounted;
+  channels.growth+=(bauLoss-investLoss)*df;channels.manual+=(manual-investManual)*df;channels.risk+=(risk-investRisk)*df;channels.remediation+=remediation*df;channels.systemOpex+=(legacy-newRun)*df;channels.implementation-=implementation*df;
+  years.push({y,revenue,demand,bauCapacity,investCapacity,bauHeadroom:(bauCapacity-demand)/demand,investHeadroom:(investCapacity-demand)/demand,bau,invest,growthCost:bauLoss-investLoss,annualCoi:incremental,discounted,cum});
+ }
+ const bauPV=years.reduce((s,x,i)=>s+x.bau/Math.pow(1+a.discount,i),0),investPV=years.reduce((s,x,i)=>s+x.invest/Math.pow(1+a.discount,i),0);
+ const ceiling=(key)=>{const hit=years.slice(1).find(x=>x[key]<0);return hit?hit.y:null};
+ const payback=years.slice(1).find(x=>x.cum>=0);
+ return {name,a,years,bauPV,investPV,coi:cum,ceiling:ceiling('bauHeadroom'),investCeiling:ceiling('investHeadroom'),payback:payback?payback.y:null,channels};
+}
+function assumptions(name){return Object.fromEntries(Object.entries(state).map(([k,v])=>[k,num(v[name])]))}
+function calcScenario(name){return calcModel(name,assumptions(name))}
+function mulberry32(seed){return()=>{let t=seed+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296}}
+function triangular(rand,low,mode,high){low=Math.min(low,high);high=Math.max(low,high);mode=Math.max(low,Math.min(high,mode));if(high===low)return low;const u=rand(),c=(mode-low)/(high-low);return u<c?low+Math.sqrt(u*(high-low)*(mode-low)):high-Math.sqrt((1-u)*(high-low)*(high-mode))}
+function simulate(n=800){const rand=mulberry32(42817),values=[];for(let i=0;i<n;i++){const a={};for(const [k,v] of Object.entries(state))a[k]=triangular(rand,num(v.low),num(v.base),num(v.high));values.push(calcModel('simulation',a).coi)}values.sort((a,b)=>a-b);const q=p=>values[Math.floor((values.length-1)*p)];return{values,mean:values.reduce((a,b)=>a+b,0)/values.length,p10:q(.1),p50:q(.5),p90:q(.9),win:values.filter(x=>x>0).length/values.length}}
+function sensitivities(){const base=assumptions('base'),rows=[];for(const [k,v] of Object.entries(state)){if(v.weight<=0)continue;const lo={...base,[k]:num(v.low)},hi={...base,[k]:num(v.high)},swing=Math.abs(calcModel('low',lo).coi-calcModel('high',hi).coi);if(swing>1)rows.push({key:k,swing,evidence:v.evidence,action:EVIDENCE_ACTIONS[k]||'Replace the current range with an observed or verified company-specific value.'})}return rows.sort((a,b)=>b.swing-a.swing)}
+function evidenceConfidence(expected,min,max){let sw=0,score=0;for(const v of Object.values(state)){if(v.weight>0){sw+=v.weight;score+=v.evidence*v.weight}}const evidence=sw?score/sw/5:0;const precision=1/(1+(max-min)/(2*Math.max(1,Math.abs(expected))));return .7*evidence+.3*precision}
+function recalc(){
+ results=SCENARIOS.map(calcScenario);distribution=simulate();
+ const expected=distribution.mean,min=distribution.p10,max=distribution.p90,win=distribution.win,confidence=evidenceConfidence(expected,min,max);
+ $('#kpi-expected').textContent=money(expected);$('#kpi-range').textContent=`${money(min,true)} to ${money(max,true)}`;$('#kpi-win').textContent=pct(win);$('#kpi-confidence').textContent=pct(confidence);
+ $('#confidence-label').textContent=confidence>=.7?'Stronger decision evidence':confidence>=.5?'Moderate&mdash;validate the fragile drivers':'Low&mdash;treat the output as a hypothesis';
+ renderScenarioTable();renderCostChart();renderHeadroom();renderDrivers();renderNarrative(expected,min,max,win,confidence);renderRangePlan(expected,min,max);
+}
+function renderScenarioTable(){
+ $('#scenario-body').innerHTML=results.map(r=>`<tr><td><strong>${r.name[0].toUpperCase()+r.name.slice(1)}</strong></td><td class="${r.coi>=0?'positive':'negative'}"><strong>${money(r.coi)}</strong></td><td>${r.payback?`${r.payback} years`:'Beyond horizon'}</td><td>${r.ceiling?`Year ${r.ceiling}`:'Not breached'}</td></tr>`).join('');
+}
+function renderCostChart(){
+ const W=720,H=275,left=54,bottom=238,top=20,group=190,barW=46,max=Math.max(...results.flatMap(r=>[r.bauPV,r.investPV]))*1.12||1;let svg=`<svg viewBox="0 0 ${W} ${H}" role="img"><line class="axis" x1="${left}" y1="${bottom}" x2="${W-15}" y2="${bottom}"/>`;
+ for(let i=0;i<=4;i++){const v=max*i/4,y=bottom-(bottom-top)*i/4;svg+=`<line class="axis" x1="${left}" y1="${y}" x2="${W-15}" y2="${y}"/><text class="chart-label" x="${left-8}" y="${y+4}" text-anchor="end">${money(v,true)}</text>`}
+ results.forEach((r,i)=>{const x=110+i*group,h1=(bottom-top)*r.bauPV/max,h2=(bottom-top)*r.investPV/max;svg+=`<rect x="${x}" y="${bottom-h1}" width="${barW}" height="${h1}" rx="5" fill="#1b6685"><title>BAU: ${money(r.bauPV)}</title></rect><rect x="${x+52}" y="${bottom-h2}" width="${barW}" height="${h2}" rx="5" fill="#e27a3f"><title>Invest: ${money(r.investPV)}</title></rect><text class="chart-label" x="${x+48}" y="${bottom+22}" text-anchor="middle">${r.name[0].toUpperCase()+r.name.slice(1)}</text>`});svg+='</svg>';$('#cost-chart').innerHTML=svg;
+}
+function renderHeadroom(){
+ const r=results[1],rows=r.years,W=780,H=350,left=58,right=18,top=34,bottom=300,all=rows.flatMap(x=>[x.demand,x.bauCapacity,x.investCapacity]),min=Math.floor(Math.min(...all)*.9/10)*10,max=Math.ceil(Math.max(...all)*1.06/10)*10;
+ const X=i=>left+i*(W-left-right)/(rows.length-1),Y=v=>top+(max-v)*(bottom-top)/(max-min),path=key=>rows.map((x,i)=>`${i?'L':'M'} ${X(i)} ${Y(x[key])}`).join(' ');
+ const band=[...rows.map((x,i)=>`${X(i)},${Y(x.investCapacity)}`),...rows.slice().reverse().map((x,j)=>{const i=rows.length-1-j;return`${X(i)},${Y(x.bauCapacity)}`})].join(' '),gapRows=rows.filter(x=>x.growthCost>0);
+ let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Business demand compared with BAU and invest-now capacity">`;
+ for(let i=0;i<=4;i++){const v=min+(max-min)*i/4,y=Y(v);svg+=`<line class="axis" x1="${left}" y1="${y}" x2="${W-right}" y2="${y}"/><text class="chart-label" x="${left-9}" y="${y+4}" text-anchor="end">${Math.round(v)}</text>`}
+ svg+=`<text class="chart-label" x="14" y="${(top+bottom)/2}" transform="rotate(-90 14 ${(top+bottom)/2})" text-anchor="middle">Demand / capacity index</text><polygon points="${band}" fill="#167d88" opacity=".08"/>`;
+ if(gapRows.length){const gap=[...gapRows.map(x=>`${X(x.y)},${Y(x.demand)}`),...gapRows.slice().reverse().map(x=>`${X(x.y)},${Y(x.bauCapacity)}`)].join(' ');svg+=`<polygon points="${gap}" fill="#d95757" opacity=".2"/>`}
+ if(r.ceiling){const cx=X(r.ceiling);svg+=`<line x1="${cx}" y1="${top}" x2="${cx}" y2="${bottom}" stroke="#a94343" stroke-width="1.5" stroke-dasharray="5 5"/><rect x="${cx-45}" y="5" width="90" height="21" rx="10" fill="#a94343"/><text class="ceiling-label" x="${cx}" y="19" text-anchor="middle">Constraint · Year ${r.ceiling}</text>`}
+ svg+=`<path d="${path('demand')}" fill="none" stroke="#17324d" stroke-width="4"/><path d="${path('bauCapacity')}" fill="none" stroke="#a94343" stroke-width="3" stroke-dasharray="7 5"/><path d="${path('investCapacity')}" fill="none" stroke="#167d88" stroke-width="4"/>`;
+ rows.forEach((x,i)=>{const px=X(i);svg+=`<text class="chart-label" x="${px}" y="${bottom+23}" text-anchor="middle">${i}</text><circle cx="${px}" cy="${Y(x.demand)}" r="3" fill="#17324d"><title>Year ${i} demand index: ${x.demand.toFixed(1)}</title></circle>`;if(x.growthCost>0){const label=money(x.growthCost,true),yd=Y(x.demand),yb=Y(x.bauCapacity),ly=Math.abs(yd-yb)>27?(yd+yb)/2:Math.min(yd,yb)-14;svg+=`<rect x="${px-28}" y="${ly-11}" width="56" height="20" rx="8" fill="#fff4f4" stroke="#d98b8b"/><text class="gap-label" x="${px}" y="${ly+3}" text-anchor="middle">${label}</text><title>Year ${i} constrained profit: ${money(x.growthCost)}</title>`}});
+ svg+=`<text class="chart-label" x="${(left+W-right)/2}" y="${H-5}" text-anchor="middle">Year</text></svg>`;$('#headroom-chart').innerHTML=svg;
+ const first=gapRows[0],pv=r.channels.growth;$('#headroom-insights').innerHTML=`<div class="insight"><span>Constraint point</span><strong>${r.ceiling?`Year ${r.ceiling}`:'Beyond year 10'}</strong></div><div class="insight"><span>First-year profit exposed</span><strong>${first?money(first.growthCost):'£0'}</strong></div><div class="insight"><span>PV constrained profit</span><strong>${money(pv)}</strong></div><div class="insight"><span>Total Cost of Inaction</span><strong>${money(r.coi)}</strong></div>`;
+}
+function renderDrivers(){const c=results[1].channels,items=[['Constrained profitable growth',c.growth,'#167d88'],['Manual work',c.manual,'#4e87a0'],['Expected incident loss',c.risk,'#d2a13f'],['Forced remediation',c.remediation,'#9c6eb4'],['Net annual system run cost',c.systemOpex,'#5b8393'],['Implementation & transition',c.implementation,'#c55b5b']],max=Math.max(...items.map(x=>Math.abs(x[1])))||1;$('#driver-bars').innerHTML=items.map(([n,v,color])=>`<div class="bar-row"><span>${n}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.abs(v)/max*100}%;background:${color}"></div></div><span class="bar-value ${v<0?'negative':'positive'}">${money(v,true)}</span></div>`).join('')}
+function renderNarrative(expected,min,max,win,confidence){const base=results[1],decision=expected>0?'The quantified case currently favours investing now.':'The quantified case currently favours deferral.';$('#decision-callout').innerHTML=`<strong>${decision}</strong><br>Central-case Cost of Inaction is ${money(base.coi)} with payback ${base.payback?`in year ${base.payback}`:'beyond the horizon'}. ${base.ceiling?`The current operating model becomes financially constraining in year ${base.ceiling}.`:'The quantified operating constraint is not reached within ten years.'}`;$('#board-language').innerHTML=`On the assumptions currently evidenced, the expected present-value <strong>Cost of Inaction is ${money(expected)}</strong>, with a P10–P90 range from <strong>${money(min)}</strong> to <strong>${money(max)}</strong>. Investment is economically preferable in <strong>${pct(win)}</strong> of simulated outcomes. Evidence strength is <strong>${pct(confidence)}</strong>; this indicates decision readiness, not statistical certainty. ${base.ceiling?`The central case becomes financially constraining in year ${base.ceiling}.`:''}`}
+function renderRangePlan(expected,min,max){const rows=sensitivities().slice(0,6);$('#range-plan').innerHTML=rows.map((r,i)=>`<div class="plan-row"><span class="plan-rank">${i+1}</span><div><strong>${labelFor(r.key)}</strong>${r.evidence<=2?'<span class="evidence-note">Estimate</span>':''}</div><div class="plan-impact">Up to ${money(r.swing,true)}</div><div class="plan-action">${esc(r.action)}</div></div>`).join('');$('#range-summary').innerHTML=`Current P10–P90 range: <strong>${money(min)} to ${money(max)}</strong>.<br>The first evidence task should test <strong>${rows[0]?labelFor(rows[0].key):'the largest uncertain driver'}</strong>. The movements shown are one-at-a-time and are not additive.`}
+function labelFor(key){for(const g of GROUPS){const item=g.items.find(x=>x[0]===key);if(item)return item[1]}return key}
+function evidenceSelect(key){return `<select data-quick-evidence="${key}"><option value="estimated" ${quick.evidence[key]==='estimated'?'selected':''}>Estimated</option><option value="observed" ${quick.evidence[key]==='observed'?'selected':''}>Observed</option><option value="verified" ${quick.evidence[key]==='verified'?'selected':''}>Verified</option></select>`}
+function quickCard(title,prompt,control,evidenceKey){return `<article class="quick-card"><div class="quick-title">${title}</div><div class="quick-prompt">${prompt}</div>${control}<div class="quick-evidence"><span>Evidence</span>${evidenceSelect(evidenceKey)}</div></article>`}
+function renderQuick(){
+ const s=currencySymbol();
+ $('#quick-grid').innerHTML=[
+  quickCard('1. Annual revenue','Use the latest completed year or current run rate.',`<div class="quick-number"><span>${s}</span><input type="text" inputmode="numeric" data-quick-money="revenue" value="${inputNumber(quick.revenue)}"></div>`,'revenue'),
+  quickCard('2. Planned annual growth','Use the commercial ambition before system constraints.',`<div class="quick-number"><input type="number" step="0.1" data-quick-percent="growth" value="${(quick.growth*100).toFixed(1)}"><span>%</span></div>`,'growth'),
+  quickCard('3. Proposed project cost','Use an all-in estimate: implementation, migration and transition.',`<div class="quick-number"><span>${s}</span><input type="text" inputmode="numeric" data-quick-money="projectCost" value="${inputNumber(quick.projectCost)}"></div>`,'projectCost'),
+  quickCard('4. Workaround burden','How many regular users, how much time is lost, and what is their typical loaded annual cost?',`<div style="display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:8px"><div class="quick-number"><input type="number" data-quick="users" value="${quick.users}"><span>users</span></div><div class="quick-number"><input type="number" step=".5" data-quick="hours" value="${quick.hours}"><span>hrs/wk</span></div><div class="quick-number"><span>${s}</span><input type="text" inputmode="numeric" data-quick-money="fteCost" value="${inputNumber(quick.fteCost)}"><span>/FTE</span></div></div>`,'workarounds'),
+  quickCard('5. Meaningful issues','How often does the system cause a material delay, error or failure?',`<select data-quick="frequency"><option value="annual">A few times a year</option><option value="quarterly">About quarterly</option><option value="monthly">About monthly</option><option value="weekly">Weekly or more</option></select>`,'frequency'),
+  quickCard('6. Consequence of a serious failure','Choose the closest observable business consequence.',`<select data-quick="impact"><option value="minor">Local inconvenience and rework</option><option value="material">Lost day, missed deadline or expedite cost</option><option value="customer">Lost customers, orders or contractual exposure</option><option value="regulatory">Material regulatory or business-continuity exposure</option></select>`,'impact'),
+  quickCard('7. Current system strain','Choose what people can already see&mdash;not a technical capacity percentage.',`<select data-quick="strain"><option value="stable">Stable with spare capacity</option><option value="workarounds">Growing workarounds</option><option value="strained">Delays and scaling friction</option><option value="limiting">Already limiting growth or control</option></select>`,'strain'),
+  quickCard('8. Known trigger','When could support, scale, regulation or key-person dependency force action?',`<select data-quick="trigger"><option value="unknown">No known date</option><option value="5+">More than five years</option><option value="3-5">Three to five years</option><option value="1-2">One to two years</option><option value="overdue">Already overdue / unsupported</option></select>`,'trigger')
+ ].join('');
+ for(const k of ['frequency','impact','strain','trigger'])$(`[data-quick="${k}"]`).value=quick[k];
+ $$('[data-quick]').forEach(el=>el.addEventListener('input',()=>{quick[el.dataset.quick]=el.type==='number'?num(el.value):el.value;applyQuickToState();renderInputs();recalc()}));
+ $$('[data-quick-percent]').forEach(el=>el.addEventListener('input',()=>{quick[el.dataset.quickPercent]=num(el.value)/100;applyQuickToState();renderInputs();recalc()}));
+ $$('[data-quick-money]').forEach(el=>{el.addEventListener('input',()=>{quick[el.dataset.quickMoney]=num(el.value.replace(/,/g,''));applyQuickToState();renderInputs();recalc()});el.addEventListener('blur',()=>{el.value=inputNumber(quick[el.dataset.quickMoney])})});
+ $$('[data-quick-evidence]').forEach(el=>el.addEventListener('change',()=>{quick.evidence[el.dataset.quickEvidence]=el.value;applyQuickToState();renderInputs();recalc()}));
+}
+function applyQuickToState(){
+ const grade=k=>EVIDENCE_GRADE[quick.evidence[k]]||2;
+ const set=(k,l,b,h,e)=>Object.assign(state[k],{low:l,base:b,high:h,evidence:e});
+ set('revenue',quick.revenue,quick.revenue,quick.revenue,grade('revenue'));
+ set('growth',quick.growth*.8,quick.growth,quick.growth*1.2,grade('growth'));
+ const projectGrade=grade('projectCost'),ob=quick.evidence.projectCost==='verified'?[.05,.1,.2]:quick.evidence.projectCost==='observed'?[.1,.2,.3]:[.15,.3,.5];
+ set('implementation',quick.projectCost*.85,quick.projectCost*.85,quick.projectCost*.85,projectGrade);set('transition',quick.projectCost*.15,quick.projectCost*.15,quick.projectCost*.15,projectGrade);set('optimism',ob[0],ob[1],ob[2],projectGrade);
+ set('legacyCost',quick.projectCost*.07,quick.projectCost*.1,quick.projectCost*.14,2);set('newRunCost',quick.projectCost*.14,quick.projectCost*.18,quick.projectCost*.23,2);
+ const fte=quick.users*quick.hours/37.5;set('manualFte',fte*.7,fte,fte*1.3,grade('workarounds'));set('fteCost',quick.fteCost,quick.fteCost,quick.fteCost,grade('workarounds'));
+ const freq={annual:[.2,.5,1],quarterly:[.5,1,2],monthly:[1,2.5,5],weekly:[2,5,10]}[quick.frequency];set('incidentFrequency',...freq,grade('frequency'));
+ const impactFactor={minor:[.0004,.001,.002],material:[.0025,.005,.01],customer:[.005,.012,.025],regulatory:[.01,.025,.06]}[quick.impact];set('incidentImpact',...impactFactor.map(x=>x*quick.revenue),grade('impact'));
+ const strain={stable:{headroom:[.6,.5,.4],capacity:[.05,.04,.03],constraint:[.02,.03,.05],uplift:[.25,.4,.6]},workarounds:{headroom:[.45,.3,.18],capacity:[.04,.025,.01],constraint:[.03,.06,.1],uplift:[.3,.55,.8]},strained:{headroom:[.35,.2,.08],capacity:[.025,.01,0],constraint:[.05,.1,.16],uplift:[.4,.7,1]},limiting:{headroom:[.15,.05,0],capacity:[.01,0,0],constraint:[.08,.15,.25],uplift:[.5,.85,1.2]}}[quick.strain];
+ set('headroom',...strain.headroom,grade('strain'));set('legacyCapacityGrowth',...strain.capacity,grade('strain'));set('maxConstraint',...strain.constraint,grade('strain'));set('capacityUplift',...strain.uplift,grade('strain'));
+ const automation={stable:[.25,.4,.55],workarounds:[.35,.55,.7],strained:[.4,.6,.75],limiting:[.45,.65,.8]}[quick.strain];set('manualReduction',...automation,Math.min(grade('workarounds'),grade('strain')));
+ const trigger={unknown:[10,8,6],'5+':[10,8,6],'3-5':[7,5,4],'1-2':[4,3,2],overdue:[3,2,1]}[quick.trigger];set('remediationYear',...trigger,grade('trigger'));set('remediationCost',quick.projectCost*1.1,quick.projectCost*1.4,quick.projectCost*1.8,grade('trigger'));
+ state.riskEscalation.evidence=grade('frequency');state.residualRisk.evidence=grade('impact');
+}
+function renderInputs(){
+ $('#input-groups').innerHTML=GROUPS.map((g,gi)=>`<section class="group"><div class="group-head" onclick="this.parentElement.classList.toggle('collapsed')"><span>${esc(g.name)}</span><span>⌄</span></div><div class="group-body"><table class="driver-table"><thead><tr><th>Driver / facilitator prompt</th><th>Unit</th><th>Low</th><th>Base</th><th>High</th><th>Evidence</th></tr></thead><tbody>${g.items.map(x=>{const [key,label,unit,,,,,,prompt]=x;return `<tr><td><strong>${esc(label)}</strong><span class="range-hint">${esc(prompt)}</span></td><td class="unit">${unit==='currency'?currencySymbol():esc(unit)}</td>${SCENARIOS.map(s=>`<td><input type="number" step="any" data-key="${key}" data-scenario="${s}" value="${state[key][s]}"></td>`).join('')}<td><input class="evidence" type="number" min="1" max="5" step="1" data-key="${key}" data-evidence value="${state[key].evidence}"></td></tr>`}).join('')}</tbody></table></div></section>`).join('');
+ $$('#input-groups input').forEach(el=>el.addEventListener('input',()=>{const key=el.dataset.key;if(el.hasAttribute('data-evidence'))state[key].evidence=Math.max(1,Math.min(5,num(el.value)));else state[key][el.dataset.scenario]=num(el.value);recalc()}));
+}
+function resetDefaults(){quick=structuredClone(QUICK_DEFAULTS);state=structuredClone(DEFAULTS);applyQuickToState();renderQuick();renderInputs();recalc()}
+function confirmReset(){if(confirm('Start over and replace all eight answers with the illustrative defaults?'))resetDefaults()}
+function caseObject(){return {version:3,client:$('#client-name').value,system:$('#system-name').value,currency:$('#currency').value,quick,assumptions:state}}
+function openCaseDialog(){$('#case-json').value=JSON.stringify(caseObject(),null,2);$('#case-dialog').showModal()}
+async function copyCase(button){try{await navigator.clipboard.writeText($('#case-json').value);button.textContent='Copied';setTimeout(()=>button.textContent='Copy JSON',1200)}catch{$('#case-json').select()}}
+function loadCase(){try{const d=JSON.parse($('#case-json').value);if(!d.assumptions)throw Error();state=d.assumptions;delete state.probability;quick={...structuredClone(QUICK_DEFAULTS),...(d.quick||{}),evidence:{...QUICK_DEFAULTS.evidence,...(d.quick?.evidence||{})}};$('#client-name').value=d.client||'';$('#system-name').value=d.system||'';$('#currency').value=d.currency||'GBP';renderQuick();renderInputs();recalc();$('#case-dialog').close()}catch{alert('That case JSON could not be read.')}}
+function showTab(id){$$('.tab,.panel').forEach(x=>x.classList.remove('active'));const tab=$(`.tab[data-tab="${id}"]`);if(tab)tab.classList.add('active');const panel=$('#'+id);if(panel)panel.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+$$('.tab').forEach(t=>t.addEventListener('click',()=>showTab(t.dataset.tab)));
+$('#currency').addEventListener('change',()=>{renderQuick();renderInputs();recalc()});applyQuickToState();renderQuick();renderInputs();recalc();
+</script>
+</body>
+</html>
