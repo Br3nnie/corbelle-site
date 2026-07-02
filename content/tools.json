@@ -38,6 +38,14 @@
       "state": "live"
     },
     {
+      "status": "Launching next",
+      "title": "Clarity Engine",
+      "description": "A Cowork skill for turning high-stakes choices into decision memos, review loops, and pattern analysis over time.",
+      "url": "/clarity-engine",
+      "linkLabel": "View product",
+      "state": "live"
+    },
+    {
       "status": "Coming soon",
       "title": "Decision Readiness",
       "description": "A short assessment for leaders preparing to take a major technology recommendation to board or investment committee.",
