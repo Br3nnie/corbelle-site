@@ -2,6 +2,8 @@
     "rewrites": [
           { "source": "/performance-ceiling", "destination": "/performance_ceiling.html" },
           { "source": "/tools", "destination": "/tools.html" },
+          { "source": "/thankyou", "destination": "/thankyou/index.html" },
+          { "source": "/thankyou/", "destination": "/thankyou/index.html" },
           { "source": "/usecasevalidator", "destination": "/usecasevalidator.html" },
           { "source": "/usecasevalidator/:path*", "destination": "/usecasevalidator.html" },
           { "source": "/magneticleadership", "destination": "/magneticleadership.html" },
