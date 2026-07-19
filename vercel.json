@@ -1,5 +1,7 @@
 {
     "rewrites": [
+          { "source": "/aicost", "destination": "/aicost.html" },
+          { "source": "/aicost/:path*", "destination": "/aicost.html" },
           { "source": "/costofinaction", "destination": "/costofinaction.html" },
           { "source": "/costofinaction/:path*", "destination": "/costofinaction.html" },
           { "source": "/performance-ceiling", "destination": "/performance_ceiling.html" },
