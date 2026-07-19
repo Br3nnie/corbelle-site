@@ -1,0 +1,55 @@
+/* Align the AI cost validator with Corbelle's decision-tool design system. */
+.tools-brand .app{max-width:1280px;padding:0 48px 72px}
+.tools-brand .app-header{position:relative;margin:0 -48px;border-bottom:2px solid #0e5a64;background:#1c1f24}
+.tools-brand .tool-bar{position:absolute;right:48px;bottom:36px;z-index:2;width:auto;height:auto;margin:0;padding:0;border:0}
+.tools-brand .tool-bar>strong{display:none}
+.tools-brand .header-actions{gap:8px}
+.tools-brand .header-link{min-height:38px;border:1px solid rgba(217,205,191,.34);border-radius:4px;padding:9px 13px;font-family:Sora,sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em}
+.tools-brand .header-link:last-child{border-color:#f2f2f2;background:#f2f2f2;color:#1c1f24}
+.tools-brand .header-link:hover,.tools-brand .header-link:focus-visible{transform:translateY(-1px)}
+.tools-brand .hero-content{max-width:1280px;padding:clamp(52px,6vw,78px) 48px}
+.tools-brand .kicker{margin-bottom:12px!important;color:#2e8992;font-family:Sora,sans-serif;font-size:11px!important;font-weight:700;letter-spacing:.16em}
+.tools-brand .app-header h1{max-width:none;margin:0 0 18px;font-size:clamp(40px,4.5vw,58px);line-height:1.06}
+.tools-brand .intro-text{max-width:760px;color:rgba(245,242,238,.76);font-size:18px;line-height:1.7}
+.tools-brand .page-nav{gap:0;margin:22px 0 18px;padding:0}
+.tools-brand .page-nav a{padding:14px 16px;font-family:Sora,sans-serif;font-size:11px;letter-spacing:.08em}
+.tools-brand .page-nav a:first-child{margin-bottom:-1px;padding-bottom:14px;border-bottom-width:3px}
+.tools-brand .input-form,.tools-brand .advanced-assumptions,.tools-brand .results-dashboard{border:1px solid rgba(28,31,36,.14);border-top:3px solid #0e5a64;border-radius:0 0 6px 6px;background:#fff7f7;box-shadow:0 14px 34px rgba(28,31,36,.055)}
+.tools-brand .input-form{padding:28px 28px 24px}
+.tools-brand .scan-heading{margin-bottom:24px}
+.tools-brand .scan-heading>span{background:#e6f2f4;color:#0e5a64}
+.tools-brand .scan-heading p:first-child,.tools-brand .form-field>label,.tools-brand .form-field>legend,.tools-brand .decision-label,.tools-brand .net-decision>span{color:#0e5a64;font-family:Sora,sans-serif;font-weight:700;letter-spacing:.06em}
+.tools-brand input,.tools-brand select{min-height:44px;border-color:rgba(28,31,36,.18);border-radius:4px;background:#fff}
+.tools-brand input:focus,.tools-brand select:focus{border-color:transparent;outline:2px solid #78bdc4}
+.tools-brand .token-assumption,.tools-brand .baseline-note{background:#e6f2f4;border-left-color:#0e5a64}
+.tools-brand .manual-baseline,.tools-brand .custom-estimate{border:1px solid rgba(28,31,36,.12);border-top:3px solid #0e5a64;border-radius:0 0 4px 4px;background:#f5f2ee;padding:18px}
+.tools-brand .manual-baseline{margin-top:12px}
+.tools-brand .scan-actions{margin:18px -28px -24px;padding:16px 28px;border:0;border-top:1px solid rgba(14,90,100,.2);background:#e6f2f4}
+.tools-brand .btn{min-height:40px;border-radius:4px;font-family:Sora,sans-serif;font-weight:700}
+.tools-brand .btn-primary{background:#0e5a64;border-color:#0e5a64}
+.tools-brand .btn-primary:hover,.tools-brand .btn-primary:focus-visible{background:#0f6872;border-color:#0f6872}
+.tools-brand .advanced-assumptions{margin-top:14px;padding:18px 28px;background:#fff}
+.tools-brand .results-dashboard{margin-top:20px}
+.tools-brand .metric-card,.tools-brand .insights-panel,.tools-brand .breakeven-panel{border:1px solid rgba(28,31,36,.14);border-top:3px solid #0e5a64;border-radius:0 0 6px 6px;background:#fff7f7;box-shadow:0 8px 24px rgba(28,31,36,.045)}
+.tools-brand .cost-chart .recharts-wrapper,.tools-brand .cost-chart .recharts-surface,.tools-brand .cost-chart .recharts-text,.tools-brand .cost-chart .recharts-cartesian-axis-tick-value,.tools-brand .cost-chart .recharts-legend-item-text,.tools-brand .cost-chart .recharts-tooltip-wrapper{font-family:Inter,sans-serif!important}
+
+@media (max-width:1000px){
+  .tools-brand .tool-bar{position:static;width:auto;padding:0 48px 28px}
+  .tools-brand .hero-content{padding-bottom:28px}
+}
+
+@media (max-width:800px){
+  .tools-brand .app{padding:0 18px 48px}
+  .tools-brand .app-header{margin:0 -18px}
+  .tools-brand .hero-content{padding:44px 18px 24px}
+  .tools-brand .tool-bar{padding:0 18px 28px}
+  .tools-brand .header-actions{width:100%}
+  .tools-brand .header-link{flex:1}
+  .tools-brand .page-nav{overflow-x:auto}
+  .tools-brand .input-form{padding:22px 18px 20px}
+  .tools-brand .scan-grid{grid-template-columns:1fr}
+  .tools-brand .scan-grid .span-two{grid-column:auto}
+  .tools-brand .scan-actions{align-items:stretch;flex-direction:column;margin:18px -18px -20px;padding:16px 18px}
+  .tools-brand .scan-actions>div{width:100%}
+  .tools-brand .scan-buttons,.tools-brand .scan-buttons .btn{width:100%}
+}
