@@ -15,6 +15,8 @@
           { "source": "/clarity-engine", "destination": "/clarity-engine.html" },
           { "source": "/usecasegameplan", "destination": "/usecasegameplan.html" },
           { "source": "/usecasegameplan/", "destination": "/usecasegameplan.html" },
+          { "source": "/ai-suite/upgrade", "destination": "/ai-suite-upgrade.html" },
+          { "source": "/ai-suite/upgrade/", "destination": "/ai-suite-upgrade.html" },
           { "source": "/magneticleadership", "destination": "/magneticleadership.html" },
           { "source": "/magneticleadership/:path*", "destination": "/magneticleadership.html" }
     ]
