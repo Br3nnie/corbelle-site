@@ -1,4 +1,8 @@
 {
+    "redirects": [
+          { "source": "/usecasevalidator", "destination": "/usecasegameplan", "permanent": true },
+          { "source": "/usecasevalidator/:path*", "destination": "/usecasegameplan", "permanent": true }
+    ],
     "rewrites": [
           { "source": "/aicost", "destination": "/aicost.html" },
           { "source": "/aicost/:path*", "destination": "/aicost.html" },
@@ -9,8 +13,6 @@
           { "source": "/thankyou", "destination": "/thankyou/index.html" },
           { "source": "/thankyou/", "destination": "/thankyou/index.html" },
           { "source": "/clarity-engine", "destination": "/clarity-engine.html" },
-          { "source": "/usecasevalidator", "destination": "/usecasevalidator.html" },
-          { "source": "/usecasevalidator/:path*", "destination": "/usecasevalidator.html" },
           { "source": "/usecasegameplan", "destination": "/usecasegameplan.html" },
           { "source": "/usecasegameplan/", "destination": "/usecasegameplan.html" },
           { "source": "/magneticleadership", "destination": "/magneticleadership.html" },
