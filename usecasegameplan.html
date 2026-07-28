@@ -39,15 +39,11 @@
           <p class="gp-reassure">24-hour money-back guarantee · immediate access · no AI tool sales</p>
         </div>
         <div class="gp-hero-media">
-          <div class="gp-vsl-compact">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/Nu-mpOIWyN0"
-              title="The 11 Questions I Used To Determine AI Success"
-              loading="eager"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
+          <div class="gp-vsl-compact" data-youtube-id="Nu-mpOIWyN0">
+            <button class="gp-video-facade" type="button" aria-label="Play: The 11 Questions I Used To Determine AI Success">
+              <img src="https://i.ytimg.com/vi/Nu-mpOIWyN0/maxresdefault.jpg" alt="">
+              <span class="gp-play-compact" aria-hidden="true">▶</span>
+            </button>
           </div>
           <div class="gp-result-wrap">
             <div class="gp-hero-card">
@@ -262,5 +258,24 @@
   <footer class="gp-footer">
     <div class="gp-shell"><span>corbelle</span><span>© 2026 Corbelle</span><a href="mailto:hello@corbelle.ai">hello@corbelle.ai</a></div>
   </footer>
+  <script>
+    document.querySelectorAll("[data-youtube-id]").forEach((container) => {
+      const facade = container.querySelector(".gp-video-facade");
+      facade.addEventListener("click", () => {
+        if (container.querySelector("iframe")) return;
+        const iframe = document.createElement("iframe");
+        iframe.src = `https://www.youtube-nocookie.com/embed/${container.dataset.youtubeId}?autoplay=1&rel=0`;
+        iframe.title = facade.getAttribute("aria-label").replace(/^Play:\s*/, "");
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        iframe.referrerPolicy = "strict-origin-when-cross-origin";
+        iframe.allowFullscreen = true;
+        iframe.addEventListener("load", () => {
+          container.classList.add("is-playing");
+          window.setTimeout(() => facade.remove(), 240);
+        }, { once: true });
+        container.appendChild(iframe);
+      });
+    });
+  </script>
 </body>
 </html>
