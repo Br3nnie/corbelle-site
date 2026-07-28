@@ -15,7 +15,15 @@
   "tools": [
     {
       "status": "Live tool",
-      "title": "AI Implementation Cost Validator",
+      "title": "AI Use Case Gameplan",
+      "description": "Pressure-test an AI or technology use case before time, money, and political capital are committed.",
+      "url": "/usecasegameplan",
+      "linkLabel": "Open assessment",
+      "state": "live"
+    },
+    {
+      "status": "Live tool",
+      "title": "AI Cost Validator",
       "description": "Model the full operating cost of an AI use case, including seats, usage, review time and overhead.",
       "url": "/aicost",
       "linkLabel": "Open calculator",
@@ -27,14 +35,6 @@
       "description": "Quantify the financial case for acting now on a technology investment before operational drag becomes unavoidable.",
       "url": "/costofinaction",
       "linkLabel": "Open diagnostic",
-      "state": "live"
-    },
-    {
-      "status": "Live tool",
-      "title": "Use Case Validator",
-      "description": "Pressure-test an AI or technology use case before time, money, and political capital are committed.",
-      "url": "/usecasevalidator",
-      "linkLabel": "Open assessment",
       "state": "live"
     },
     {
