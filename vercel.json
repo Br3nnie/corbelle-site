@@ -4,6 +4,8 @@
           { "source": "/usecasevalidator/:path*", "destination": "/usecasegameplan", "permanent": true }
     ],
     "rewrites": [
+          { "source": "/check", "destination": "/process-pain-check.html" },
+          { "source": "/check/", "destination": "/process-pain-check.html" },
           { "source": "/aicost", "destination": "/aicost.html" },
           { "source": "/aicost/:path*", "destination": "/aicost.html" },
           { "source": "/costofinaction", "destination": "/costofinaction.html" },
