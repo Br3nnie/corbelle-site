@@ -31,6 +31,14 @@
     },
     {
       "status": "Live tool",
+      "title": "Painful Process Checker",
+      "description": "Identify the painful process holding your organisation back, quantify what it costs, and find the next practical move.",
+      "url": "/check",
+      "linkLabel": "OPEN QUESTIONNAIRE",
+      "state": "live"
+    },
+    {
+      "status": "Live tool",
       "title": "Cost of Inaction Diagnostic",
       "description": "Quantify the financial case for acting now on a technology investment before operational drag becomes unavoidable.",
       "url": "/costofinaction",
@@ -52,12 +60,6 @@
       "url": "/clarity-engine",
       "linkLabel": "View product",
       "state": "live"
-    },
-    {
-      "status": "Coming soon",
-      "title": "AI Operating Model",
-      "description": "A practical review of whether your organisation has the ownership, capacity, and governance needed for AI adoption.",
-      "state": "soon"
     }
   ],
   "note": {
