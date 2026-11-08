@@ -18,7 +18,7 @@
       "title": "AI Use Case Gameplan",
       "description": "Pressure-test an AI or technology use case before time, money, and political capital are committed.",
       "url": "/usecasegameplan",
-      "linkLabel": "Open assessment",
+      "linkLabel": "OPEN GAMEPLAN",
       "state": "live"
     },
     {
@@ -27,6 +27,14 @@
       "description": "Model the full operating cost of an AI use case, including seats, usage, review time and overhead.",
       "url": "/aicost",
       "linkLabel": "Open calculator",
+      "state": "live"
+    },
+    {
+      "status": "Live tool",
+      "title": "Painful Process Checker",
+      "description": "Identify the painful process holding your organisation back, quantify what it costs, and find the next practical move.",
+      "url": "/check",
+      "linkLabel": "OPEN QUESTIONNAIRE",
       "state": "live"
     },
     {
@@ -52,12 +60,6 @@
       "url": "/clarity-engine",
       "linkLabel": "View product",
       "state": "live"
-    },
-    {
-      "status": "Coming soon",
-      "title": "AI Operating Model",
-      "description": "A practical review of whether your organisation has the ownership, capacity, and governance needed for AI adoption.",
-      "state": "soon"
     }
   ],
   "note": {

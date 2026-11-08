@@ -1,23 +1,267 @@
 {
-    "redirects": [
-          { "source": "/usecasevalidator", "destination": "/usecasegameplan", "permanent": true },
-          { "source": "/usecasevalidator/:path*", "destination": "/usecasegameplan", "permanent": true }
-    ],
-    "rewrites": [
-          { "source": "/aicost", "destination": "/aicost.html" },
-          { "source": "/aicost/:path*", "destination": "/aicost.html" },
-          { "source": "/costofinaction", "destination": "/costofinaction.html" },
-          { "source": "/costofinaction/:path*", "destination": "/costofinaction.html" },
-          { "source": "/performance-ceiling", "destination": "/performance_ceiling.html" },
-          { "source": "/tools", "destination": "/tools.html" },
-          { "source": "/thankyou", "destination": "/thankyou/index.html" },
-          { "source": "/thankyou/", "destination": "/thankyou/index.html" },
-          { "source": "/clarity-engine", "destination": "/clarity-engine.html" },
-          { "source": "/usecasegameplan", "destination": "/usecasegameplan.html" },
-          { "source": "/usecasegameplan/", "destination": "/usecasegameplan.html" },
-          { "source": "/ai-suite/upgrade", "destination": "/ai-suite-upgrade.html" },
-          { "source": "/ai-suite/upgrade/", "destination": "/ai-suite-upgrade.html" },
-          { "source": "/magneticleadership", "destination": "/magneticleadership.html" },
-          { "source": "/magneticleadership/:path*", "destination": "/magneticleadership.html" }
-    ]
+  "redirects": [
+    {
+      "source": "/million-pound-plan",
+      "destination": "/mpp",
+      "permanent": true
+    },
+    {
+      "source": "/million-pound-plan/",
+      "destination": "/mpp",
+      "permanent": true
+    },
+    {
+      "source": "/usecasevalidator",
+      "destination": "/usecasegameplan",
+      "permanent": true
+    },
+    {
+      "source": "/usecasevalidator/:path*",
+      "destination": "/usecasegameplan",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/method",
+      "destination": "/services.html",
+      "permanent": true
+    },
+    {
+      "source": "/method.html",
+      "destination": "/services.html",
+      "permanent": true
+    },
+    {
+      "source": "/testimonials",
+      "destination": "/experience.html",
+      "permanent": true
+    },
+    {
+      "source": "/testimonials/",
+      "destination": "/experience.html",
+      "permanent": true
+    },
+    {
+      "source": "/testimonials.html",
+      "destination": "/experience.html",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/corporate-finance-group",
+      "destination": "/case-studies.html",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/corporate-finance-group/",
+      "destination": "/case-studies.html",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/ai-transformation-private-equity",
+      "destination": "/experience.html",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/ai-transformation-private-equity/",
+      "destination": "/experience.html",
+      "permanent": true
+    },
+    {
+      "source": "/casesudy",
+      "destination": "/case-studies.html",
+      "permanent": true
+    },
+    {
+      "source": "/casesudy/",
+      "destination": "/case-studies.html",
+      "permanent": true
+    },
+    {
+      "source": "/casesudy.html",
+      "destination": "/case-studies.html",
+      "permanent": true
+    },
+    {
+      "source": "/casestudy",
+      "destination": "/case-studies.html",
+      "permanent": true
+    },
+    {
+      "source": "/case-study",
+      "destination": "/case-studies.html",
+      "permanent": true
+    },
+    {
+      "source": "/founder-track-record.html",
+      "destination": "/experience.html",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/services.html",
+      "permanent": true
+    },
+    {
+      "source": "/insights",
+      "destination": "/insights.html",
+      "permanent": true
+    },
+    {
+      "source": "/experience",
+      "destination": "/experience.html",
+      "permanent": true
+    },
+    {
+      "source": "/partners",
+      "destination": "/partners.html",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html",
+      "permanent": true
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html",
+      "permanent": true
+    },
+    {
+      "source": "/cookies",
+      "destination": "/cookies.html",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/problemdiagnostic",
+      "destination": "/real-problem-diagnostic.html"
+    },
+    {
+      "source": "/problemdiagnostic/",
+      "destination": "/real-problem-diagnostic.html"
+    },
+    {
+      "source": "/problemdiagnostic/evidence",
+      "destination": "/transcript-reveals.html"
+    },
+    {
+      "source": "/problemdiagnostic/evidence/",
+      "destination": "/transcript-reveals.html"
+    },
+    {
+      "source": "/mpp",
+      "destination": "/million-pound-plan.html"
+    },
+    {
+      "source": "/mpp/",
+      "destination": "/million-pound-plan.html"
+    },
+    {
+      "source": "/check",
+      "destination": "/process-pain-check.html"
+    },
+    {
+      "source": "/check/",
+      "destination": "/process-pain-check.html"
+    },
+    {
+      "source": "/privateinvite",
+      "destination": "/privateinvite.html"
+    },
+    {
+      "source": "/privateinvite/",
+      "destination": "/privateinvite.html"
+    },
+    {
+      "source": "/aicost",
+      "destination": "/aicost.html"
+    },
+    {
+      "source": "/aicost/:path*",
+      "destination": "/aicost.html"
+    },
+    {
+      "source": "/costofinaction",
+      "destination": "/costofinaction.html"
+    },
+    {
+      "source": "/costofinaction/:path*",
+      "destination": "/costofinaction.html"
+    },
+    {
+      "source": "/performance-ceiling",
+      "destination": "/performance_ceiling.html"
+    },
+    {
+      "source": "/tools",
+      "destination": "/tools.html"
+    },
+    {
+      "source": "/thankyou",
+      "destination": "/thankyou/index.html"
+    },
+    {
+      "source": "/thankyou/",
+      "destination": "/thankyou/index.html"
+    },
+    {
+      "source": "/clarity-engine",
+      "destination": "/clarity-engine.html"
+    },
+    {
+      "source": "/usecasegameplan",
+      "destination": "/usecasegameplan.html"
+    },
+    {
+      "source": "/usecasegameplan/",
+      "destination": "/usecasegameplan.html"
+    },
+    {
+      "source": "/aiupgrade",
+      "destination": "/ai-suite-upgrade.html"
+    },
+    {
+      "source": "/aiupgrade/",
+      "destination": "/ai-suite-upgrade.html"
+    },
+    {
+      "source": "/ai-suite/upgrade",
+      "destination": "/ai-suite-upgrade.html"
+    },
+    {
+      "source": "/ai-suite/upgrade/",
+      "destination": "/ai-suite-upgrade.html"
+    },
+    {
+      "source": "/magneticleadership",
+      "destination": "/magneticleadership.html"
+    },
+    {
+      "source": "/magneticleadership/:path*",
+      "destination": "/magneticleadership.html"
+    },
+    {
+      "source": "/case-studies",
+      "destination": "/case-studies.html"
+    },
+    {
+      "source": "/case-studies/",
+      "destination": "/case-studies.html"
+    }
+  ]
 }

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corbelle AI Product Suite — Private Invite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  :root{
+    --navy:#1F3864;
+    --accent:#2E75B6;
+    --ink:#1F2937;
+    --muted:#6B7280;
+    --tint-1:#EEF4FB;
+    --tint-2:#E3F0FA;
+    --border:#C9D8E8;
+    --green:#1F7A4D;
+    --green-bg:#E6F4EC;
+    --red:#B3261E;
+    --red-bg:#FBEAE9;
+    --bg:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+  }
+  a{color:inherit;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 32px;}
+  img{max-width:100%;}
+
+  .wordmark{font-size:19px;font-weight:800;color:var(--navy);letter-spacing:-0.01em;}
+
+  .s-nav .wrap{max-width:1180px;padding-left:24px;padding-right:24px;}
+  .s-nav-links{margin:0;padding-left:0;}
+
+  .btn{
+    display:inline-block;padding:13px 26px;border-radius:8px;font-size:15px;font-weight:700;
+    cursor:pointer;border:1px solid transparent;text-decoration:none;text-align:center;
+  }
+  .btn-primary{background:var(--navy);color:#fff;}
+  .btn-primary:hover{background:var(--accent);}
+  .btn-ghost{color:var(--navy);border-color:var(--border);background:#fff;}
+
+  .hero{padding:64px 0 36px;text-align:center;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.05em;color:var(--accent);
+    background:var(--tint-1);border:1px solid var(--tint-2);padding:5px 14px;border-radius:20px;
+    margin-bottom:22px;
+  }
+  h1{font-size:38px;line-height:1.18;letter-spacing:-0.02em;margin:0 0 18px;color:var(--navy);}
+  h1 span{color:var(--accent);}
+  .hero p.sub{font-size:18px;color:var(--muted);max-width:600px;margin:0 auto 30px;}
+  .hero-note{font-size:13px;color:var(--muted);margin-top:14px;}
+
+  .highlight-bar{
+    background:var(--tint-1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    padding:22px 0;text-align:center;
+  }
+  .highlight-bar p{margin:0;font-size:16px;font-weight:600;color:var(--navy);max-width:640px;margin:0 auto;}
+
+  section{padding:56px 0;}
+  section.tinted{background:var(--tint-1);}
+  .section-label{
+    font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--accent);margin-bottom:8px;
+  }
+  h2{font-size:26px;letter-spacing:-0.01em;color:var(--navy);margin:0 0 14px;}
+  .section-sub{color:var(--muted);font-size:15.5px;max-width:600px;margin:0 0 32px;}
+  .center{text-align:center;margin-left:auto;margin-right:auto;}
+
+  p{font-size:15.5px;}
+  .lede{font-size:17px;color:var(--ink);}
+
+  ul.plain{padding-left:0;list-style:none;margin:18px 0;}
+  ul.plain li{position:relative;padding:6px 0 6px 22px;font-size:15.5px;}
+  ul.plain li::before{content:"•";position:absolute;left:0;color:var(--accent);font-weight:700;}
+
+  ul.punch{padding-left:0;list-style:none;margin:20px 0;}
+  ul.punch li{font-size:16px;font-weight:600;padding:5px 0;color:var(--ink);}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+
+  .box{border:1px solid var(--border);border-radius:12px;padding:26px;background:#fff;}
+  .box.tint{background:var(--tint-1);}
+
+  .check-list{list-style:none;padding:0;margin:0;}
+  .check-list li{position:relative;padding:7px 0 7px 26px;font-size:14.5px;}
+  .check-list.good li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700;}
+  .check-list.bad li::before{content:"✕";position:absolute;left:0;color:var(--red);font-weight:700;}
+  .col-title{font-weight:700;font-size:15px;margin-bottom:10px;}
+  .col-title.good{color:var(--green);}
+  .col-title.bad{color:var(--red);}
+
+  .stage-list{display:flex;flex-direction:column;gap:16px;}
+  .stage-card{border:1px solid var(--border);border-radius:12px;padding:24px;background:#fff;display:flex;gap:20px;}
+  .stage-num{
+    flex:0 0 auto;width:36px;height:36px;border-radius:8px;background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;
+  }
+  .stage-card h3{font-size:17px;margin:0 0 4px;color:var(--ink);}
+  .stage-card .stage-hook{font-size:14.5px;color:var(--muted);margin:0 0 10px;font-style:italic;}
+  .stage-card ul{margin:0 0 10px;padding-left:20px;font-size:14px;color:var(--ink);}
+  .stage-card ul li{margin-bottom:3px;}
+  .decision-tag{
+    display:inline-block;font-size:12.5px;font-weight:700;color:var(--accent);
+    background:var(--tint-1);border:1px solid var(--tint-2);padding:4px 10px;border-radius:20px;
+  }
+
+  .resource-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 32px;margin:18px 0 24px;}
+
+  .cta-block{
+    border:2px solid var(--navy);border-radius:14px;padding:36px;text-align:center;background:#fff;
+  }
+  .cta-block h3{font-size:20px;color:var(--navy);margin:0 0 4px;}
+  .cta-block .price{font-size:32px;font-weight:800;color:var(--ink);margin:8px 0 4px;}
+  .cta-block .price small{font-size:14px;font-weight:500;color:var(--muted);}
+  .cta-block ul.check-list{max-width:380px;margin:18px auto 22px;text-align:left;}
+  .cta-note{font-size:12.5px;color:var(--muted);margin-top:14px;}
+
+  .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:28px 0;}
+  .price-card{border:1px solid var(--border);border-radius:14px;padding:30px;background:#fff;position:relative;}
+  .price-card.highlight{border:2px solid var(--navy);}
+  .price-badge{
+    position:absolute;top:-12px;left:24px;background:var(--navy);color:#fff;font-size:11px;
+    font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:4px 10px;border-radius:20px;
+  }
+  .price-card h3{font-size:18px;margin:0 0 6px;color:var(--navy);}
+  .price-card .price{font-size:26px;font-weight:800;color:var(--ink);margin:8px 0 4px;}
+  .price-card .price-desc{font-size:13.5px;color:var(--muted);margin-bottom:18px;}
+  .price-card ul.check-list{margin-bottom:20px;}
+
+  table.compare{width:100%;border-collapse:collapse;margin:32px 0;font-size:14px;}
+  table.compare th, table.compare td{border:1px solid var(--border);padding:12px 14px;text-align:left;vertical-align:top;}
+  table.compare th{background:var(--tint-1);color:var(--navy);font-size:13px;text-transform:uppercase;letter-spacing:.02em;}
+  table.compare td:first-child, table.compare th:first-child{font-weight:700;color:var(--ink);background:var(--tint-1);}
+
+  .faq{max-width:720px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--border);padding:20px 0;}
+  .faq-item h3{font-size:15.5px;margin:0 0 8px;color:var(--ink);}
+  .faq-item p{font-size:14.5px;color:var(--muted);margin:0;}
+
+  .fine-print{background:var(--tint-1);border-radius:12px;padding:26px;font-size:14px;color:var(--muted);}
+  .fine-print p{margin:0 0 10px;}
+  .fine-print p:last-child{margin-bottom:0;}
+
+  footer{border-top:1px solid var(--border);padding:36px 0;background:var(--tint-1);text-align:center;}
+  footer p{font-size:13px;color:var(--muted);margin:6px 0 0;}
+
+  @media (max-width:720px){
+    .two-col,.pricing-grid,.resource-grid{grid-template-columns:1fr;}
+    h1{font-size:30px;}
+    .stage-card{flex-direction:column;}
+    .s-nav .wrap{padding:14px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="s-nav">
+  <div class="wrap">
+    <a class="s-logo" href="/">Corbelle</a>
+    <ul class="s-nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="method.html">The Method</a></li>
+      <li><a href="/tools">Tools</a></li>
+      <li><a class="s-nav-cta" href="contact.html">Get in touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">● Private invite</span>
+    <h1>You have the plan.<br>Now build the <span>system</span> around it.</h1>
+    <p class="sub">Your AI Use Case Gameplan pressure-tested one idea. The Suite gives you the repeatable system behind every AI decision that follows — six stages, 30+ tools, one payment.</p>
+    <a class="btn btn-primary" href="#">Get the complete AI Product Suite — £297</a>
+    <div class="hero-note">No subscription. Lifetime access. Secure checkout.</div>
+  </div>
+</section>
+
+<div class="highlight-bar">
+  <p>Not another AI course. A working system for the decisions your organisation hasn't made yet.</p>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">The problem</div>
+    <h2>One use case tested. Then what?</h2>
+    <p class="lede">Your Gameplan answered one question: is this the best use case to start with, and what do I do next? It showed you where the case is strong, where the assumptions haven't been tested, and what could stop it from delivering value.</p>
+    <p>But one credible use case doesn't give your organisation a repeatable way to make every AI decision that follows.</p>
+    <ul class="punch">
+      <li>The next request will still arrive.</li>
+      <li>Someone will suggest another tool.</li>
+      <li>A team will want to start a pilot.</li>
+      <li>Governance will be asked to catch up.</li>
+      <li>Leaders will need to decide what deserves investment — and what should stop.</li>
+    </ul>
+    <p>The Corbelle AI Product Suite (AIPS) gives you the complete working system for all of it: <strong>six connected stages, 30+ tools, guides, templates and worked examples — one clear route from AI ambition to measured adoption.</strong></p>
+  </div>
+</section>
+
+<section class="tinted">
+  <div class="wrap">
+    <div class="section-label center">The six decisions</div>
+    <h2 class="center">The six decisions behind every successful AI rollout</h2>
+    <p class="section-sub center">Six stages. Each answers one decision, then hands off cleanly to the next. Without a connected method, every new idea creates another debate, another spreadsheet, another set of assumptions.</p>
+
+    <div class="stage-list">
+      <div class="stage-card">
+        <div class="stage-num">1</div>
+        <div>
+          <h3>Readiness Diagnostic</h3>
+          <p class="stage-hook">Find where leadership conviction, ownership, evidence, data and delivery capacity don't yet line up.</p>
+          <ul>
+            <li>Assess readiness across the areas that matter</li>
+            <li>Surface disagreements before they become delivery problems</li>
+            <li>Identify missing owners, evidence and capabilities</li>
+            <li>Establish the conditions required to proceed</li>
+          </ul>
+          <span class="decision-tag">The decision: Are we ready to do this properly?</span>
+        </div>
+      </div>
+
+      <div class="stage-card">
+        <div class="stage-num">2</div>
+        <div>
+          <h3>Use Case Identification &amp; Prioritisation</h3>
+          <p class="stage-hook">Turn a crowded list of possibilities into a ranked, defensible portfolio.</p>
+          <ul>
+            <li>Capture and compare potential use cases consistently</li>
+            <li>Separate visible excitement from genuine business value</li>
+            <li>Evaluate feasibility, strategic fit, risk and urgency</li>
+            <li>Decide what moves now, later or not at all</li>
+          </ul>
+          <span class="decision-tag">The decision: What should go first?</span>
+        </div>
+      </div>
+
+      <div class="stage-card">
+        <div class="stage-num">3</div>
+        <div>
+          <h3>AI Audit</h3>
+          <p class="stage-hook">Understand the current process, establish the baseline, and test whether the economics are credible.</p>
+          <ul>
+            <li>Map how the work happens today</li>
+            <li>Identify friction, waste and avoidable cost</li>
+            <li>Define measurable outcomes and success thresholds</li>
+            <li>Build an evidence-based case to stop, fix, test or scale</li>
+          </ul>
+          <span class="decision-tag">The decision: Will it create enough value?</span>
+        </div>
+      </div>
+
+      <div class="stage-card">
+        <div class="stage-num">4</div>
+        <div>
+          <h3>Tool &amp; Solution Match</h3>
+          <p class="stage-hook">Define what the organisation needs before committing to a platform, vendor or build.</p>
+          <ul>
+            <li>Translate the use case into clear requirements</li>
+            <li>Compare build, buy and configure options</li>
+            <li>Evaluate fit, integration, data and exit risk</li>
+            <li>Make a decision that can be explained and defended</li>
+          </ul>
+          <span class="decision-tag">The decision: What should we use?</span>
+        </div>
+      </div>
+
+      <div class="stage-card">
+        <div class="stage-num">5</div>
+        <div>
+          <h3>Governance &amp; Policy</h3>
+          <p class="stage-hook">Put proportionate rules, data boundaries, approvals and accountability around AI use.</p>
+          <ul>
+            <li>Set clear expectations for acceptable use</li>
+            <li>Classify risk and data sensitivity</li>
+            <li>Define approval routes and decision ownership</li>
+            <li>Make safe use easier without stopping useful experimentation</li>
+          </ul>
+          <span class="decision-tag">The decision: Can we do this safely and responsibly?</span>
+        </div>
+      </div>
+
+      <div class="stage-card">
+        <div class="stage-num">6</div>
+        <div>
+          <h3>Rollout &amp; Adoption</h3>
+          <p class="stage-hook">Turn implementation into changed behaviour and measurable use.</p>
+          <ul>
+            <li>Plan the rollout around real users and workflows</li>
+            <li>Build a champions and stakeholder approach</li>
+            <li>Create practical training and support</li>
+            <li>Track adoption, feedback and leading indicators</li>
+          </ul>
+          <span class="decision-tag">The decision: Will people use it, and will the value appear?</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">What's inside</div>
+    <h2>It's not six courses. It's six decisions, done properly.</h2>
+    <p>The Suite isn't designed to give you more to consume. It's designed to help you make the decision in front of you, then produce an output your organisation can actually use.</p>
+    <p><strong>30+ resources across the six stages, including:</strong></p>
+    <div class="resource-grid">
+      <ul class="plain">
+        <li>Interactive diagnostics and decision tools</li>
+        <li>Quick-start guide for every stage</li>
+        <li>Structured workbooks and facilitation prompts</li>
+        <li>Prioritisation and comparison templates</li>
+      </ul>
+      <ul class="plain">
+        <li>Business-case and value-mapping resources</li>
+        <li>Requirements and solution-selection tools</li>
+        <li>Governance, policy and risk templates</li>
+        <li>Rollout, training and adoption plans, plus worked examples</li>
+      </ul>
+    </div>
+    <p>You don't need to complete every resource in order. <strong>Start with the constraint your Gameplan exposed. Use the relevant stage. Produce the decision output. Move to the next constraint.</strong></p>
+  </div>
+</section>
+
+<section class="tinted">
+  <div class="wrap">
+    <div class="section-label center">Before / after</div>
+    <h2 class="center">What changes when the system is in place</h2>
+    <div class="two-col">
+      <div class="box">
+        <div class="col-title bad">Without the Suite</div>
+        <ul class="check-list bad">
+          <li>Every new AI idea begins from a blank page</li>
+          <li>The loudest sponsor decides what gets prioritised</li>
+          <li>Pilots start with no clear measures or decision dates</li>
+          <li>Tools get picked before requirements are understood</li>
+          <li>Governance reacts to behaviour instead of shaping it</li>
+          <li>Launch activity gets mistaken for adoption and value</li>
+        </ul>
+      </div>
+      <div class="box">
+        <div class="col-title good">With the Suite</div>
+        <ul class="check-list good">
+          <li>Ideas move through a consistent set of decisions</li>
+          <li>Priorities are argued from shared evidence</li>
+          <li>Tests have owners, measures and stop-or-scale thresholds</li>
+          <li>Solutions are compared against agreed requirements</li>
+          <li>Risk and accountability are considered early</li>
+          <li>Adoption is planned and measured, not assumed</li>
+        </ul>
+      </div>
+    </div>
+    <p class="center" style="max-width:560px;margin:28px auto 0;color:var(--muted);">The goal isn't to make every AI idea happen. It's to help you make better decisions before money, time and credibility are committed.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Fit check</div>
+    <h2>Who the AI Product Suite is for</h2>
+    <div class="two-col">
+      <div class="box">
+        <div class="col-title good">Good fit</div>
+        <ul class="check-list good">
+          <li>You're responsible for AI, transformation, operations or business improvement</li>
+          <li>You have one or more credible opportunities to evaluate</li>
+          <li>You want a structured method rather than generic AI advice</li>
+          <li>You can involve the relevant leaders, users and subject-matter experts</li>
+          <li>You're comfortable working through the resources independently</li>
+          <li>You want reusable capability that stays inside the organisation</li>
+        </ul>
+      </div>
+      <div class="box">
+        <div class="col-title bad">Not a fit</div>
+        <ul class="check-list bad">
+          <li>You want a list of AI tools without first defining the problem</li>
+          <li>You want a guaranteed financial result</li>
+          <li>You're unwilling to gather evidence or involve the people affected</li>
+          <li>You need someone else to lead the work and produce the outputs for you</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:20px;">If that last point sounds like you, there's another way to work with Corbelle — see below.</p>
+  </div>
+</section>
+
+<section class="tinted">
+  <div class="wrap">
+    <div class="section-label">Where it goes wrong</div>
+    <h2>The mistakes this system is built to catch</h2>
+    <p class="lede">I built the Suite around a pattern I see repeatedly. The most expensive AI mistakes rarely happen because someone can't use the technology. They happen in the gap between the idea and the implementation:</p>
+    <div class="box">
+      <ul class="plain">
+        <li>The problem was never defined precisely</li>
+        <li>The baseline was missing</li>
+        <li>Ownership was assumed, not assigned</li>
+        <li>The tool came before the requirements</li>
+        <li>Governance arrived too late</li>
+        <li>Adoption was reduced to training and launch comms</li>
+      </ul>
+    </div>
+    <p style="margin-top:18px;">The Suite makes those decisions visible and gives you a practical way to work through them.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-block">
+      <div class="section-label center">Get started</div>
+      <h3>Corbelle AI Product Suite (AIPS)</h3>
+      <div class="price">£297 <small>one-time payment</small></div>
+      <ul class="check-list good">
+        <li>All six Corbelle AI decision stages</li>
+        <li>30+ tools, guides, workbooks and templates</li>
+        <li>Worked examples and reusable decision outputs</li>
+        <li>Self-guided access to the complete system</li>
+      </ul>
+      <a class="btn btn-primary" href="#">Buy the Corbelle AI Product Suite — £297</a>
+      <div class="cta-note">Secure checkout. No subscription. Lifetime access.</div>
+    </div>
+  </div>
+</section>
+
+<section class="tinted">
+  <div class="wrap">
+    <div class="section-label center">Closer support</div>
+    <h2 class="center">Want help putting the system into practice?</h2>
+    <p class="section-sub center">The £297 Suite gives you the complete method, tools and templates. If you want direct guidance or hands-on implementation, there are two ways to work more closely with Brendan.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card highlight">
+        <span class="price-badge">Most popular</span>
+        <h3>Fast Lane Install</h3>
+        <div class="price">£4,000 <small>upfront</small></div>
+        <div class="price-desc">Or 8 weekly payments of £500. Implement the system with direct guidance over eight weeks — you lead, Brendan guides.</div>
+        <ul class="check-list good">
+          <li>Complete access to the AI Product Suite</li>
+          <li>Four private 1:1 implementation calls over 8 weeks</li>
+          <li>Direct review of your priorities, outputs and decisions</li>
+          <li>Feedback between sessions via a private support channel</li>
+          <li>Clear next actions after every review</li>
+        </ul>
+        <a class="btn btn-primary" href="#" style="width:100%;">Apply for Fast Lane Install</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Corbelle Private Install</h3>
+        <div class="price">£10,000 <small>upfront</small></div>
+        <div class="price-desc">Or 8 weekly payments of £1,250. Brendan leads the implementation with you and for you over eight weeks.</div>
+        <ul class="check-list good">
+          <li>Everything in Fast Lane, plus full delivery support</li>
+          <li>Weekly implementation and decision sessions</li>
+          <li>Stakeholder interviews and workshops where required</li>
+          <li>Corbelle-led analysis and preparation of agreed outputs</li>
+          <li>Final implementation roadmap and next-step review</li>
+        </ul>
+        <a class="btn btn-ghost" href="#" style="width:100%;">Apply for Corbelle Private Install</a>
+      </div>
+    </div>
+    <p class="section-sub center" style="margin-top:-4px;">Application required for both. A short conversation confirms fit, scope and availability before payment is taken. To protect delivery quality, Brendan takes on only a small number of Private Install clients at a time.</p>
+
+    <table class="compare">
+      <tr>
+        <th>&nbsp;</th>
+        <th>AI Product Suite</th>
+        <th>Fast Lane Install</th>
+        <th>Corbelle Private Install</th>
+      </tr>
+      <tr>
+        <td>Investment</td>
+        <td>£297 once</td>
+        <td>£4,000 upfront or 8 × £500</td>
+        <td>£10,000 upfront or 8 × £1,250</td>
+      </tr>
+      <tr>
+        <td>Who leads</td>
+        <td>You, internally</td>
+        <td>You lead; Brendan guides</td>
+        <td>Brendan leads delivery</td>
+      </tr>
+      <tr>
+        <td>Best for</td>
+        <td>Independent teams</td>
+        <td>Teams wanting guidance and pace</td>
+        <td>Teams wanting delivery support</td>
+      </tr>
+      <tr>
+        <td>Access</td>
+        <td>Full self-service Suite</td>
+        <td>Suite + four private calls</td>
+        <td>Suite + 8-week implementation</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label center">FAQ</div>
+    <h2 class="center">Still curious?</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <h3>Is this another AI course?</h3>
+        <p>No. The Suite is organised around six decisions and the outputs needed to make them. The resources help you do the work, not just learn the theory.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do I need to complete all six stages?</h3>
+        <p>No. Start with the most important constraint identified by your Gameplan. The stages connect, but you use the relevant tools when the decision arises.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is the Suite only for one use case?</h3>
+        <p>No. Your Gameplan pressure-tested one named use case. The Suite gives you a reusable system for evaluating and implementing the AI decisions that follow.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does the £7 Gameplan reduce the £297 price?</h3>
+        <p>No. The Gameplan is a separate diagnostic product. The complete AI Product Suite is £297.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What's the difference between the Suite, Fast Lane and Private Install?</h3>
+        <p>The Suite gives you the complete self-service system to implement internally. With Fast Lane, you lead the implementation while Brendan guides, reviews and challenges the work. With Private Install, Brendan leads the process and prepares the agreed outputs with you and for you.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What's the difference between Fast Lane and Private Install?</h3>
+        <p>Fast Lane is guidance-led: you and your team do the implementation, supported by four private calls and direct feedback. Private Install is implementation-led: Brendan runs the process, facilitates the required work and prepares the agreed outputs.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is Private Install fully done for you?</h3>
+        <p>Corbelle does the agreed analysis, preparation and build work, but successful implementation still requires access to your people, processes, evidence and decisions. It's a close implementation partnership, not an outsourced AI department.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Are results guaranteed?</h3>
+        <p>No specific commercial, operational or adoption result can be guaranteed. Outcomes depend on the opportunity, available evidence, organisational participation and execution. Brendan commits to the agreed process, deliverables and standard of work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tinted">
+  <div class="wrap">
+    <div class="fine-print">
+      <p><strong>The fine print.</strong> No guarantees. No refunds. No promises about specific cost saves. Your results depend on your effort, skills and willingness to implement across your business.</p>
+      <p>What I promise: I'll show you exactly what I would do in your situation — and I've been where you are — and you'll have the tools and detail to execute. That's as much as I ethically can and will promise.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap center" style="max-width:600px;">
+    <h2 class="center">You already know the next constraint</h2>
+    <p class="center" style="color:var(--muted);">Your Gameplan has shown you where this use case needs work. You can return to a blank page each time a new AI decision appears — or put one connected system behind every decision that follows.</p>
+    <a class="btn btn-primary" href="#" style="margin-top:8px;">Get the complete Suite — £297</a>
+    <div class="hero-note">One payment. Self-guided.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="wordmark">Corbelle</div>
+    <p>AI Product Suite — six stages, one path, from AI ambition to measured adoption.</p>
+  </div>
+</footer>
+
+</body>
+</html>

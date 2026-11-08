@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A focused autumn 2026 event plan for finding Corbelle prospects in SMEs, manufacturing, regulated businesses, fitness and sports performance.">
+  <title>Prospective Client Events — Corbelle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #10253f;
+      --navy: #0b2039;
+      --blue: #164e72;
+      --mint: #b9ddcf;
+      --mint-light: #e9f4ef;
+      --cream: #f7f1e7;
+      --paper: #fbfaf7;
+      --white: #ffffff;
+      --coral: #ef725d;
+      --gold: #e6b84a;
+      --muted: #5e6d7c;
+      --line: #dce3df;
+      --shadow: 0 18px 45px rgba(11, 32, 57, .09);
+      --radius: 20px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 Inter, system-ui, sans-serif; }
+    h1, h2, h3 { margin: 0; font-family: Sora, system-ui, sans-serif; letter-spacing: -.035em; line-height: 1.08; }
+    p { margin: 0; }
+    a { color: inherit; }
+    .shell { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    .nav { position: sticky; top: 0; z-index: 20; background: rgba(251, 250, 247, .92); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px); }
+    .nav-inner { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font: 700 17px Sora, sans-serif; text-decoration: none; }
+    .nav-links { display: flex; gap: 22px; }
+    .nav-links a { color: var(--muted); font-size: 13px; font-weight: 600; text-decoration: none; }
+    .hero { padding: 104px 0 74px; overflow: hidden; background: var(--navy); color: white; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 68px; align-items: end; }
+    .eyebrow { margin-bottom: 18px; color: var(--mint); font-size: 12px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    h1 { max-width: 780px; font-size: clamp(44px, 7vw, 78px); }
+    .hero-copy { max-width: 690px; margin-top: 25px; color: #c7d4df; font-size: 19px; }
+    .hero-card { padding: 27px; border: 1px solid rgba(255,255,255,.17); border-radius: var(--radius); background: rgba(255,255,255,.06); }
+    .hero-card strong { display: block; margin-bottom: 9px; color: var(--mint); font: 600 20px Sora, sans-serif; }
+    .hero-card span { color: #d8e2e9; font-size: 14px; }
+    .section { padding: 82px 0; }
+    .section.mint { background: var(--mint-light); }
+    .section.cream { background: var(--cream); }
+    .section.dark { background: var(--navy); color: white; }
+    .section-head { display: grid; grid-template-columns: 220px 1fr; gap: 38px; margin-bottom: 40px; }
+    .kicker { color: var(--coral); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    h2 { max-width: 780px; font-size: clamp(32px, 4.2vw, 50px); }
+    .intro { max-width: 760px; margin-top: 16px; color: var(--muted); font-size: 18px; }
+    .dark .intro { color: #bdcad5; }
+    .profile-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .profile-card, .event-card, .play-card { padding: 25px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); box-shadow: var(--shadow); }
+    .profile-card span { color: var(--coral); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .profile-card strong { display: block; margin-top: 9px; font: 600 18px/1.3 Sora, sans-serif; }
+    .profile-card p { margin-top: 8px; color: var(--muted); font-size: 14px; }
+    .calendar { display: grid; gap: 14px; }
+    .event-card { display: grid; grid-template-columns: 92px 1.25fr 1fr 140px; gap: 23px; align-items: start; }
+    .date { padding: 12px 8px; border-radius: 13px; background: var(--navy); color: white; text-align: center; }
+    .date b { display: block; color: var(--mint); font: 700 22px Sora, sans-serif; }
+    .date span { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    .event-card h3 { font-size: 20px; }
+    .event-card h3 a { text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    .event-card .where { margin-top: 6px; color: var(--muted); font-size: 13px; }
+    .event-card p { color: var(--muted); font-size: 14px; }
+    .tag { display: inline-flex; width: fit-content; padding: 6px 10px; border-radius: 999px; background: var(--mint-light); color: var(--blue); font-size: 11px; font-weight: 700; text-transform: uppercase; }
+    .tag.partner { background: #fff0e9; color: #a84331; }
+    .tag.vertical { background: #fff5d7; color: #705615; }
+    .priority { text-align: right; }
+    .priority b { display: block; color: var(--coral); font: 700 13px Sora, sans-serif; }
+    .priority span { color: var(--muted); font-size: 12px; }
+    .spotlight { display: grid; grid-template-columns: .82fr 1.18fr; gap: 28px; }
+    .spotlight-copy { padding: 34px; border-radius: var(--radius); background: var(--navy); color: white; }
+    .spotlight-copy h3 { margin-top: 12px; font-size: 30px; }
+    .spotlight-copy p { margin-top: 16px; color: #c5d2dc; }
+    .spotlight-list { display: grid; gap: 12px; }
+    .fitness-event { padding: 21px 23px; border: 1px solid var(--line); border-radius: 16px; background: white; }
+    .fitness-event header { display: flex; justify-content: space-between; gap: 20px; align-items: start; }
+    .fitness-event h3 { font-size: 18px; }
+    .fitness-event time { flex: 0 0 auto; color: var(--coral); font-size: 12px; font-weight: 700; }
+    .fitness-event p { margin-top: 8px; color: var(--muted); font-size: 14px; }
+    .plays { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .play-card { box-shadow: none; }
+    .play-card small { color: var(--coral); font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+    .play-card h3 { margin-top: 10px; font-size: 21px; }
+    .play-card blockquote { margin: 18px 0 0; padding-left: 16px; border-left: 3px solid var(--mint); color: var(--muted); font-size: 14px; }
+    .plan { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .plan article { padding: 24px; border-top: 3px solid var(--mint); background: rgba(255,255,255,.06); }
+    .plan b { color: var(--mint); font: 700 24px Sora, sans-serif; }
+    .plan h3 { margin-top: 11px; font-size: 17px; }
+    .plan p { margin-top: 8px; color: #bdcad5; font-size: 13px; }
+    .metrics { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 30px; }
+    .metric { padding: 17px; border: 1px solid rgba(255,255,255,.12); border-radius: 14px; }
+    .metric b { display: block; color: var(--mint); font: 700 24px Sora, sans-serif; }
+    .metric span { color: #bdcad5; font-size: 12px; }
+    .note { margin-top: 27px; padding: 19px 22px; border-left: 4px solid var(--gold); background: #fff9e8; color: #655117; }
+    .footer { padding: 30px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 30px; }
+    @media (max-width: 900px) {
+      .hero-grid, .spotlight { grid-template-columns: 1fr; }
+      .section-head { grid-template-columns: 1fr; gap: 10px; }
+      .profile-grid, .plan { grid-template-columns: 1fr 1fr; }
+      .event-card { grid-template-columns: 80px 1fr; }
+      .event-card > p, .event-card .priority { grid-column: 2; text-align: left; }
+      .plays { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .shell { width: min(var(--max), calc(100% - 26px)); }
+      .nav-links { display: none; }
+      .hero { padding: 70px 0 52px; }
+      .section { padding: 62px 0; }
+      .profile-grid, .plan, .metrics { grid-template-columns: 1fr; }
+      .event-card { grid-template-columns: 1fr; }
+      .event-card > p, .event-card .priority { grid-column: 1; }
+      .date { width: 84px; }
+      .fitness-event header { display: block; }
+      .fitness-event time { display: block; margin-top: 7px; }
+      .footer-inner { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="shell nav-inner">
+      <a class="brand" href="index.html">Corbelle</a>
+      <div class="nav-links">
+        <a href="#core-events">Core events</a>
+        <a href="#fitness">Performance &amp; fitness</a>
+        <a href="#approach">Approach</a>
+        <a href="#plan">90-day plan</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="shell hero-grid">
+      <div>
+        <p class="eyebrow">Prospective client event plan · Autumn 2026</p>
+        <h1>Go where costly decisions are already being discussed.</h1>
+        <p class="hero-copy">A focused programme for meeting growing businesses before they invest in technology, AI, security, automation, people or another workaround.</p>
+      </div>
+      <aside class="hero-card">
+        <strong>The principle</strong>
+        <span>Use events to start evidence-led conversations. Sell the £500–£1,000 Problem Clarity Session first; allow the diagnosis to reveal whether a larger engagement or Thrive solution is justified.</span>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <span class="kicker">Target profile</span>
+          <div><h2>Small enough to lack a technology executive. Large enough to feel the pain.</h2></div>
+        </div>
+        <div class="profile-grid">
+          <article class="profile-card"><span>Company</span><strong>75–250 employees</strong><p>Stretch to 500 where technology ownership remains fragmented.</p></article>
+          <article class="profile-card"><span>Buyer</span><strong>MD, CEO, COO or CFO</strong><p>Also operations, transformation and overstretched IT leaders.</p></article>
+          <article class="profile-card"><span>Trigger</span><strong>A decision inside 12 months</strong><p>AI, cyber, compliance, automation, outsourcing, systems or headcount.</p></article>
+          <article class="profile-card"><span>Best signal</span><strong>A preferred fix without a diagnosis</strong><p>The visible symptom has already become a technology-shaped brief.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section mint" id="core-events">
+      <div class="shell">
+        <div class="section-head">
+          <span class="kicker">Core calendar</span>
+          <div><h2>The strongest general, manufacturing and regulated-business opportunities.</h2><p class="intro">Prioritised for buyer access and relevance—not simply audience size.</p></div>
+        </div>
+        <div class="calendar">
+          <article class="event-card">
+            <div class="date"><b>22–23</b><span>Sep</span></div>
+            <div><h3><a href="https://www.ppmashow.co.uk/">PPMA Show</a></h3><p class="where">NEC Birmingham · attend one day</p></div>
+            <p>Manufacturers actively considering machinery, automation, robotics and software. Lead with diagnosing the process before selecting technology.</p>
+            <div class="priority"><span class="tag vertical">Manufacturing</span><b>Priority A</b><span>Direct clients</span></div>
+          </article>
+          <article class="event-card">
+            <div class="date"><b>24</b><span>Sep</span></div>
+            <div><h3><a href="https://www.b2bexpos.co.uk/upcoming-events">B2B Expo Reading</a></h3><p class="where">Green Park Conference Centre · 500+ visitors</p></div>
+            <p>A concentrated regional SME audience. The best low-cost test of the general Problem Clarity proposition.</p>
+            <div class="priority"><span class="tag">General SME</span><b>Priority A</b><span>Direct clients</span></div>
+          </article>
+          <article class="event-card">
+            <div class="date"><b>14–15</b><span>Oct</span></div>
+            <div><h3><a href="https://www.dtxevents.io/london">DTX London</a></h3><p class="where">ExCeL London · attend with pre-booked meetings</p></div>
+            <p>Business transformation, AI, cloud and cyber. Target operations and transformation buyers rather than the many technology vendors.</p>
+            <div class="priority"><span class="tag partner">Mixed</span><b>Priority A</b><span>Clients + partners</span></div>
+          </article>
+          <article class="event-card">
+            <div class="date"><b>22</b><span>Oct</span></div>
+            <div><h3><a href="https://www.b2bexpos.co.uk/upcoming-events">B2B Expo Brighton</a></h3><p class="where">Brighton Racecourse · 500+ visitors</p></div>
+            <p>Repeat the Reading experiment in a second region and compare qualified follow-up and paid-session conversion.</p>
+            <div class="priority"><span class="tag">General SME</span><b>Priority A</b><span>Direct clients</span></div>
+          </article>
+          <article class="event-card">
+            <div class="date"><b>4–5</b><span>Nov</span></div>
+            <div><h3><a href="https://www.advancedengineeringuk.com/">Advanced Engineering UK</a></h3><p class="where">NEC Birmingham · target exhibitors in advance</p></div>
+            <p>High-value engineering and supply-chain businesses facing automation, data, security and legacy-system constraints.</p>
+            <div class="priority"><span class="tag vertical">Manufacturing</span><b>Priority A</b><span>Direct clients</span></div>
+          </article>
+          <article class="event-card">
+            <div class="date"><b>11–12</b><span>Nov</span></div>
+            <div><h3><a href="https://www.greatbritishbusinessshow.co.uk/">The Business Show London</a></h3><p class="where">ExCeL London · 25,000 SMEs and startups advertised</p></div>
+            <p>The highest-volume SME prospecting opportunity. Attend as a visitor before considering any stand or sponsorship.</p>
+            <div class="priority"><span class="tag">General SME</span><b>Priority A</b><span>Direct clients</span></div>
+          </article>
+          <article class="event-card">
+            <div class="date"><b>19</b><span>Nov</span></div>
+            <div><h3><a href="https://www.b2bexpos.co.uk/upcoming-events">B2B Expo Farnborough</a></h3><p class="where">Farnborough International · 400+ visitors</p></div>
+            <p>A strong Thames Valley and southern follow-up, conditional on Reading and Brighton producing qualified opportunities.</p>
+            <div class="priority"><span class="tag">General SME</span><b>Priority B</b><span>Test and scale</span></div>
+          </article>
+        </div>
+        <div class="note"><strong>Strategic rather than immediate:</strong> UK Private Capital Summit, AI Regulation Summit, RISK Expo Europe and financial-services cyber events are valuable for PE, compliance and adviser relationships, but are less likely to deliver quick £500–£1,000 wins than the regional and vertical events above.</div>
+      </div>
+    </section>
+
+    <section class="section cream" id="fitness">
+      <div class="shell">
+        <div class="section-head">
+          <span class="kicker">Added vertical</span>
+          <div><h2>Performance brands and fitness specialists are a credible second niche.</h2><p class="intro">Gym groups, sports-performance businesses, rehabilitation providers and scaling fitness brands often rely heavily on member data, digital journeys, payments, security and small operational teams—without employing a CTO or CDO.</p></div>
+        </div>
+        <div class="spotlight">
+          <article class="spotlight-copy">
+            <span class="tag">Why it fits</span>
+            <h3>Technology is fundamental, but rarely the core expertise.</h3>
+            <p>Useful triggers include a new CRM or member platform, fragmented athlete or client data, multi-site growth, AI-generated programming, cyber exposure, app adoption, poor system integrations and excessive practitioner administration.</p>
+            <p><strong>Best targets:</strong> multi-site gym operators, boutique studio groups, performance and recovery brands, sports technology businesses, private rehabilitation providers and specialist training organisations.</p>
+          </article>
+          <div class="spotlight-list">
+            <article class="fitness-event">
+              <header><h3><a href="https://hub.healthandfitness.org/european-congress">HFA European Congress</a></h3><time>24–26 September · London Stadium</time></header>
+              <p>High-fit access to fitness club and studio operators. The strongest event for multi-site operators and established fitness businesses.</p>
+            </article>
+            <article class="fitness-event">
+              <header><h3><a href="https://www.elevatearena.com/">Elevate</a></h3><time>8–9 October</time></header>
+              <p>The UK’s major physical-activity trade event. Useful for operators, suppliers and referral partners; verify the specific autumn format before booking.</p>
+            </article>
+            <article class="fitness-event">
+              <header><h3><a href="https://leadersinsport.com/events/">Leaders Week London</a></h3><time>7–8 October · Stamford Bridge</time></header>
+              <p>Sports organisations, rights holders, executives and commercial leaders. Better for performance brands and partnerships than quick SME sales.</p>
+            </article>
+            <article class="fitness-event">
+              <header><h3><a href="https://www.hcmsummit.live/">HCM Summit</a></h3><time>22 October · Westminster</time></header>
+              <p>Senior operators, investors and suppliers from health and fitness. High conversation quality; a good route into growing operator groups.</p>
+            </article>
+            <article class="fitness-event">
+              <header><h3><a href="https://leadersinsport.com/events/">Sport Performance Summit</a></h3><time>11–12 November · Fulham Pier</time></header>
+              <p>Performance leaders and specialist practitioners. Strong for sports-performance organisations and data/AI thought leadership, but overlaps The Business Show.</p>
+            </article>
+            <article class="fitness-event">
+              <header><h3>Independent Gyms Gym Operator Conference</h3><time>18–19 November · Solihull</time></header>
+              <p>Reported audience of 500 gym owners and 80 exhibitors. Potentially the most direct route to independent and regional operator clients.</p>
+            </article>
+            <article class="fitness-event">
+              <header><h3><a href="https://www.therapyshow.co.uk/">Therapy Show</a></h3><time>25–26 November · NEC Birmingham</time></header>
+              <p>Physiotherapy, sports therapy, exercise and rehabilitation professionals. Focus on growing clinics and multi-practitioner providers, not sole practitioners.</p>
+            </article>
+            <article class="fitness-event">
+              <header><h3><a href="https://eikonexhibitioncentre.co.uk/events/wellfit-expo/">WellFit Expo</a></h3><time>28–29 November · Lisburn</time></header>
+              <p>Fitness, wellness, recovery and nutrition. Useful for Northern Ireland brands and partnerships; the mixed consumer audience reduces direct-client density.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="approach">
+      <div class="shell">
+        <div class="section-head">
+          <span class="kicker">Conversation plays</span>
+          <div><h2>Change the hook. Keep the diagnostic.</h2></div>
+        </div>
+        <div class="plays">
+          <article class="play-card"><small>General SME</small><h3>Technology Decision Check</h3><blockquote>“Is there a technology or operational investment your business expects to make in the next 12 months—and how confident are you that it addresses the cause?”</blockquote></article>
+          <article class="play-card"><small>Manufacturing</small><h3>Automation Readiness Check</h3><blockquote>“Before investing in machinery, software or AI, where does the earliest controllable constraint actually enter the process?”</blockquote></article>
+          <article class="play-card"><small>Fitness &amp; performance</small><h3>Digital Performance Check</h3><blockquote>“As the business scales, where are fragmented systems, data or manual work starting to limit the member, athlete or practitioner experience?”</blockquote></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="plan">
+      <div class="shell">
+        <div class="section-head">
+          <span class="kicker">Event operating system</span>
+          <div><h2>Research first. Pre-book. Qualify. Follow up fast.</h2><p class="intro">Attending is not the activity that creates pipeline. The work around the event does.</p></div>
+        </div>
+        <div class="plan">
+          <article><b>01</b><h3>Three weeks before</h3><p>Build 20 target accounts from exhibitors, speakers and attendees. Ask Thrive to flag existing ownership.</p></article>
+          <article><b>02</b><h3>Pre-book</h3><p>Invite MDs, COOs, CFOs and operations leaders to 15-minute meetings around a visible business trigger.</p></article>
+          <article><b>03</b><h3>Qualify</h3><p>Capture the complaint, consequence, assumed cause, proposed investment, owner and decision date.</p></article>
+          <article><b>04</b><h3>Within 24 hours</h3><p>Reflect the prospect’s problem in their own language and propose the paid Problem Clarity Session.</p></article>
+        </div>
+        <div class="metrics">
+          <div class="metric"><b>8</b><span>Pre-booked meetings</span></div>
+          <div class="metric"><b>12</b><span>Qualified conversations</span></div>
+          <div class="metric"><b>5</b><span>Agreed follow-ups</span></div>
+          <div class="metric"><b>2</b><span>Paid-session candidates</span></div>
+          <div class="metric"><b>2</b><span>Referral partners</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-inner">
+      <strong>Corbelle · Clarity before investment</strong>
+      <span>Event information researched 14 August 2026. Confirm availability and programme details with organisers before booking.</span>
+    </div>
+  </footer>
+</body>
+</html>
