@@ -1,0 +1,4 @@
+_build
+*.py
+*.orig
+.DS_Store
