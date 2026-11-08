@@ -1,3 +1,4 @@
+import { botCheck } from "./_altcha.js";
 const LOOPS_CONTACT_UPDATE_URL = "https://app.loops.so/api/v1/contacts/update";
 
 function json(res, statusCode, body) {
@@ -21,6 +22,9 @@ export default async function handler(req, res) {
   }
 
   const body = req.body || {};
+  const bot = botCheck(body);
+  if (bot === "spam") return json(res, 200, { success: true });
+  if (bot) return json(res, 400, { success: false, message: bot });
   const email = String(body.email || "").trim().toLowerCase();
   if (!isValidEmail(email)) {
     return json(res, 400, { success: false, message: "Please enter a valid email address." });

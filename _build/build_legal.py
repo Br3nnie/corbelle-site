@@ -43,9 +43,10 @@ privacy = f'''
 <p>We are the controller of the personal data described here{' and are registered with the Information Commissioner&#x27;s Office (registration number ' + ICO_NUMBER + ')' if ICO_NUMBER else ''}. If you have any questions, email <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
 
 <h2>What we collect and why</h2>
-<p><strong>When you send an enquiry.</strong> Your name, business name, work email, team size and anything you tell us in your message. Your message is delivered to our inbox by FormSubmit, a form-to-email service. We use it to reply to you and, if we work together, to manage that relationship. Our lawful basis is legitimate interests (responding to people who contact us) or taking steps at your request before entering a contract.</p>
+<p><strong>When you send an enquiry.</strong> Your name, business name, work email, team size and anything you tell us in your message. Your message is delivered to our inbox by FormSubmit, a form-to-email service. Before it sends, FormSubmit asks you to complete a Google reCAPTCHA check to stop spam; Google processes your IP address and browser details for that check under its own privacy policy. We use it to reply to you and, if we work together, to manage that relationship. Our lawful basis is legitimate interests (responding to people who contact us) or taking steps at your request before entering a contract.</p>
 <p><strong>When you book a call.</strong> Bookings are handled by Cal.com. They collect your name, email and the details you choose to share, and pass them to us so we can hold the meeting. Lawful basis: taking steps at your request before entering a contract.</p>
 <p><strong>When you subscribe to our newsletter.</strong> Your first name, last name and email address, held by our email provider, Kit. We use them to send you our newsletter. Lawful basis: your consent, which you can withdraw at any time using the unsubscribe link in every email.</p>
+<p><strong>Spam protection on our sign-up forms.</strong> Some forms (such as the Process Pain Check) use ALTCHA, a privacy-friendly "I'm not a robot" check. Your browser solves a small puzzle, and our own server checks the answer. It doesn't use cookies or track you. The ALTCHA script is loaded from the jsDelivr content network, which sees your IP address when it delivers the file.</p>
 <p><strong>When you use our tools.</strong> Calculators such as the cost of busywork calculator run in your browser. We don't store what you enter unless you choose to send it to us.</p>
 <p><strong>When you visit the site.</strong> Our hosting provider keeps standard server logs (such as IP address, browser type and pages requested) for security and to keep the site running. We don't use analytics or advertising tracking.</p>
 
@@ -55,6 +56,8 @@ privacy = f'''
 <li>Vercel (website hosting)</li>
 <li>FormSubmit (delivers contact form messages to our inbox)</li>
 <li>Cal.com (meeting bookings)</li>
+<li>Google reCAPTCHA (spam check on the contact form, via FormSubmit)</li>
+<li>jsDelivr (delivers the ALTCHA spam-check script)</li>
 <li>Kit (newsletter)</li>
 <li>Google (web fonts, which means your browser requests font files from Google's servers)</li>
 <li>Our email, CRM and file storage providers</li>
@@ -117,6 +120,7 @@ cookies = f'''
 <h2>What does happen</h2>
 <p><strong>Fonts.</strong> Our typefaces are loaded from Google Fonts. Your browser connects to Google's servers to download them, which shares your IP address with Google. Google Fonts doesn't set cookies.</p>
 <p><strong>Hosting.</strong> Our hosting provider, Vercel, may use strictly necessary technical measures to deliver the site securely. These don't track you.</p>
+<p><strong>Spam checks.</strong> When you send the contact form, FormSubmit shows a Google reCAPTCHA check on its own page, and Google may set cookies there for that check. The "I'm not a robot" box on our sign-up forms (ALTCHA) doesn't use cookies.</p>
 <p><strong>Third-party sites.</strong> When you click through to book a call (Cal.com), subscribe to the newsletter (Kit), visit LinkedIn or open one of our separately hosted tools, you're on their site and their cookie policies apply.</p>
 
 <h2>If this changes</h2>

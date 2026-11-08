@@ -19,6 +19,7 @@ DESC = {
  'case-studies.html': 'Real Corbelle client work: what was broken, what we changed, and what it\'s worth now.',
  'about.html': 'Corbelle is a London-based business optimisation practice founded by Brendan Ellis, ACCA Fellow and former Head of Data.',
  'partners.html': 'Corbelle stays deliberately small and brings in trusted specialists for cyber security, data engineering, branding and software builds, under one plan.',
+ 'enquiry-sent.html': 'Thanks for getting in touch with Corbelle. You will hear back within one working day.',
  'tools.html': 'Free and paid Corbelle tools: the cost of busywork calculator, AI Use Case Gameplan, AI Cost Validator and more.',
 }
 

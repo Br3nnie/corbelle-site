@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="redesign.css?v=36" />
+<link rel="stylesheet" href="redesign.css?v=37" />
 </head>
 <body>
 
@@ -68,9 +68,10 @@ addEventListener('resize',()=>{if(innerWidth>=768&&mn.classList.contains('open')
 <p>We are the controller of the personal data described here. If you have any questions, email <a href="mailto:hello@corbelle.ai">hello@corbelle.ai</a>.</p>
 
 <h2>What we collect and why</h2>
-<p><strong>When you send an enquiry.</strong> Your name, business name, work email, team size and anything you tell us in your message. Your message is delivered to our inbox by FormSubmit, a form-to-email service. We use it to reply to you and, if we work together, to manage that relationship. Our lawful basis is legitimate interests (responding to people who contact us) or taking steps at your request before entering a contract.</p>
+<p><strong>When you send an enquiry.</strong> Your name, business name, work email, team size and anything you tell us in your message. Your message is delivered to our inbox by FormSubmit, a form-to-email service. Before it sends, FormSubmit asks you to complete a Google reCAPTCHA check to stop spam; Google processes your IP address and browser details for that check under its own privacy policy. We use it to reply to you and, if we work together, to manage that relationship. Our lawful basis is legitimate interests (responding to people who contact us) or taking steps at your request before entering a contract.</p>
 <p><strong>When you book a call.</strong> Bookings are handled by Cal.com. They collect your name, email and the details you choose to share, and pass them to us so we can hold the meeting. Lawful basis: taking steps at your request before entering a contract.</p>
 <p><strong>When you subscribe to our newsletter.</strong> Your first name, last name and email address, held by our email provider, Kit. We use them to send you our newsletter. Lawful basis: your consent, which you can withdraw at any time using the unsubscribe link in every email.</p>
+<p><strong>Spam protection on our sign-up forms.</strong> Some forms (such as the Process Pain Check) use ALTCHA, a privacy-friendly "I'm not a robot" check. Your browser solves a small puzzle, and our own server checks the answer. It doesn't use cookies or track you. The ALTCHA script is loaded from the jsDelivr content network, which sees your IP address when it delivers the file.</p>
 <p><strong>When you use our tools.</strong> Calculators such as the cost of busywork calculator run in your browser. We don't store what you enter unless you choose to send it to us.</p>
 <p><strong>When you visit the site.</strong> Our hosting provider keeps standard server logs (such as IP address, browser type and pages requested) for security and to keep the site running. We don't use analytics or advertising tracking.</p>
 
@@ -80,6 +81,8 @@ addEventListener('resize',()=>{if(innerWidth>=768&&mn.classList.contains('open')
 <li>Vercel (website hosting)</li>
 <li>FormSubmit (delivers contact form messages to our inbox)</li>
 <li>Cal.com (meeting bookings)</li>
+<li>Google reCAPTCHA (spam check on the contact form, via FormSubmit)</li>
+<li>jsDelivr (delivers the ALTCHA spam-check script)</li>
 <li>Kit (newsletter)</li>
 <li>Google (web fonts, which means your browser requests font files from Google's servers)</li>
 <li>Our email, CRM and file storage providers</li>

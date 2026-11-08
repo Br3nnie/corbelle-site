@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="redesign.css?v=36" />
+<link rel="stylesheet" href="redesign.css?v=37" />
 </head>
 <body>
 
@@ -327,38 +327,18 @@ addEventListener('resize',()=>{if(innerWidth>=768&&mn.classList.contains('open')
         <li><b>Reply</b> · within one working day</li>
       </ul>
     </div>
-    <form class="contact-form" id="contact-form" action="https://formsubmit.co/hello@corbelle.ai" method="POST" novalidate>
+    <form class="contact-form" id="contact-form" action="https://formsubmit.co/hello@corbelle.ai" method="POST">
       <input type="hidden" name="_subject" value="New enquiry from corbelle.ai" />
       <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_captcha" value="true" />
+      <input type="hidden" name="_next" value="https://www.corbelle.ai/enquiry-sent.html" />
       <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <div class="row2"><div><label for="cf-name">Full name</label><input id="cf-name" name="name" required autocomplete="name" /></div><div><label for="cf-business">Business</label><input id="cf-business" name="business" required autocomplete="organization" /></div></div>
       <div class="row2"><div><label for="cf-email">Work email</label><input id="cf-email" type="email" name="email" required autocomplete="email" /></div><div><label for="cf-size">Team size</label><select id="cf-size" name="team_size"><option>Under 50</option><option selected>50–100</option><option>101–200</option><option>201–400</option><option>400+</option></select></div></div>
       <div><label for="cf-msg">What's eating your team's time?</label><textarea id="cf-msg" name="message" required placeholder="e.g. we re-key every order into Sage and a spreadsheet…"></textarea></div>
       <button class="btn btn-primary" type="submit">Send message</button>
-      <p class="form-status" role="status" aria-live="polite"></p>
-      <small>The first call is free and there's no obligation. See our <a href="privacy.html">privacy policy</a>.</small>
+      <small>You'll be asked to confirm you're not a robot before it sends. The first call is free and there's no obligation. See our <a href="privacy.html">privacy policy</a>.</small>
     </form>
-    <script>
-    (function(){
-      const f=document.getElementById('contact-form'), st=f.querySelector('.form-status'), btn=f.querySelector('button[type=submit]');
-      f.addEventListener('submit', async e=>{
-        e.preventDefault();
-        if(!f.checkValidity()){ f.reportValidity(); return; }
-        if(f._honey.value) return;
-        btn.disabled=true; btn.textContent='Sending…'; st.className='form-status'; st.textContent='';
-        try{
-          const r=await fetch('https://formsubmit.co/ajax/hello@corbelle.ai',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(f)))});
-          const j=await r.json().catch(()=>({}));
-          if(!r.ok || j.success===false || j.success==='false') throw new Error(j.message||'Send failed');
-          f.reset(); btn.textContent='Sent'; st.className='form-status ok'; st.textContent="Thanks, your message is on its way. You'll hear back within one working day.";
-        }catch(err){
-          btn.disabled=false; btn.textContent='Send message'; st.className='form-status err';
-          st.innerHTML='Sorry, that didn\'t send. Please email <a href="mailto:hello@corbelle.ai">hello@corbelle.ai</a> instead.';
-        }
-      });
-    })();
-    </script>
   </div>
 </section>
 

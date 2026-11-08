@@ -16,7 +16,7 @@ pages = {
  'index.html': None, 'services.html': 'services', 'strategy-leadership.html': 'services', 'ai-adoption.html': 'services',
  'time-process-audit.html': 'services', 'automation-ai.html': 'services', 'joined-up-systems.html': 'services', 'change-management.html': 'services',
  'experience.html': 'experience', 'case-studies.html': 'experience',
- 'about.html': 'about', 'partners.html': 'about', 'tools.html': 'insights', 'insights.html': 'insights', 'privacy.html': None, 'terms.html': None, 'cookies.html': None, 'five-manual-jobs.html': 'insights', 'tuesday-strategy.html': 'insights', 'busy-is-a-symptom.html': 'insights', 'chatgpt-padded-quote.html': 'insights', 'who-sees-the-ai-bill.html': 'insights',
+ 'about.html': 'about', 'partners.html': 'about', 'tools.html': 'insights', 'insights.html': 'insights', 'privacy.html': None, 'enquiry-sent.html': None, 'terms.html': None, 'cookies.html': None, 'five-manual-jobs.html': 'insights', 'tuesday-strategy.html': 'insights', 'busy-is-a-symptom.html': 'insights', 'chatgpt-padded-quote.html': 'insights', 'who-sees-the-ai-bill.html': 'insights',
 }
 ext = lambda h: ' target="_blank" rel="noopener"' if h.startswith('http') else ''
 SCRIPT = '''<script>
