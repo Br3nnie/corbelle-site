@@ -104,7 +104,7 @@ dict(slug='tuesday-strategy', tag='AI', month='Nov 2026', num='02',
 <p>Do that a few times, and you'll have something better than an AI strategy.</p>
 <p>You'll have proof.</p>
 '''),
-dict(slug='busy-is-a-symptom', tag='People', month='Oct 2026', num='03',
+dict(slug='busy-is-a-symptom', tag='People', month='Nov 2026', num='03',
  title="Busy isn't a badge. It's a symptom.",
  dek="What your team's overtime is really telling you.",
  desc="When everyone is busy, it's tempting to hire. But busy is usually a symptom of broken processes, not a shortage of people.",
