@@ -25,7 +25,7 @@ DESC = {
 
 for f in sorted(glob.glob('*.html')):
     s = open(f).read()
-    if 'redesign.css' not in s:
+    if 'redesign.css' not in s or f == '404.html':  # 404 is built by build_404.py, never canonical
         continue  # leave the older standalone tool pages alone
     head_end = s.index('</head>')
     head = s[:head_end]

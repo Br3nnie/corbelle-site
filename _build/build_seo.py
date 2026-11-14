@@ -62,6 +62,7 @@ LEGACY = {
 
 # Hidden from search: noindex, never in the sitemap.
 NOINDEX = {
+ '404.html': 'noindex',                     # built by build_404.py
  'enquiry-sent.html': 'noindex',            # thank-you page (tag already in page)
  'thankyou/index.html': 'noindex',
  'ai-suite-upgrade.html': 'noindex,nofollow',
