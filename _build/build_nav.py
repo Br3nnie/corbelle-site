@@ -31,19 +31,19 @@ addEventListener('resize',()=>{if(innerWidth>=768&&mn.classList.contains('open')
 </script>'''
 
 def nav(f, active):
-    li = ['      <li><a href="index.html"' + (' class="active"' if f == 'index.html' else '') + '>Home</a></li>']
-    m = ['<a class="m-top" href="index.html">Home</a>']
+    li = ['      <li><a href="/"' + (' class="active"' if f == 'index.html' else '') + '>Home</a></li>']
+    m = ['<a class="m-top" href="/">Home</a>']
     for label, key, items in groups:
         a = ' active' if key == active else ''
         sub = ''.join(f'<li><a href="{h}"' + (' class="current"' if h == f else '') + ext(h) + f'>{t}</a></li>' for t, h in items)
         li.append(f'      <li class="dd"><button class="dd-btn{a}" type="button" aria-haspopup="true" aria-expanded="false">{label} {chev}</button><ul class="dd-menu">{sub}</ul></li>')
         msub = ''.join(f'<a href="{h}"{ext(h)}>{t}</a>' for t, h in items)
         m.append(f'<details{" open" if key == active else ""}><summary>{label}{chev}</summary><div>{msub}</div></details>')
-    li.append('      <li><a href="index.html#contact">Contact</a></li>')
-    m.append('<a class="m-top" href="index.html#contact">Contact</a>')
+    li.append('      <li><a href="/#contact">Contact</a></li>')
+    m.append('<a class="m-top" href="/#contact">Contact</a>')
     return f'''<nav>
   <div class="wrap">
-    <a class="logo" href="index.html">Corbelle<span>.</span></a>
+    <a class="logo" href="/">Corbelle<span>.</span></a>
     <ul class="nav-links">
 {chr(10).join(li)}
     </ul>
@@ -63,10 +63,10 @@ if KIT_FORM_ID:
 else:  # not connected yet: nothing is sent anywhere
     FORM_OPEN = '<form class="subscribe" onsubmit="event.preventDefault();this.querySelector(\'button\').textContent=\'Coming soon\'">'
 FORM = FORM_OPEN + '<div class="sub-row"><input type="text" name="fields[first_name]" required placeholder="First name" aria-label="First name" /><input type="text" name="fields[last_name]" placeholder="Last name" aria-label="Last name" /></div><div class="sub-join"><input type="email" name="email_address" required placeholder="your@email.com" aria-label="Email address" /><button type="submit">Subscribe</button></div><p class="sub-note">Practical ideas on getting your team\'s time back. Unsubscribe anytime.</p></form>'
-FOOT_BRAND = '<div class="f-brand"><a class="logo" href="index.html">Corbelle<span>.</span></a><p>Business optimisation for UK owner-led businesses. Less busywork, more business.</p><div class="stay"><span>Stay informed</span><a class="li" href="https://www.linkedin.com/company/corbelleadvisory/" target="_blank" rel="noopener" aria-label="Corbelle on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a></div>' + FORM + '</div>'
+FOOT_BRAND = '<div class="f-brand"><a class="logo" href="/">Corbelle<span>.</span></a><p>Business optimisation for UK owner-led businesses. Less busywork, more business.</p><div class="stay"><span>Stay informed</span><a class="li" href="https://www.linkedin.com/company/corbelleadvisory/" target="_blank" rel="noopener" aria-label="Corbelle on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a></div>' + FORM + '</div>'
 FOOT_SERV = '<div><h4>Services</h4><ul><li><a href="services.html">What we do</a></li><li><a href="time-process-audit.html">Time &amp; Process Audit</a></li><li><a href="automation-ai.html">Automation &amp; AI</a></li><li><a href="joined-up-systems.html">Joined-Up Systems</a></li><li><a href="change-management.html">Change Management</a></li><li><a href="strategy-leadership.html">Strategy &amp; Leadership</a></li><li><a href="ai-adoption.html">AI Adoption</a></li></ul></div>'
-FOOT_TOOLS = '<div><h4>Tools</h4><ul><li><a href="index.html#calculator">Cost of busywork calculator</a></li><li><a href="/usecasegameplan">AI Use Case Gameplan</a></li><li><a href="/aicost">AI Cost Validator</a></li><li><a href="tools.html">All tools</a></li></ul></div>'
-FOOT_CO = '<div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="partners.html">Partners</a></li><li><a href="experience.html">Experience</a></li><li><a href="case-studies.html">Case studies</a></li><li><a href="https://speaking.brendanellis.com/" target="_blank" rel="noopener">Speaking</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>'
+FOOT_TOOLS = '<div><h4>Tools</h4><ul><li><a href="/#calculator">Cost of busywork calculator</a></li><li><a href="/usecasegameplan">AI Use Case Gameplan</a></li><li><a href="/aicost">AI Cost Validator</a></li><li><a href="tools.html">All tools</a></li></ul></div>'
+FOOT_CO = '<div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="partners.html">Partners</a></li><li><a href="experience.html">Experience</a></li><li><a href="case-studies.html">Case studies</a></li><li><a href="https://speaking.brendanellis.com/" target="_blank" rel="noopener">Speaking</a></li><li><a href="/#contact">Contact</a></li></ul></div>'
 
 for f, act in pages.items():
     if not os.path.exists(f):

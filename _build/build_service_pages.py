@@ -146,7 +146,7 @@ def build(p):
 <header class="page-hero svc-hero" style="padding-bottom:88px">
   <div class="wrap">
     <div>
-      <p class="crumbs"><a href="index.html">Home</a> / <a href="services.html">What we do</a> / {p['name']}</p>
+      <p class="crumbs"><a href="/">Home</a> / <a href="services.html">What we do</a> / {p['name']}</p>
       <h1>{p['h1']}</h1>
       <p class="sub">{p['sub']}</p>
       <div style="margin-top:30px"><a class="btn btn-light" href="https://cal.com/brennie/30min" target="_blank" rel="noopener">{p['cta']}</a></div>
