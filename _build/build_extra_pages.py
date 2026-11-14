@@ -67,7 +67,7 @@ built_html = ''.join(f'<div class="card"><h3>{t}</h3><p>{d}</p></div>' for t, d 
 ai = f'''<header class="page-hero svc-hero" style="padding-bottom:88px">
   <div class="wrap">
     <div>
-      <p class="crumbs"><a href="index.html">Home</a> / <a href="services.html">What we do</a> / AI Adoption</p>
+      <p class="crumbs"><a href="/">Home</a> / <a href="services.html">What we do</a> / AI Adoption</p>
       <p class="eyebrow" style="margin-top:18px">AI adoption</p>
       <h1 style="margin-top:6px">Practical AI for owner-led businesses</h1>
       <p class="sub">AI is only as useful as the process underneath it. We get the basics right first, then apply AI where it actually saves time: fewer manual steps, quicker answers and less admin.</p>
@@ -116,7 +116,7 @@ ai = f'''<header class="page-hero svc-hero" style="padding-bottom:88px">
         <h3>Is AI worth it for you?</h3>
         <a class="row" href="/usecasegameplan">Test an AI idea<span>Gameplan →</span></a>
         <a class="row" href="/aicost">What would it cost to run?<span>Validator →</span></a>
-        <a class="row" href="index.html#calculator">What is busywork costing you?<span>Calculator →</span></a>
+        <a class="row" href="/#calculator">What is busywork costing you?<span>Calculator →</span></a>
         <a class="btn btn-light" href="{BOOK}" target="_blank" rel="noopener">Book a free time audit</a>
       </div>
     </div>
@@ -140,7 +140,7 @@ write('ai-adoption.html', 'AI Adoption — Corbelle', ai)
 # ---------------- EXPERIENCE ----------------
 xp = f'''<header class="page-hero" style="padding-bottom:80px">
   <div class="wrap">
-    <p class="crumbs"><a href="index.html">Home</a> / Experience</p>
+    <p class="crumbs"><a href="/">Home</a> / Experience</p>
     <h1>Experience that speaks for itself</h1>
     <p class="sub">Twenty years inside nine organisations, from Big 4 audit to Head of Data, and now Corbelle clients from multi-country groups to trade businesses. Here's the evidence.</p>
   </div>
@@ -222,7 +222,7 @@ th = ''.join(f'''
       <a class="card tool" href="{u}"{' target="_blank" rel="noopener"' if u.startswith('http') else ''}><span class="status">{s}</span><h3>{t}</h3><p>{d}</p><span class="more">{l} →</span></a>''' for s, t, d, u, l in tools)
 tl = f'''<header class="page-hero" style="padding-bottom:80px">
   <div class="wrap">
-    <p class="crumbs"><a href="index.html">Home</a> / Insights / Tools</p>
+    <p class="crumbs"><a href="/">Home</a> / Insights / Tools</p>
     <h1>Tools</h1>
     <p class="sub">Free and paid tools to help you put a number on a problem, test an idea or start a better conversation before you spend anything.</p>
   </div>

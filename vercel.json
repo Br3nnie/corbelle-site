@@ -1,6 +1,16 @@
 {
   "redirects": [
     {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/usecasevalidator.html",
+      "destination": "/usecasegameplan",
+      "permanent": true
+    },
+    {
       "source": "/million-pound-plan",
       "destination": "/mpp",
       "permanent": true
@@ -262,6 +272,17 @@
     {
       "source": "/case-studies/",
       "destination": "/case-studies.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
     }
   ]
 }

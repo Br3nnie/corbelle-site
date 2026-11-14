@@ -19,7 +19,7 @@ def page(fn, title, h1, desc, body):
     head = head.replace('</title>', f'</title>\n<meta name="description" content="{html.escape(desc, quote=True)}" />', 1)
     b = f'''<header class="page-hero" style="padding-bottom:64px">
   <div class="wrap">
-    <p class="crumbs"><a href="index.html">Home</a> / {h1}</p>
+    <p class="crumbs"><a href="/">Home</a> / {h1}</p>
     <h1>{h1}</h1>
     <p class="sub">Last updated: {UPDATED}</p>
   </div>

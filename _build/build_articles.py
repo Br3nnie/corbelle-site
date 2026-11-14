@@ -231,7 +231,7 @@ for i, a in enumerate(ARTICLES):
     more = ''.join(card(x) for x in others)
     body = f'''<header class="page-hero" style="padding-bottom:72px">
   <div class="wrap">
-    <p class="crumbs"><a href="index.html">Home</a> / <a href="insights.html">Insights</a> / {a['tag']}</p>
+    <p class="crumbs"><a href="/">Home</a> / <a href="insights.html">Insights</a> / {a['tag']}</p>
     <p class="eyebrow" style="margin-top:18px">{a['tag']}</p>
     <h1 style="margin-top:6px;max-width:860px">{a['title']}</h1>
     <p class="sub">{a['dek']}</p>
@@ -267,7 +267,7 @@ for i, a in enumerate(ARTICLES):
 grid = ''.join(card(a) for a in ARTICLES)
 ins = f'''<header class="page-hero" style="padding-bottom:80px">
   <div class="wrap">
-    <p class="crumbs"><a href="index.html">Home</a> / Insights</p>
+    <p class="crumbs"><a href="/">Home</a> / Insights</p>
     <h1>Latest thinking</h1>
     <p class="sub">Plain-English takes on process, automation, AI and getting your team's time back.</p>
   </div>
@@ -290,7 +290,7 @@ ins = f'''<header class="page-hero" style="padding-bottom:80px">
     <div class="start-box">
       <span class="lab">Popular</span>
       <h3>Start here</h3>
-      <a class="row" href="index.html#calculator">Cost of busywork calculator<span>→</span></a>
+      <a class="row" href="/#calculator">Cost of busywork calculator<span>→</span></a>
       <a class="row" href="/usecasegameplan">AI Use Case Gameplan<span>→</span></a>
       <a class="row" href="/aicost">AI Cost Validator<span>→</span></a>
     </div>
