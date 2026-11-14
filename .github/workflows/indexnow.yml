@@ -1,0 +1,29 @@
+# After each successful production deploy on Vercel, tell IndexNow which public
+# pages changed in that commit. Run it by hand ("Run workflow") to send every page.
+name: IndexNow
+
+on:
+  deployment_status:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.deployment.sha || github.sha }}
+          fetch-depth: 2
+      - name: Send changed pages
+        if: github.event_name == 'deployment_status'
+        run: git diff --name-only HEAD^1 HEAD | python3 -I _build/indexnow.py
+      - name: Send every page
+        if: github.event_name == 'workflow_dispatch'
+        run: python3 -I _build/indexnow.py --all
